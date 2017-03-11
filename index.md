@@ -1,3 +1,3 @@
   {% for post in site.posts %}
-    post.excerpt
+    {{ post.excerpt }}
   {% endfor %}
