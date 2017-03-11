@@ -1,7 +1,8 @@
 ---
 title: Overcoming RSI
-permalink: '/hi'
+permalink: '/overcoming-rsi'
 short: 'hellooooo hi'
+published: false
 ---
 
 helloooo. This is blabla.
