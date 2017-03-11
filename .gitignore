@@ -45,3 +45,8 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+
+#Jekyll
+
+_site
+.sass-cache

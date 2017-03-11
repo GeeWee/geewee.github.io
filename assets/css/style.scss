@@ -1,0 +1,26 @@
+---
+---
+
+@import "{{site.theme}}";
+
+.layout-post {
+  margin-bottom: 50px;
+}
+.centered {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.img-circle{
+  border-radius: 50%;
+}
+
+.profile-picture-section{
+  display: flex;
+  align-items: center;
+}
+
+.info-container{
+  padding-left: 40px;
+  font-style: italic;
+}

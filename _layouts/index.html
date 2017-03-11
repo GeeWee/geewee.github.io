@@ -19,16 +19,18 @@
 <body>
 
 <div class="wrapper">
+
     <section>
         <div id="title">
             <h1>{{ site.title | default: site.github.repository_name }}</h1>
             <p>{{ site.description | default: site.github.project_tagline }}</p>
             <hr>
         </div>
-        <h2>{{post.title}}</h2>
+
         {{ content }}
+
     </section>
-    {% include footer.html %}
+
 </div>
 
 {% if site.google_analytics %}

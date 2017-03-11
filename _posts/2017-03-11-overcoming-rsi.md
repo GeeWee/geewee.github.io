@@ -1,10 +1,9 @@
 ---
 title: Overcoming RSI
 permalink: '/hi'
+short: 'hellooooo hi'
 ---
 
-helloooo
-
+helloooo. This is blabla.
 **hi**
-
 # hello

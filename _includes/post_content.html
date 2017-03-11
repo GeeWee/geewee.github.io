@@ -3,7 +3,12 @@
         <div class="content">
             <div class="bd">
                 <div class="entry-content">
-                    {{ post.excerpt | strip_html }}
+                    <h2 class="centered" ><a href="{{post.url}}">{{post.title}}</a></h2>
+                    {% if post.short.size %}
+                        {{post.short}}
+                    {% else %}
+                        {{post.excerpt}}
+                    {% endif %}
                 </div><!-- entry-content -->
             </div><!-- bd -->
         </div><!-- content -->
