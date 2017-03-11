@@ -1,6 +1,6 @@
 theme: jekyll-theme-midnight
 title: Tinkerer
-description: Adventures in code and experiments
+description: "Adventures in code"
 show_downloads: false
 gem: "jekyll_theme_midnight"
 defaults:
