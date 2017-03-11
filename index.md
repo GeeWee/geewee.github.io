@@ -1,3 +1,3 @@
   {% for post in site.posts %}
-    hello
+    post.excerpt
   {% endfor %}
