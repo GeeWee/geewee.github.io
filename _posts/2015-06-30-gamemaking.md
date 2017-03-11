@@ -7,7 +7,7 @@ Recently we created a placemat game-controller and a game for a university proje
 The goal was to help users eat slower in an engaging way. These are the four things I wish I had known before starting.
 
 <div class="yt-div">
-<iframe width="720" height="500" src="http://www.youtube.com/embed/-kpaPoEZ8UM" frameborder="0" allowfullscreen></iframe>
+<iframe width="720" height="500" src="https://www.youtube.com/embed/-kpaPoEZ8UM" frameborder="0" allowfullscreen></iframe>
 </div>
 
 We had five weeks to build it and we ended up with a codebase a little larger than 6000LOC, which is not a lot by industry standards, but it was our first
