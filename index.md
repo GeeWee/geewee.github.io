@@ -1,5 +1,3 @@
-  {% for post in site.posts %}
-    {{ post.title}}
-    
-    {{ post.excerpt }}
-  {% endfor %}
+{% for post in site.posts %}
+  {% include post_content %}
+{% endfor %}
