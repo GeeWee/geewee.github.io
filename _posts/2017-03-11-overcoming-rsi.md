@@ -13,6 +13,7 @@ The instant I got home and sat back down to type, it was back.
 I’ve been through a lot trying to fix this, and I am now completely pain-free in my right hand and most days, also in my left.
 I remember googling a lot in the start, and while there there are some really good resources for people with RSI, I don’t feel like I was able to find all the information I needed at that time.
 So this is my attempt to summarize what I've learned, what has worked for me, and also what hasn’t.
+(This post is primarily targeted at Software Developers, and the lingo might reflect that.)
 
 *Disclaimer, I'm not a doctor, you should go talk to your doctor, etc. Y'all know the drill.*
 
@@ -49,39 +50,91 @@ You're going to have to keep your wrists above the keyboard, held up with your a
 Don't stretch your hand to reach things. The perfect storm of ulnar deviation and stretching to reach a key is something like the ctrl+t shortcut, only performed with the left hand.
 Don't do it - most shortcuts can be done two-handed. E.g. click T with your left hand, and control with your right.
 
-##THIS IS WHERE YOU GOT TO##
-
-Don't pound the keys or 
-bottoming out
+Don't type too hard. I used to slam the keys down when typing, for some reason I felt more productive that way. It really felt like I was *doing something.*
+Don't be me. Use the minimum amount of pressure necessary to press the buttons.
 
 ## Sleep
+First off, get enough. You can read this everywhere. It allows your body to heal, leaves you rested.
+Sleep is particularly important, if you have a hard time taking breaks from the keyboard in your waking hours. 
+It's essentially a large stretch of time where you're nor using your hands, and you don't have to expend any mental energy to "stay away from the keyboard."
 
 
+The reason it's in here however, is something I've noticed on myself, but is hard to find when researching.
+Your sleep position matters. If you wake up in pain *sometimes* but not always, I'd consider this as a suspect.
+I found out that I sometimes curl up on top of my arm, and when I do that, my mornings are always significantly worse.
 
-ergonomic keyboards
-I experimented with a few ergonomic keyboards over the time most notable are two. The Microsoft keyboard which is very nice, and curves probably for good ergonomic posture of the hands. It also comes with a mouse. Also it has these nice little magnetic battery covers which I really enjoy showing off. It looks a little weird but it’s a pretty gorgeous keyboard when you could used it.
-However the Microsoft keyboard wasn’t doing it for me and I switch to kinesis advantage two. This keyboard has all the modify keys in the center so as to enable you to use your strong thumb to press them not your week pinky this further reduces on a deviation.
-You can read a lot about elsewhere but I want to emphasize one thing about it it has to little clicking noises when you’ve triggered a button click, but before you bottom out. This and helps you with proper typing technique as you want to stop when you hear the noise and not hit the bottom. Tapping too hard keyboard can be very stressful for your joints.
-It is however, unfortunately, not very pretty, and there’s definitely a learning curve of a few weeks. Also it’s ridiculously expensive.
-changing typing
+
+# Ergonomic keyboards
+I experimented with a few ergonomic keyboards during the. My first was a Microsoft Sculpt.
+The Sculpt keyboard looks nice, is reasonably affordable and curves properly for good ergonomic posture of the hands. It also comes with an ergonomic mouse.
+(As a sidenote, it also has little magnetic battery covers which are really sexy)
+
+Inser picture here
+
+The Sculpt wasn't doing it for me however. So I switched, to the Kinses Advantage2.
+This keyboard has all the modifier buttons in the center, to enable you to use them with your strong thumb instead of your weak pinky.
+I was skeptical before buying it.
+Primarily because it's pretty expensive for a keyboard, it's pretty ugly, and i *really* didn't look forward to relearning how to type.
+
+**insert image here**
+
+However, it was worth the hefty price tag.
+The way the keyboard is built almost forces you into the hanging hand position, and the keyboard gives a little click noise when you've pressed hard enough
+to help you apply just the right amount of pressure.
+
+The learning curve is relatively steep, and for the first few days, I basically sat hunched over the keyboard to see all the buttons.
+It was a pain in the ass for the first few weeks, and I had to rebind some buttons to make it work (fortunately, the Kinesis makes this really easy.)
+However, when looking back, I actually consider it a strength that you're unable to utilize all your previous motor memory.
+You're probably having issues because among other things, your typing technique is incorrect.
+The Kinesis forces you to relearn everything, and if you're aware of what proper typing technique looks like when you re-learn it, you have a much
+better chance of learning to type in a way that doesn't injure you down the long road.
 
 ## Voice programming
-Dragon
-after being inspired by Tavis Rudds excellent talk at PyCon I also wanted to tread voice programming. The results were less than stellar. There’s no one out there that gives you the full package and so you’ll probably have to build it yourself. Not the best idea for someone with fingers that are already damaged, but I gave it a try anyways. I figured that if I just decide the basics of my hands I could program the rest with my voice and expand the language as we went along. Even with the best voice recognition money could buy and a language specifically designed to be effective in programming it was still slow. Not necessarily outputting code, that part was actually fine for the most part. The place where voice programming really fall short, is the navigation of large files for projects. (We’ve done some voice and gaze link to paper)
-voice does however, works surprisingly well for dictation and simple web browsing. If you write a lot that is not code or spend a lot of time strolling to read it or hacker news, you should consider using it.
+After being inspired by Tais Rudd's [excellent talk](https://www.youtube.com/watch?v=8SkdfdXWYaI) about him overcoming RSI through voice coding, I tried it out.
+I bought an expensive microphone, and Dragon NaturallySpeaking, which is supposed to be the best voice recognition software there is.
+The results however, were less than stellar. 
+There’s no one out there that provides with a plug and play solution (although there are some that try.) You’ll probably have to build it yourself.
+Not the best idea for someone with fingers that are already damaged, but I gave it a try.
+I figured that if I just designed and wrote the basics of the system with my hands I could program the rest with my voice and expand the system I need it to build it.
+However, even with the best voice recognition software money could buy and a language I specifically designed to be efficient for programming it was still slow.
+Not necessarily when outputting code, that part actually worked fairly well.
+The place where voice programming really falls short, is the navigation of large files and projects.
+(I've done some work with using gaze tracking and voice coding to supplement keyboard input though, check out the paper.)
+Voice does however works surprisingly well for dictation and simple web browsing.
+If you write a lot of text during your day or spend a lot of time strolling through reddit or hacker news, it's worth considering as an option.
+(For more reading about voice programming, and things people have already built you can play with, check out these links: **[][][][][]**)
 
 ## Microbreaks
-cured ergonomic recommendations for breaks,, are to take the much more often than we currently do. You should take a micro break meaning a break of approximately 30 seconds, every 5 to 10 minutes. Usual to take a longer break of approximately 10 minutes every hour to walk around stretch and do something else.
-I use a program called sheet to enforce these breaks. I’m going to be honest with you here at first the brakes were a pain in the ass. Being interrupted for 30 seconds all the time was annoying as hell and it was really hard to get in the zone taking a longer break every hour. I was used to just crunching for hours without breaks. However when you’re 23 and your hands are registered to become usable you’re gonna have to suck it up.
-You learn to live with the micro-breaks, they’re so sure that you can so easily keep your minor task and it gives you a breather for planning ahead.
-The longer breaks are little different, they give you a chance to reevaluate what you’re doing and if it’s the best way to doing it. You should also consider getting organizational support for these breaks. Currently at my team we take a 10 minute break every hour after lunch together. It helped to socialize talk about her problems with someone else.
-I would suggest the fossil use longer breaks for something physical perhaps play a game of table tennis(paper here, weee)
-When working at home you can also do chores in your rest breaks
+Current ergonomic recommendations are as follows: Take a **microbreak**, meaning a break of approximately 30 seconds, every 5 to 10 minutes.
+Take a shorter **rest break** of approximately 10 minutes, every hour. Use this break to stretch, and get our off your chair.
+Needless to say, this is **much** more often than most of us take breaks, and I'm going to be honest with you, it takes some getting used to.
+I use a program called WorkRave to enforce these breaks, but there are many others.
 
-## Excercises
-there’s no way around it, you’re going to need to exercise and stretch to get better. My stretching and exercise regiment is reasonably intensive and takes about two hours in itself. However if you’re sneaky you can do it during downtime. I do my stretches during my normal workout routine to save time.
-You should also consider doing some nerve flossing exercises to get the nerve moving and supplied with fresh blood and oxygen.
-I’ve had good luck with these nerve flossing exercises and exercises for tennis elbow. I worked this out with my physician however and you should also work your exercise and stretching out with yours.
+At first, the breaks were a pain in the ass.
+Being interrupted for 30 seconds every five minutes was insanely annoying, and staying in flow was difficult, when taking a longer break eery hour.
+I was used to working for hours without breaks. However when you’re 23 and your hands on the way to useless-city, you're gonna have to suck it up.
+And after a while, it's not so bad.
+You learn to live with the microbreaks. They’re so short that you can so easily keep your mind on the task and you can use the time away from the keyboard to plan ahead.
+
+
+The longer breaks are little different. They give you a chance to reevaluate what you’re doing and consider alternate approaches.
+You should also consider getting organizational support for these breaks.
+Currently at my team, after lunch, we take an hourly ten minut break together.
+It's nice for socialization, relaxing together, or if you want - talk about your work with someone else.
+(We're currently doing work to facilitate smaller teams taking breaks together.
+A lot of my work recently has been influenced by my condition now that I think about it. Hit me up if this piques your interest.)
+
+If you have the privilege of working from home, the rest breaks are also a good time to do chores (dishes, laundry etc.)
+
+## Excercise
+There’s no way around it, you’re going to need to exercise and stretch, to get better.
+My stretching and exercise regiment is reasonably long. It takes about two hours in itself.
+However if you’re sneaky you can do it during downtime. I do my stretches during my normal workout routine to save time.
+You should also consider doing some nerve flossing exercises to get the nerve moving and supply it with fresh blood and oxygen. **insert link here**
+I've had good luck with nerve flossing exercises, and exercises for tennis elbow. I worked this out with my physician however, and so should you.
+
+
+## This is where you got to
 
 ## Different work roles
 software development doesn’t necessarily need to be all about outputting code. There’s a lot of ways you can contribute to team without stressing your hands as much. Perhaps you can plan a pair programming session in the middle of every day to give your hands an hour of rest.
@@ -97,3 +150,9 @@ I’ve noticed that I always have cold hands which could restrict blood flow and
 ## Massage
 
 ## Further resources
+
+# To do
+Insert images
+Links
+Standardize formatting
+Add a rating for each section
