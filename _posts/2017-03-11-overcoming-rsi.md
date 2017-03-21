@@ -69,10 +69,10 @@ I experimented with a few ergonomic keyboards during the. My first was a Microso
 The Sculpt keyboard looks nice, is reasonably affordable and curves properly for good ergonomic posture of the hands. It also comes with an ergonomic mouse.
 (As a sidenote, it also has little magnetic battery covers which are really sexy)
 
-Inser picture here
+##Insert picture here
 
-The Sculpt wasn't doing it for me however. So I switched, to the Kinses Advantage2.
-This keyboard has all the modifier buttons in the center, to enable you to use them with your strong thumb instead of your weak pinky.
+The Sculpt wasn't doing it for me however. So I switched, to the Kinsesis Advantage2.
+This keyboard has all the modifier buttons in the center, enabling you to use them with your strong thumb instead of your weak pinky.
 I was skeptical before buying it.
 Primarily because it's pretty expensive for a keyboard, it's pretty ugly, and i *really* didn't look forward to relearning how to type.
 
@@ -104,7 +104,7 @@ Voice does however works surprisingly well for dictation and simple web browsing
 If you write a lot of text during your day or spend a lot of time strolling through reddit or hacker news, it's worth considering as an option.
 (For more reading about voice programming, and things people have already built you can play with, check out these links: **[][][][][]**)
 
-## Microbreaks
+## Breaks
 Current ergonomic recommendations are as follows: Take a **microbreak**, meaning a break of approximately 30 seconds, every 5 to 10 minutes.
 Take a shorter **rest break** of approximately 10 minutes, every hour. Use this break to stretch, and get our off your chair.
 Needless to say, this is **much** more often than most of us take breaks, and I'm going to be honest with you, it takes some getting used to.
@@ -137,17 +137,37 @@ I've had good luck with nerve flossing exercises, and exercises for tennis elbow
 ## This is where you got to
 
 ## Different work roles
-software development doesn’t necessarily need to be all about outputting code. There’s a lot of ways you can contribute to team without stressing your hands as much. Perhaps you can plan a pair programming session in the middle of every day to give your hands an hour of rest.
-Code reviews are also less intensive for your hands so you might consider doing more of those and less actual coding. 
-Get new hobbies
-suffice to say if your primary hobby is playing computer games you’re probably going to need to get a new one. There’s a lot of fun stuff you can do that doesn’t involve sitting in front of screen. It’s important that you give your hands rest and while you might that be able to control what you do at work, you can definitely control what you do in your free time. If you can, aim for activities that do not involve sitting still.
-Standing Desk
-I’ve used both the standing desk, a normal desk, and an adjustable desk and I found no difference on my RSI symptoms. However there’s a lot of other good reasons you might want to switch it up. Consider switching your desk between sitting and standing once an hour. A good time to switch it is right after your hourly 10 minute break..
+Software development doesn’t necessarily need to be all about writing code.
+There’s a lot of ways you can contribute to team while putting less pressure on your hands.
+There's code reviews, helping someone else out with their problems, or pair programming. All which are less stressful on your hands.
+Try to schedule them as longer break for your hands. Perhaps you can pair program for half an hour in the morning and half an hour in the evening.
+That, with lunch are three reasonably large breaks for your hands.
 
-## Keeping warm
-I’ve noticed that I always have cold hands which could restrict blood flow and thus hindering the tissue from healing fast enough. I’ve experimented with pressure sleeves for both my hands and elbows and I found them to be quite nice and not very spent there’s an option consider longsleeved clothing and fingerless gloves
+## Get new hobbies
+Suffice to say if your primary hobby is playing computer games you’re probably going to need to get a new one.
+There’s a lot of fun stuff you can do that doesn’t involve sitting in front of screen.
+While you might not able to control what you do at work, you can definitely control what you do in your free time.
+If possible, find some hobbies that involve you not sitting still.
+
+## Standing Desk
+I’ve used both a standing desk, a normal desk, and an adjustable desk and I found no difference on my RSI symptoms.
+However there’s a lot of other good reasons you might want to switch it up.
+Consider switching your desk between sitting and standing once an hour. A good time to switch it is right after your hourly 10 minute break..
+
+## Keeping your hands warm
+I’ve noticed that I always have cold hands. 
+This could potentially restrict blood flow and thus hindering tissue from healing.
+I’ve experimented with pressure sleeves for both my hands and elbows and I found them to be quite nice, warm and not very expensive.
+I use these pressure sleeves for my elbows, and these for my wrists(which really aren't very good, so you might want to consider something else..)
+**insert links**
+If you don't feel like going out and buying pressure sleeves, a long armed shirt and some fingerless gloves will do in a pinch.
+Yes even though it looks ridiculous to have gloves on inside.
 
 ## Massage
+Massage helped me a lot, especially in the start. I had some really tense and sore spots all the way up my forearms, which I was able to massage away.
+I've tried both professional massage and self massage. The professional massage is nice if you can afford it, but, at least for me it wasn't worth it.
+Get some tiger balm and go to work on the sore spots of your forearms, elbows and wrist. Don't be too rough.
+There's plenty of guides on self-massage out on the internet, and I would suggest looking them up.
 
 ## Further resources
 
