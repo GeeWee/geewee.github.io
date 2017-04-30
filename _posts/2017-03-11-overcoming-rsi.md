@@ -134,7 +134,7 @@ You should also consider doing some nerve flossing exercises to get the nerve mo
 I've had good luck with nerve flossing exercises, and exercises for tennis elbow. I worked this out with my physician however, and so should you.
 
 
-## This is where you got to
+## This is where you got to 
 
 ## Different work roles
 Software development doesn’t necessarily need to be all about writing code.
