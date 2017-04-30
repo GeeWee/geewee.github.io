@@ -134,7 +134,7 @@ You should also consider doing some nerve flossing exercises to get the nerve mo
 I've had good luck with nerve flossing exercises, and exercises for tennis elbow. I worked this out with my physician however, and so should you.
 
 
-## This is where you got to
+## This is where you got to 
 
 ## Different work roles
 software development doesn’t necessarily need to be all about outputting code. There’s a lot of ways you can contribute to team without stressing your hands as much. Perhaps you can plan a pair programming session in the middle of every day to give your hands an hour of rest.
