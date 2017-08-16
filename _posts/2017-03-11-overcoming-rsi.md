@@ -1,6 +1,7 @@
 ---
 title: "Overcoming RSI: What worked and what didn't"
 permalink: '/overcoming-rsi'
+draft: true
 ---
 
 About a year ago I started having pain left pinky, I figured it was temporary so I kept on working, thinking it'd go away by itself.
