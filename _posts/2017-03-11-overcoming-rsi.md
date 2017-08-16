@@ -1,30 +1,33 @@
 ---
-title: Overcoming RSI
+title: Overcoming RSI: What worked and what didn't
 permalink: '/overcoming-rsi'
 draft: true
 ---
 
-About a year ago I started having pain left pinky, I didn’t think much of it and I kept on working just as I had before.
-After a little while it had spread to my right pinky as well.
-At first the pain only showed up after working for a long time, but for each week it came faster and faster.
-At the end I woke up in pain every day. So I tried taking a vacation. I went to California for two weeks, and I didn't touch a keyboard. It was glorious, I was pain-free.
-The instant I got home and sat back down to type, it was back.
+About a year ago I started having pain left pinky, I figured it was temporary so I kept on working, thinking it'd go away by itself.
+This would be a very short blog post if I was right.
+After while it had spread to my right pinky as well.
+At first I was only in pain after working for long days, but each week it came faster and faster.
+At the end I woke up in pain every day, so I did what desperate people do.
+I took a vacation. I went to California for two weeks, and I didn't touch a keyboard.
+It was glorious, I was pain-free.
+The instant I got home and touched a keyboard, it was back.
 
 I’ve been through a lot trying to fix this, and I am now completely pain-free in my right hand and most days, also in my left.
 I remember googling a lot in the start, and while there there are some really good resources for people with RSI, I don’t feel like I was able to find all the information I needed at that time.
 So this is my attempt to summarize what I've learned, what has worked for me, and also what hasn’t.
 
 ## Ulnar deviation.
-When there's pain in the pinky, there's a good chance there might be [ulnar nerve damage.](https://en.wikipedia.org/wiki/Ulnar_nerve_entrapment)
-The ulnar nerve is what gives sensation to the pinky, and one side of the ring finger.
-One way to really screw with this nerve is through **[ulnar](http://www.ergomatters.co.uk/blog/rsi/lateral-wrist-deviation-angle-and-rsi/) [deviation](https://www.youtube.com/watch?v=vdhm7mmHS5I)** (also known as lateral deviation)
+When there's pain in the pinky, there's a good chance there might be something wrong with the [ulnar nerve.](https://en.wikipedia.org/wiki/Ulnar_nerve_entrapment)
+The ulnar nerve provides sensation to the pinky, and one side of the ring finger.
+One way to really screw with this nerve is through what's called **[ulnar](http://www.ergomatters.co.uk/blog/rsi/lateral-wrist-deviation-angle-and-rsi/) [deviation](https://www.youtube.com/watch?v=vdhm7mmHS5I)** (also known as lateral deviation)
 
 Insert an image of ulnar deviation.
-That looks familiar?
+Does that movement look familiar to you?
 
 Insert image more
 If you're a software developer, or anyone who uses a lot of shortcuts, you probably do this every time you're reaching
-for the `ctrl` button to perform a shortcut.
+for the `ctrl` or `alt` button to perform a shortcut.
 
 Ulnar deviation is pretty destructive for your hands. Quite a few of the things you'll see have worked for me, worked through
 reducing ulnar deviation.
@@ -33,17 +36,16 @@ reducing ulnar deviation.
 The first thing I attempted to do to reduce ulnar deviation was to get the `ctrl` button closer to my hand.
 You can do this by rebinding the `Caps Lock` button to `ctrl`. As people in most situations, apart from being angry on the internet
 use `Caps Lock` far less than `ctrl` - this is a relatively quick and easy ergonomic improvement you can make to any workstation.
+[Here](http://ergoemacs.org/emacs/emacs_pinky.html) are some alternative suggestions to deal with the same problem.
 
 
 ## Proper typing technique 
 Books have been written about proper typing technique, and you should consider picking one up.
 I'm going to summarize what worked best for me or gave me the biggest 'aha' moments.
 Changing your typing technique is *really* hard, especially when you're focused on the screen.
-If you keep sliding back into old habits, try making one adjustment to your technique at a time, and when that is committed to muscle memory, start on the next.
 
-Books have been written about proper typing technique. Here I'm going to list what I felt was the things that worked the most for me, or gave me the biggest 'aha' moments.
-Changing your typing technique is *really* hard, especially when your mind is occupied somewhere else.
-If you keep forgetting, try making one adjustment at a time, and when that is committed to muscle memory, start on the next.
+You might keep forgetting all the things you're supposed to do.
+If that happens, try making one adjustment at a time, and when that adjustment feels like second nature, start with one more.
 
 #### Proper ergonomic wrist positioning
 To be in the proper ergonomic position, your wrists should be hanging slightly:
@@ -99,8 +101,9 @@ better chance of learning to type in a way that doesn't injure you down the road
 ## Voice programming
 After being inspired by Tais Rudd's [excellent talk](https://www.youtube.com/watch?v=8SkdfdXWYaI) about him overcoming RSI through voice coding, I tried it out.
 I bought an expensive microphone, and Dragon NaturallySpeaking, which is supposed to be the best voice recognition software there is.
+
 The results however, were less than stellar. 
-At the time, no one out there provided a plug and play solution, although some tried. (This might have changed with [voicecoce.io](https://voicecode.io/) - I haven't tried it.)
+At the time, no one out there provided a plug and play solution that just worked, although [some](https://github.com/synkarius/caster) [try](https://voicecode.io/).
 You’ll probably have to build it yourself.
 
 Not the best idea for someone with fingers that are already damaged, but I gave it a try.
@@ -149,8 +152,17 @@ If you're not willing to go quite that far, long-sleeved clothing might also do 
 Warmer clothing as a way to treat RSI might seem a little far-fetched, but I'm not the only [one who's made this observation.](https://codewithoutrules.com/2016/11/18/rsi-solution/)
 
 ## Massage
-I've had a few massages from a few different places, and none of them did very much to alleviate my symptoms in the long-term.
+Massage helped me a lot, especially in the start. I had some really tense and sore spots all the way up my forearms, which I was able to massage away.
+I just got some tiger balm, and went to work. It'll take multiple sessions, but it'll be worth it.
+Don't be too rough on yourself, or you'll do more harm than good. There's plenty of good guides about self massage out on the internet.
+I've also tried professional massages, and found they weren't worth the cost for me.
+It might be for you though, especially if your hands are so bad that you're unable to massage yourself.
 
 ## Wrapping it up
 RSI is a tough problem that can come from a variety of factors. It seems to be hard to find a lot of high quality info online and from doctors.
 Hopefully some of my experiences will be useful to people out there who are suffering from RSI, or afraid that they might in the future.  
+
+# To do
+Insert images
+Links
+Standardize formatting
