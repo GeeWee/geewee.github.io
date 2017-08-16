@@ -1,5 +1,5 @@
 ---
-title: Overcoming RSI: What worked and what didn't
+title: "Overcoming RSI: What worked and what didn't"
 permalink: '/overcoming-rsi'
 draft: true
 ---
