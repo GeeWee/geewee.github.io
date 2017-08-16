@@ -3,5 +3,7 @@ layout: 'index'
 ---
 
 {% for post in site.posts %}
-  {% include post_content.html %}
+ {% unless post.draft == true %}
+   {% include post_content.html %}
+ {% endunless %}
 {% endfor %}
