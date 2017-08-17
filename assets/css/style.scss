@@ -17,6 +17,18 @@
   display: block;
 }
 
+.img-div {
+  text-align: center;
+  font-style: italic;
+  img {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+  }
+
+  margin-bottom: 30px;
+}
+
 .full-width {
   width: 100%;
 }

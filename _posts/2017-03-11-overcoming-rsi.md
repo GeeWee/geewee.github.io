@@ -1,16 +1,19 @@
 ---
-title: "Overcoming RSI: What worked and what didn't"
+title: "Overcoming Reptitive Strain Injury(RSI): What worked and what didn't"
 permalink: '/overcoming-rsi'
 draft: true
 ---
-
-About a year ago I started having pain left pinky, I figured it was temporary so I kept on working, thinking it'd go away by itself.
+About a year ago I started having pain left pinky. At the time I was a student, and had just helped start [bambuu](https://bambuu.dk) where I develop software.
+I figured the pain was temporary so I kept on working, thinking it'd go away by itself.
 This would be a very short blog post if I was right.
 After while it had spread to my right pinky as well.
+
 At first I was only in pain after working for long days, but each week it came faster and faster.
 At the end I woke up in pain every day, so I did what desperate people do.
 I took a vacation. I went to California for two weeks, and I didn't touch a keyboard.
+
 It was glorious, I was pain-free.
+
 The instant I got home and touched a keyboard, it was back.
 
 I’ve been through a lot trying to fix this, and I am now completely pain-free in my right hand and most days, also in my left.
@@ -20,11 +23,13 @@ So this is my attempt to summarize what I've learned, what has worked for me, an
 ## Ulnar deviation.
 When there's pain in the pinky, there's a good chance there might be something wrong with the [ulnar nerve.](https://en.wikipedia.org/wiki/Ulnar_nerve_entrapment)
 The ulnar nerve provides sensation to the pinky, and one side of the ring finger.
-One way to really screw with this nerve is through what's called **[ulnar](http://www.ergomatters.co.uk/blog/rsi/lateral-wrist-deviation-angle-and-rsi/) [deviation](https://www.youtube.com/watch?v=vdhm7mmHS5I)** (also known as lateral deviation)
+One way to really screw with this nerve is through what's called **[ulnar](http://www.ergomatters.co.uk/blog/rsi/lateral-wrist-deviation-angle-and-rsi/) [deviation](https://www.youtube.com/watch?v=vdhm7mmHS5I)**
+As you can see in the picture below, it's basically twisting your hand towards your pinky.
 
-<img class="img" src="https://www.epainassist.com/images/Radial-Deviation.jpg"/>
-
-**TODO: FIND BETTER PICTURE**
+<div class="img-div">
+<img src="https://www.epainassist.com/images/Radial-Deviation.jpg"/>
+	insert caption here and find a better image
+</div>
 
 Does that movement look familiar to you?
 
@@ -54,7 +59,10 @@ If that happens, try making one adjustment at a time, and when that adjustment f
 #### Proper ergonomic wrist positioning
 To be in the proper ergonomic position, your wrists should be hanging slightly:
 
+<div class="img-div">
 <img class="img" src="http://www.ergomatters.co.uk/blog/wp-content/uploads/2008/09/neutral_hand_position_sm.jpg"/>
+Just think of the opposite of doing a high five.
+</div>
 
 This means no resting your wrists on the table. Resting makes the hanging position impossible, while also putting pressure on the nerves of your hand.
 You're going to have to keep your wrists above the keyboard, held up with your arms at all time.
@@ -70,26 +78,36 @@ Don't type too hard. I used to slam the keys down when typing, for some reason I
 Don't be me. Use the minimum amount of pressure necessary to press the buttons.
 
 ## Sleep
-First off, get enough sleep. You can read this everywhere. It allows your body to heal and leaves you rested.
+Make sure you get enough of it. It's a bit of a cliche at this point, to read that we don't sleep enough, but it does matter.
+It allows your body to heal and leaves you rested.
 Sleep is particularly important, if you have a hard time taking breaks from the keyboard while awake.
 It's essentially a large stretch of time where you're nor using your hands, and you don't have to expend any mental energy to "stay away from the keyboard."
 
 Sleep isn't just sleep however. I've noticed that the position you sleep in matters. If you're often in more
 pain in the morning than later on the day, or you wake up with your arm in awkward angles, I'd consider whether your sleep
 position is worsening the problems.
-Personally I've found that I sometimes curl up on top of my arm, and when I do that, my mornings are always significantly worse.
+I noticed that sometimes I curled up on my arm, or slept on my stomach, and when I do that I'm usually in more pain the day after.
+Changing sleep habits is tricky though, so experiment with what works for you - some common advice is to 'box' yourself in with pillows
+so you don't end up in sleep positions where you don't want to be. I've even been desperate enough to have my feet tied to my bedposts for a while.
 
 ## Ergonomic keyboards
 I've experimented with a few ergonomic keyboards. My first was a [Microsoft Sculpt](https://www.microsoft.com/accessories/en-us/products/keyboards/sculpt-ergonomic-desktop/l5v-00001).
 The Sculpt keyboard looks nice, is reasonably affordable and curves properly for good ergonomic posture of the hands. It also comes with an ergonomic mouse.
 
+<div class="img-div">
 <img class="img" src="http://compass.microsoft.com/assets/5f/08/5f08ee27-dc2e-4bdb-9256-ee2d19891cdd.jpg?n=mk_SEDT_otherviews01.jpg"/>
+The sculpt also comes with magnetic battery covers - it's a really small detail, but they're very satisfying.
+</div>
 
-The Sculpt was a step in the right direction, but it wasn't enough for me. So I switched, to the [Kinesis Advantage2](https://www.kinesis-ergo.com/shop/advantage2/).
+The Sculpt was a step in the right direction - it helped slow my increasing pain, but it didn't make me feel better.
+Time for the nuclear option: The [Kinesis Advantage2](https://www.kinesis-ergo.com/shop/advantage2/).
 This keyboard has all the modifier buttons in the center, to enable you to use them with your strong thumb instead of having to twist your hand for your pinky to reach them.
 I'll be honest, I was skeptical before buying it. It's a pretty expensive keyboard, it's not very pretty and I *really* didn't look forward to having to relearn how to type.
 
+<div class="img-div">
 <img class="img" src="https://www.kinesis-ergo.com/wp-content/uploads/2016/08/kb600-angled-cc-510x344.jpg"/>
+Along with helping me code this thing can also fly spaceships and brew coffee.
+</div>
 
 Turns out, it was worth the hefty price tag.
 
@@ -101,7 +119,7 @@ It was a pain in the ass for the first few weeks, and I had to rebind some butto
 
 Looking back, I actually consider it a strength that you're unable to utilize all your previous motor memory.
 You're probably having issues because among other things, your typing technique is incorrect.
-The Kinesis forces you to relearn everything, and if you're aware of what proper typing technique looks like when you re-learn it, you have a much
+The Kinesis forces you to relearn everything, and if you're aware of what proper [typing technique](http://www.ergonomics-info.com/typing-ergonomics.html) [looks like](http://www.ergonomictimes.com/mousing_typing_techniques.php) when you re-learn it, you have a much
 better chance of learning to type in a way that doesn't injure you down the road.
 
 ## Voice programming
@@ -115,10 +133,11 @@ You’ll probably have to build it yourself.
 Not the best idea for someone with fingers that are already damaged, but I gave it a try.
 However, even with the best voice recognition software money could buy and a language I specifically designed to be terse and efficient for programming it was still slow.
 Surprisingly enough, outputting code wasn't the slowest part.
-The place where voice programming really falls short, is the navigation of large files and projects.
+Things like precision navigation within files (e.g. moving 35 lines down and into the middle of the line), or navigation within
+large projects (file-names can have all sorts of weird naming structures that are hard to easily accommodate with voice commands.)
 
 Voice does however works surprisingly well for dictation and simple web browsing.
-If you write a lot of text during your day or spend a lot of time scrolling through websites it's worth considering as an option.
+If you write a lot of regular english, such as articles during your day or spend a lot of time scrolling through websites it's worth considering as an option.
 
 ## Breaks
 What I've done for breaks is as follows: Take a **microbreak**, meaning a break of approximately 30 seconds, every 5 to 10 minutes.
@@ -137,13 +156,15 @@ If you have the privilege of working from home, the rest breaks are also a good 
 
 ## Exercise
 You're probably going to need to exercise and stretch if you want to get better. My stretching and exercise regiment used to be reasonably long, but not anymore.
-I'd look up some exercises online first, and attempt some nerve [flossing exercises](https://www.youtube.com/watch?v=d85QKyWvrbI) as well, but only use this as a temporary
-crutch. Go talk to your physician about what exercises you need.
+I'd look up some exercises online first, and attempt some nerve [flossing exercises](https://www.youtube.com/watch?v=d85QKyWvrbI) as well.
+
+Instead of trusting internet strangers, I'd advise you to go talk to your physician about what exercises to do, even though you'll probably just stubbornly
+continue to google for answers instead. I know I did.
 
 It's also worth considering a standing/adjustable desk. It might work for you, but anecdotally it made no difference in my symptoms.
 
 ## Mix your day up
-In most jobs, there are plenty of wats to create value without necessarily hammering on the keys. As a software developer,
+In most jobs, there are plenty of ways to create value without necessarily hammering on the keys. As a software developer,
 I can do pair programming or Code Reviews, which are activities that don't strain my hands very much. I'm sure there's an equivalent for most occupations.
 If you can, try to sandwich these non-keyboard activities in the middle of your day, so it acts as a natural mid-day break for your hands.
 
@@ -160,15 +181,15 @@ Warmer clothing as a way to treat RSI might seem a little far-fetched, but I'm n
 ## Massage
 Massage helped me a lot, especially in the start. I had some really tense and sore spots all the way up my forearms, which I was able to massage away.
 I just got some tiger balm, and went to work. It'll take multiple sessions, but it'll be worth it.
-Don't be too rough on yourself, or you'll do more harm than good. There's plenty of good guides about self massage out on the internet.
+Don't be too rough on yourself, or you'll do more harm than good. There's plenty of [good](https://www.painscience.com/articles/self-massage.php) [guides](https://www.muscle-joint-pain.com/pain/arm-pain/upper-arm-pain/) about self massage out on the internet.
 I've also tried professional massages, and found they weren't worth the cost for me.
 It might be for you though, especially if your hands are so bad that you're unable to massage yourself.
 
 ## Wrapping it up
 RSI is a tough problem that can come from a variety of factors. It seems to be hard to find a lot of high quality info online and from doctors.
-Hopefully some of my experiences will be useful to people out there who are suffering from RSI, or afraid that they might in the future.  
 
-# To do
-- Insert images
-- Links
-- Standardize formatting
+Some of the things I've found working best is stretching and exercises, getting a real ergonomic keyboard, getting away from the keyboard and minding your sleep posture.
+As RSI can have a variety of causes (including getting RSI-like symptoms if you have nerve impingement in your upper back), you'll probably want to experiment
+with what works for you.
+ 
+Hopefully some of my experiences will be useful to people out there who are suffering from RSI, or afraid that they might in the future.  
