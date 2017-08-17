@@ -22,10 +22,14 @@ When there's pain in the pinky, there's a good chance there might be something w
 The ulnar nerve provides sensation to the pinky, and one side of the ring finger.
 One way to really screw with this nerve is through what's called **[ulnar](http://www.ergomatters.co.uk/blog/rsi/lateral-wrist-deviation-angle-and-rsi/) [deviation](https://www.youtube.com/watch?v=vdhm7mmHS5I)** (also known as lateral deviation)
 
-Insert an image of ulnar deviation.
+<img class="img" src="https://www.epainassist.com/images/Radial-Deviation.jpg"/>
+
+**TODO: FIND BETTER PICTURE**
+
 Does that movement look familiar to you?
 
-Insert image more
+**TODO: Insert GIF**
+
 If you're a software developer, or anyone who uses a lot of shortcuts, you probably do this every time you're reaching
 for the `ctrl` or `alt` button to perform a shortcut.
 
@@ -49,7 +53,9 @@ If that happens, try making one adjustment at a time, and when that adjustment f
 
 #### Proper ergonomic wrist positioning
 To be in the proper ergonomic position, your wrists should be hanging slightly:
-img http://www.ergomatters.co.uk/blog/wp-content/uploads/2008/09/neutral_hand_position_sm.jpg
+
+<img class="img" src="http://www.ergomatters.co.uk/blog/wp-content/uploads/2008/09/neutral_hand_position_sm.jpg"/>
+
 This means no resting your wrists on the table. Resting makes the hanging position impossible, while also putting pressure on the nerves of your hand.
 You're going to have to keep your wrists above the keyboard, held up with your arms at all time.
 I stole the image from ergomatters, which also has an excellent [guide about hand positioning](http://www.ergomatters.co.uk/blog/rsi/forearm-extensor-muscles-wrist-position-and-rsi/)
@@ -77,13 +83,13 @@ Personally I've found that I sometimes curl up on top of my arm, and when I do t
 I've experimented with a few ergonomic keyboards. My first was a [Microsoft Sculpt](https://www.microsoft.com/accessories/en-us/products/keyboards/sculpt-ergonomic-desktop/l5v-00001).
 The Sculpt keyboard looks nice, is reasonably affordable and curves properly for good ergonomic posture of the hands. It also comes with an ergonomic mouse.
 
-*Insert picture here*
+<img class="img" src="http://compass.microsoft.com/assets/5f/08/5f08ee27-dc2e-4bdb-9256-ee2d19891cdd.jpg?n=mk_SEDT_otherviews01.jpg"/>
 
 The Sculpt was a step in the right direction, but it wasn't enough for me. So I switched, to the [Kinesis Advantage2](https://www.kinesis-ergo.com/shop/advantage2/).
 This keyboard has all the modifier buttons in the center, to enable you to use them with your strong thumb instead of having to twist your hand for your pinky to reach them.
 I'll be honest, I was skeptical before buying it. It's a pretty expensive keyboard, it's not very pretty and I *really* didn't look forward to having to relearn how to type.
 
-**insert image here**
+<img class="img" src="https://www.kinesis-ergo.com/wp-content/uploads/2016/08/kb600-angled-cc-510x344.jpg"/>
 
 Turns out, it was worth the hefty price tag.
 
@@ -163,6 +169,6 @@ RSI is a tough problem that can come from a variety of factors. It seems to be h
 Hopefully some of my experiences will be useful to people out there who are suffering from RSI, or afraid that they might in the future.  
 
 # To do
-Insert images
-Links
-Standardize formatting
+- Insert images
+- Links
+- Standardize formatting
