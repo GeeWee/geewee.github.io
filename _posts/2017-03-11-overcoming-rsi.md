@@ -27,13 +27,16 @@ One way to really screw with this nerve is through what's called **[ulnar](http:
 As you can see in the picture below, it's basically twisting your hand towards your pinky.
 
 <div class="img-div">
-<img src="https://www.epainassist.com/images/Radial-Deviation.jpg"/>
-	insert caption here and find a better image
+<img src="{{site.url}}/assets/img/ulnar_deviation.jpg"/>
+This is what ulnar deviation looks like.
 </div>
 
-Does that movement look familiar to you?
+Does that movement look familiar to you if we put it in context?
 
-**TODO: Insert GIF**
+<div class="img-div">
+<img src="{{site.url}}/assets/img/ulnar_deviation.gif"/>
+This is exactly what you shouldn't be doing.
+</div>
 
 If you're a software developer, or anyone who uses a lot of shortcuts, you probably do this every time you're reaching
 for the `ctrl` or `alt` button to perform a shortcut.
@@ -61,7 +64,7 @@ To be in the proper ergonomic position, your wrists should be hanging slightly:
 
 <div class="img-div">
 <img class="img" src="http://www.ergomatters.co.uk/blog/wp-content/uploads/2008/09/neutral_hand_position_sm.jpg"/>
-Just think of the opposite of doing a high five.
+Just let it hang
 </div>
 
 This means no resting your wrists on the table. Resting makes the hanging position impossible, while also putting pressure on the nerves of your hand.
