@@ -3,7 +3,7 @@ title: "Overcoming Reptitive Strain Injury(RSI): What worked and what didn't"
 permalink: '/overcoming-rsi'
 draft: true
 ---
-About a year ago I started having pain left pinky. At the time I was a student, and had just helped start [bambuu](https://bambuu.dk) where I develop software.
+About a year ago I started having pain in my left pinky. At the time I was a student, and had just helped start [bambuu](https://bambuu.dk) where I develop software.
 I figured the pain was temporary so I kept on working, thinking it'd go away by itself.
 This would be a very short blog post if I was right.
 After while it had spread to my right pinky as well.
@@ -80,19 +80,6 @@ Don't do it - most shortcuts can be done two-handed. E.g. click `T` with your le
 Don't type too hard. I used to slam the keys down when typing, for some reason I felt more productive that way. It really felt like I was *doing something.*
 Don't be me. Use the minimum amount of pressure necessary to press the buttons.
 
-## Sleep
-Make sure you get enough of it. It's a bit of a cliche at this point, to read that we don't sleep enough, but it does matter.
-It allows your body to heal and leaves you rested.
-Sleep is particularly important, if you have a hard time taking breaks from the keyboard while awake.
-It's essentially a large stretch of time where you're nor using your hands, and you don't have to expend any mental energy to "stay away from the keyboard."
-
-Sleep isn't just sleep however. I've noticed that the position you sleep in matters. If you're often in more
-pain in the morning than later on the day, or you wake up with your arm in awkward angles, I'd consider whether your sleep
-position is worsening the problems.
-I noticed that sometimes I curled up on my arm, or slept on my stomach, and when I do that I'm usually in more pain the day after.
-Changing sleep habits is tricky though, so experiment with what works for you - some common advice is to 'box' yourself in with pillows
-so you don't end up in sleep positions where you don't want to be. I've even been desperate enough to have my feet tied to my bedposts for a while.
-
 ## Ergonomic keyboards
 I've experimented with a few ergonomic keyboards. My first was a [Microsoft Sculpt](https://www.microsoft.com/accessories/en-us/products/keyboards/sculpt-ergonomic-desktop/l5v-00001).
 The Sculpt keyboard looks nice, is reasonably affordable and curves properly for good ergonomic posture of the hands. It also comes with an ergonomic mouse.
@@ -125,24 +112,24 @@ You're probably having issues because among other things, your typing technique 
 The Kinesis forces you to relearn everything, and if you're aware of what proper [typing technique](http://www.ergonomics-info.com/typing-ergonomics.html) [looks like](http://www.ergonomictimes.com/mousing_typing_techniques.php) when you re-learn it, you have a much
 better chance of learning to type in a way that doesn't injure you down the road.
 
-## Voice programming
-After being inspired by Tais Rudd's [excellent talk](https://www.youtube.com/watch?v=8SkdfdXWYaI) about him overcoming RSI through voice coding, I tried it out.
-I bought an expensive microphone, and Dragon NaturallySpeaking, which is supposed to be the best voice recognition software there is.
+## Sleep
+Even though how you work matters a lot - how you *not* work also matters.
 
-The results however, were less than stellar. 
-At the time, no one out there provided a plug and play solution that just worked, although [some](https://github.com/synkarius/caster) [try](https://voicecode.io/).
-You’ll probably have to build it yourself.
+One of the most important things is sleep:
+Make sure you get enough of it. It's a bit of a cliche at this point, to read that we don't sleep enough, but it does matter.
+It allows your body to heal and leaves you rested.
+Sleep is particularly important, if you have a hard time taking breaks from the keyboard while awake.
+It's essentially a large stretch of time where you're nor using your hands, and you don't have to expend any mental energy to "stay away from the keyboard."
 
-Not the best idea for someone with fingers that are already damaged, but I gave it a try.
-However, even with the best voice recognition software money could buy and a language I specifically designed to be terse and efficient for programming it was still slow.
-Surprisingly enough, outputting code wasn't the slowest part.
-Things like precision navigation within files (e.g. moving 35 lines down and into the middle of the line), or navigation within
-large projects (file-names can have all sorts of weird naming structures that are hard to easily accommodate with voice commands.)
-
-Voice does however works surprisingly well for dictation and simple web browsing.
-If you write a lot of regular english, such as articles during your day or spend a lot of time scrolling through websites it's worth considering as an option.
+Sleep isn't just sleep however. I've noticed that the position you sleep in matters. If you're often in more
+pain in the morning than later on the day, or you wake up with your arm in awkward angles, I'd consider whether your sleep
+position is worsening the problems.
+I noticed that sometimes I curled up on my arm, or slept on my stomach, and when I do that I'm usually in more pain the day after.
+Changing sleep habits is tricky though, so experiment with what works for you - some common advice is to 'box' yourself in with pillows
+so you don't end up in sleep positions where you don't want to be. I've even been desperate enough to have my feet tied to my bedposts for a while.
 
 ## Breaks
+Breaks are important to give your hands (and your head) rest during the workday.
 What I've done for breaks is as follows: Take a **microbreak**, meaning a break of approximately 30 seconds, every 5 to 10 minutes.
 Take a shorter **rest break** of approximately 10 minutes, every hour. Use this break to stretch, and get out of your chair.
 Needless to say, this is **much** more often than most of us take breaks, and I'm going to be honest with you, it takes some getting used to.
@@ -174,6 +161,25 @@ If you can, try to sandwich these non-keyboard activities in the middle of your 
 You should also consider what you do in your free time. If your primary hobby is playing computer games you probably need to dial it back.
 It’s important that you give your hands rest, and while you might that be able to control what you do at work, you can definitely control what you do in your free time.
 If you can, aim for activities that don't involve sitting still.
+
+## Voice programming
+Another way I tried to create value without using my hands to code, was to use my voice.
+
+After being inspired by Tais Rudd's [excellent talk](https://www.youtube.com/watch?v=8SkdfdXWYaI) about him overcoming RSI through voice coding, I tried it out.
+I bought an expensive microphone, and Dragon NaturallySpeaking, which is supposed to be the best voice recognition software there is.
+
+The results however, were less than stellar. 
+At the time, no one out there provided a plug and play solution that just worked, although [some](https://github.com/synkarius/caster) [try](https://voicecode.io/).
+You’ll probably have to build it yourself.
+
+Not the best idea for someone with fingers that are already damaged, but I gave it a try.
+However, even with the best voice recognition software money could buy and a language I specifically designed to be terse and efficient for programming it was still slow.
+Surprisingly enough, outputting code wasn't the slowest part.
+Things like precision navigation within files (e.g. moving 35 lines down and into the middle of the line), or navigation within
+large projects (file-names can have all sorts of weird naming structures that are hard to easily accommodate with voice commands.)
+
+Voice does however works surprisingly well for dictation and simple web browsing.
+If you write a lot of regular english, such as articles during your day or spend a lot of time scrolling through websites it's worth considering as an option.
 
 ## Keeping warm
 I’ve noticed that I always have cold hands which could restrict blood flow and thus hindering the tissue from healing fast enough.
