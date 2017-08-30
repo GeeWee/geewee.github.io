@@ -23,7 +23,7 @@ So this is my attempt to summarize what I've learned, what has worked for me, an
 When there's pain in the pinky, there's a good chance there might be something wrong with the [ulnar nerve.](https://en.wikipedia.org/wiki/Ulnar_nerve_entrapment)
 The ulnar nerve provides sensation to the pinky, and one side of the ring finger.
 One way to really screw with this nerve is through what's called **[ulnar](http://www.ergomatters.co.uk/blog/rsi/lateral-wrist-deviation-angle-and-rsi/) [deviation](https://www.youtube.com/watch?v=vdhm7mmHS5I)**
-As you can see in the picture below, it's basically twisting your hand towards your pinky.
+Ulnar deviation is a movement where you twist your hands toward your pinky, as shown in the picture below.
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/ulnar_deviation.jpg"/>
@@ -164,7 +164,7 @@ If you can, aim for activities that don't involve sitting still.
 ## Voice programming
 Another way I tried to create value without using my hands to code, was to use my voice.
 
-After being inspired by Tais Rudd's [excellent talk](https://www.youtube.com/watch?v=8SkdfdXWYaI) about him overcoming RSI through voice coding, I tried it out.
+After being inspired by Tavis Rudd's [excellent talk](https://www.youtube.com/watch?v=8SkdfdXWYaI) about him overcoming RSI through voice coding, I tried it out.
 I bought an expensive microphone, and [Dragon NaturallySpeaking](https://www.nuance.com/dragon.html), which is supposed to be the best voice recognition software there is.
 
 The results however, were less than stellar. 
@@ -177,7 +177,7 @@ Surprisingly enough, outputting code wasn't the slowest part.
 Things like precision navigation within files (e.g. moving 35 lines down and into the middle of the line), or navigation within
 large projects (file-names can have all sorts of weird naming structures that are hard to easily accommodate with voice commands).
 
-Voice does however works surprisingly well for dictation and simple web browsing.
+Voice does, however, work surprisingly well for dictation and simple web browsing.
 If you write a lot of regular English, such as articles during your day or spend a lot of time scrolling through websites it's worth considering as an option.
 
 ## Keeping warm
