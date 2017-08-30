@@ -1,5 +1,5 @@
 ---
-title: "Overcoming Reptitive Strain Injury(RSI): What worked and what didn't"
+title: "Overcoming Repetitive Strain Injury(RSI): What worked and what didn't"
 permalink: '/overcoming-rsi'
 ---
 
