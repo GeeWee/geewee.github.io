@@ -1,8 +1,8 @@
 ---
 title: "Overcoming Reptitive Strain Injury(RSI): What worked and what didn't"
 permalink: '/overcoming-rsi'
-draft: true
 ---
+
 About a year ago I started having pain in my left pinky. At the time I was a student, and had just helped start [bambuu](https://bambuu.dk) where I develop software.
 I figured the pain was temporary so I kept on working, thinking it'd go away by itself.
 This would be a very short blog post if I was right.
