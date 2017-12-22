@@ -203,5 +203,5 @@ with what works for you.
 Hopefully some of my experiences will be useful to people out there who are suffering from RSI, or afraid that they might in the future.  
 
 <div class="img-div">
-<img src="{{site.url}}/assets/newsletter.png"/>
+<img src="{{site.url}}/assets/img/newsletter.png"/>
 </div>
