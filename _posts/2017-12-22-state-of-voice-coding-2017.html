@@ -1,0 +1,330 @@
+---
+title: "State of Voice Coding 2017"
+permalink: '/state-of-voice-coding-2017/'
+short: "We take a look at how Voice Coding looks in 2017, new advances in speech recognition engines and different systems."
+---
+About a year and a half ago, I began to
+develop debilitating Repetitive Strain Injury(RSI) while working at <a href="http://www.bambuu.dk"
+                                                                       rel="noopener"
+                                                                       target="_blank">bambuu</a>.
+<a href="{{site.url}}/overcoming-rsi/"
+   target="_blank">I’ve chronicled what’s helped for me and
+    what hasn’t,</a> but there’s one thing in the original blog post I only briefly mentioned that I
+feel deserves further exploration. It’s voice coding, by which I mean using your voice as an input
+device to write code. I feel voice coding has huge but unrealized potential, both for allowing
+people that are injured to code again, but also to help people that are at-risk.
+<p id="0ff4">RSI happens when you do the same thing over
+    and over again — hammering on the keyboard in this case. It’s obvious that people who are now unable
+    to type could benefit from coding hands-free, but everyone might benefit from a day or two a week
+    going hands-less. Mixing it up keeps us healthy.</p>
+<p id="87ba">With that out of the way, what I want to do
+    here is to paint with broad strokes, how the landscape for voice coding looks.</p>
+<p id="b920">For most people that know of voice coding, I
+    assume they found out from <a href="https://twitter.com/tavisrudd"
+                                  rel="noopener"
+                                  target="_blank">Tavis Rudd</a>’s excellent talk at PyCon where he
+    explains his own setup using Dragon NaturallySpeaking, along with a language he’s created himself.
+    The talk is just below and the demo starts at 8:50 — I’d suggest you go watch at least a minute of
+    the demo to see how it looks and sounds.</p>
+<div class="img-div">
+    <figure id="171e">
+        <iframe src="https://www.youtube.com/embed/8SkdfdXWYaI?feature=oembed" width="640" height="480"
+                frameborder="0" scrolling="no"></iframe>
+        <figcaption class="imageCaption">Tavis Rudd’s talk at PyCon. Over 250.000 views!</figcaption>
+    </figure>
+</div>
+<p id="c764">For those of you who prefer reading,
+    Tavis maps one-syllable words to special characters and actions, so “slap” means space, “dash some
+    random thing” outputs “some-random-thing” in the editor. Navigation is performed through e.g. “up
+    10” to jump ten lines up.</p>
+<p id="c68e">Mapping one-syllable words to actions seems
+    unnecessarily limiting to me though. We’re missing out on all the rich meaning a sentence can carry,
+    when instead of creating sentences like “Create a new dictionary called my dictionary” we say things
+    like “pam snake my dictionary ak par” — it’s not even much shorter, and it‘s much harder to
+    understand. More on that later!<br><br>The way Tavis accomplishes his impressive setup is by using
+    Dragon NaturallySpeaking which is a speech recognition program, some hefty Emacs magic and a
+    self-created Dragonfly grammar.<br>Dragonfly is an open source framework for associating actions
+    with voice commands. A Dragonfly grammar is a way to hook into Dragon NaturallySpeakings speech
+    recognition, and execute code for specific commands, usually by emulating keyboard actions.</p>
+<div class="img-div">
+    <figure id="3144">
+        <script src="https://gist.github.com/GeeWee/2c972c3e04ec461a57d398405ec88d0f.js"></script>
+        <figcaption class="imageCaption">An example of how a dragonfly grammar looks. This is very simple
+            and allows you to navigate up, down and click space.
+        </figcaption>
+    </figure>
+</div>
+<p id="b000">I think for a great deal of people,
+    this is how they’ve attempted to voice-code. At least there’s a wide variety of personal projects
+    taking this approach on GitHub, such as <a href="https://github.com/simianhacker/code-by-voice"
+                                               rel="noopener"
+                                               target="_blank">code-by-voice</a> and <a
+            href="https://github.com/ccrusius/dragonfly-modules"
+            rel="noopener" target="_blank">dragonfly-modules</a>.
+    However using someone else’s grammar is usually difficult, as they’re rarely very well documented,
+    and as Tavis’ talk shows, usually rely on arbitrary words that are hard to memorize. You could of
+    course write your own, but if you’re starting off with voice-coding to prevent RSI, it seems cruel
+    that you’d have to program the solution yourself.</p>
+<p id="e88c">So what ways are there to get started using
+    voice coding? There’s a few, and we’ve already skimmed the surface on the first, so let’s dive
+    in.</p>
+<h2 id="33a5">The Do-It-Yourself approach</h2>
+<p id="6c0c">The DIY approach consists of writing your
+    own Dragonfly grammars, and modding your editor with appropriate shortcuts and extensions to make
+    your life easier. Generally DIY projects seem to use Dragon NaturallySpeaking to capture the speech,
+    but Dragonfly does support Windows Speech Recognition as well.</p>
+<p id="fe26">Using Dragon has a wide variety of
+    advantages though, Dragon comes with built in support for dictating documents, writing mails and
+    navigating around in Windows — it even has support for web browsing (though the experience is
+    sometimes so, so).</p>
+<p id="e128">There’s a disadvantage here however, Dragon
+    NaturallySpeaking only runs on Windows (though projects like <a
+            href="https://github.com/dictation-toolbox/aenea"
+            rel="noopener" target="_blank">Aenea</a> exist that
+    will let you run it on Linux.)<br>For macOS the scenery is a little different. There exists a
+    version of Dragon, Dragon Professional, for macOS but it’s supposedly less capable of things like
+    navigating around. So while it’ll work for voice coding, you’re still worse off than when using
+    Dragon NaturallySpeaking on Windows.</p>
+<p id="1813">With the DIY approach you get a lot of
+    freedom, but you also get very little out of the box unless you’re on Windows. If you’re interested
+    in pursuing this angle, some good kickoff points are the <a
+            href="https://github.com/t4ngo/dragonfly-modules"
+            rel="noopener" target="_blank">dragonfly-modules</a>
+    git repository and <a
+            href="http://handsfreecoding.org/2014/10/26/getting-started-with-voice-coding/"
+            rel="noopener" target="_blank">these</a> <a
+            href="http://handsfreecoding.org/2015/03/14/dictating-code/"
+            rel="noopener" target="_blank">blog</a> <a
+            href="http://handsfreecoding.org/2015/04/25/designing-dragonfly-grammars/"
+            rel="noopener" target="_blank">posts</a>.</p>
+<h2 id="d7db">Out of the box Solutions</h2>
+<p id="9aa0">Maybe you’re not willing to do it yourself.
+    The good news is that out of the box solutions exist. The bad news is that there’s not very many and
+    they’re quite similar. Let me try to give you an overview.</p>
+<p id="69bd"><strong
+        class="markup--strong markup--p-strong">Drop-in Dragonfly macros:<br></strong>Some people have
+    done the DIY approach and have been nice enough to put their macros on github. <a
+            href="https://github.com/dictation-toolbox/dragonfly-scripts"
+            rel="noopener" target="_blank">Here</a> <a
+            href="https://github.com/simianhacker/code-by-voice"
+            rel="noopener" target="_blank">are</a> <a
+            href="https://github.com/t4ngo/dragonfly-modules"
+            rel="noopener" target="_blank">a</a> <a
+            href="https://github.com/tgrosinger/aenea-grammars"
+            rel="noopener" target="_blank">few,</a> however
+    they’re usually reasonably tightly coupled to the persons workflows and sparsely documented.</p>
+<p id="a045"><a
+        href="https://github.com/synkarius/caster"
+        rel="noopener" target="_blank">Caster</a> in particular
+    stands out from the crowd as it seems to be a feature-rich voice coding toolkit, and perhaps more
+    importantly — it has actual documentation. Unfortunately it looks like it hasn’t been updated for a
+    few years.</p>
+<p id="f82b"><a
+        href="https://sourceforge.net/projects/voicecode/"
+        rel="noopener" target="_blank"><strong
+        class="markup--strong markup--p-strong">Voicecode</strong></a><strong
+        class="markup--strong markup--p-strong"><br></strong>There’s an old project called VoiceCode by
+    the National Research Council of Canada.<br>It seems to have been a full solution for coding by
+    voice, that anyone can pick up and use. Looking at the source code, it’s close to Tavis’ setup,
+    basing itself on Dragon and a heavily customized Emacs. Unfortunately, it seems to have been
+    abandoned over five years ago, and the documentation pages aren’t hosted anymore.</p>
+<p id="ca96"><a href="http://voicecode.io/"
+
+                rel="noopener" target="_blank"><strong
+        class="markup--strong markup--p-strong">Voicecode.io</strong></a><strong
+        class="markup--strong markup--p-strong"><br></strong>Then there’s voicecode at voicecode.io,
+    which confusingly enough has the exact same This is a Mac-only system, that promises, not only
+    to let you code by voice but also to increase your productivity. It uses <a
+            href="https://www.naturalpoint.com/smartnav/"
+            rel="noopener" target="_blank">SmartNav</a> for replacing your mouse, and under the hood it
+    runs Dragon for converting the speech to code. You can see a demonstration <a
+            href="https://www.youtube.com/watch?v=FlluHR6pgHc"
+            rel="noopener" target="_blank">here</a>.</p>
+<p id="d13c">If you view the demonstration, you’ll notice
+    that this is similar to the way Tavis’ does it, with lots of strange, arbitrary one-syllable words
+    that maps to commands. Even with these shortcomings, — I think voicecode.io is currently the most
+    feature-rich out-of-the-box voice coding experience. It’s only for Mac so far though, and it does
+    come with a reasonably hefty 300$ price tag. And that’s without Dragon or SmartNav. A full setup
+    here will probably cost you around a thousand dollars.</p>
+<p id="d247"><a href="http://voxhub.io/"
+
+                rel="noopener" target="_blank"><strong
+        class="markup--strong markup--p-strong">Silvius</strong></a><strong
+        class="markup--strong markup--p-strong"><br></strong>Silvius is the offspring of Dragon
+    NaturallySpeaking and Aenea. It uses a custom speech recognition framework called <a
+            href="http://kaldi-asr.org/"
+            rel="noopener" target="_blank">Kaldi</a> and works
+    both online and on small embedded devices. Silvius works by piping the microphone output to a
+    server, and the server responds with the sentences it recognize. The parsed speech is then run
+    through a grammar that produces virtual keyboard strokes. Looking at Silvius you might think it’d be
+    slow as the audio has to take a roundtrip to the server — but it actually seems surprisingly snappy.<br>I
+    think the strong innovation in Silvius is the fact that it relies on a platform-agnostic speech
+    recognition algorithm— in the end that might allow for something that will work across all
+    platforms.</p>
+<p id="8d30"><a href="http://vocola.net/"
+
+                rel="noopener" target="_blank"><strong
+        class="markup--strong markup--p-strong">Vocola</strong></a><strong
+        class="markup--strong markup--p-strong"><br></strong>Vocola is a <strong
+        class="markup--strong markup--p-strong">Vo</strong>ice <strong
+        class="markup--strong markup--p-strong">Co</strong>mmand <strong
+        class="markup--strong markup--p-strong">La</strong>nguage — that allows you to map voice
+    commands to keyboard commands and other functions, in a way that’s very reminiscent of AutoHotkey. I
+    don’t think this is particularly well suited for code, but I think it might be very good for
+    surrounding tasks, e.g. opening up applications.</p>
+<div class="img-div">
+    <figure id="64e1">
+        <script src="https://gist.github.com/anonymous/32edd0e9332351f1c940397d2b793105.js"></script>
+        <figcaption class="imageCaption">An example of a few Vocola commands</figcaption>
+    </figure>
+</div>
+<h2 id="ace3">Speech Recognition Engines</h2>
+<p id="a1b9">I like to refer to the thing that powers
+    the actual speech recognition as the speech recognition engine. E.g. Tavis uses Dragonfly to execute
+    the keybindings that result in his actual code, but the engine translating speech to text is Dragon
+    NaturallySpeaking.</p>
+<p id="9fa6">The pattern here is generally, that most
+    commercial software uses Dragon NaturallySpeaking for speech recognition, as it appears to have the
+    best accuracy out of the available options, but also comes with a hefty price tag of up to $300.<br>Some
+    notable exceptions are Dragonfly which supports Windows Speech Recognition and Silvius which uses
+    Kaldi, which seems to be the only offline platform-agnostic framework currently. A few days ago on
+    November 29th, Mozilla also launched the first release of <a
+            href="https://blog.mozilla.org/blog/2017/11/29/announcing-the-initial-release-of-mozillas-open-source-speech-recognition-model-and-voice-dataset/"
+            rel="noopener" target="_blank">Deep Speech and
+        Common Voice,</a> which I hope will become a viable alternative as well.</p>
+<h2 id="df26">Complimentary modes of interaction</h2>
+<p id="d6dd">I think there’s a lot of potential in voice
+    as an input, but I’m not sure it’ll get us all the way here. If desktops were designed for voice, I
+    think we could probably get all the way, but as of right now, we’ll still need to interact with
+    regular desktop programs. Most of them are GUI-based, which means we’ll need to emulate a mouse.<br>There’s
+    a few possible ways to do this.</p>
+<ol class="postList">
+    <li id="2163"><strong
+            class="markup--strong markup--li-strong">Descriptive voice commands</strong><br>aka “Click
+        the red button called send” — There’s a possibility to use visual recognition and try to
+        visually parse what the user means. Currently I don’t think there’s anyone taking this approach
+        -the closest I could find was the <a
+                href="http://handsfreecoding.org/2015/07/26/speechstart-review/"
+                rel="noopener" target="_blank">SpeechStart+</a>
+        addon to dragon that lets the user enumerate clickable elements in most programs, and then click
+        on them via voice.
+    </li>
+    <li id="c770"><strong
+            class="markup--strong markup--li-strong">Non-hand-controlled mouse</strong><br>We’ve already
+        been introduced to SmartNav, but a mouse that’s controlled by muscles that aren’t the hands is
+        an appealing way. Current alternatives are: <a href="http://www.orin.com/access/headmouse/"
+                                                       rel="noopener" target="_blank">Headmouse
+            Nano,</a> <a href="http://www.cameramouse.org/"
+                         rel="noopener" target="_blank">Camera
+            Mouse</a> and <a href="https://www.naturalpoint.com/smartnav/"
+                             rel="noopener" target="_blank">SmartNav</a>.
+    </li>
+    <li id="7938"><strong
+            class="markup--strong markup--li-strong">Eye tracking</strong><br>You’d think the most
+        natural replacment of the mouse would be eye-tracking, we usually look at what we click at.
+        Tobii’s been making strides in this area with first the Tobii EyeX and now the <a
+                href="https://tobiigaming.com/eye-tracker-4c/"
+                rel="noopener" target="_blank">Eye Tracker
+            4C</a>. However our eyes naturally drift around, and so eye tracking will never be able to
+        achieve the pixel-precision that a mouse can get. However for most tasks, I think soon eye
+        tracking will be good enough for a lot of tasks.<br>(Previously I’ve co-authored an academic
+        paper about combining speech recognition and eye tracking for coding. <a
+                href="https://twitter.com/GeeWengel
+                rel=" noopener" target="_blank">Contact me if
+        you want a copy,</a> there’s also a quick demo <a href="https://youtu.be/8wgXM70eQag"
+                                                          rel="noopener" target="_blank">here</a>)
+    </li>
+</ol>
+<h2 id="b162">Unsolved Challenges</h2>
+<p id="063d">As we’ve seen demonstrated a
+    few times during this blog post, it’s definitely possible to navigate inside a file and output code
+    with voice. As I’ve written about<a href="http://www.gustavwengel.dk/overcoming-rsi"
+                                        rel="noopener"
+                                        target="_blank"> before</a>— for me it’s usually navigation
+    between symbols and files that are lacking — but I think this is only because the work hasn’t been
+    done yet. I’m hoping that we’ll get there soon.</p>
+<div>
+    <div class="section-divider">
+        <hr class="section-divider">
+    </div>
+    <div class="section-content">
+        <div class="section-inner sectionLayout--insetColumn"><p id="d9e1"
+        >
+            There’s also the problems of noise. A lot of people fear that their microphones will pick up random
+            chatter and output gobbledygook — with a good microphone this isn’t an issue. As you can see Tavis
+            easily talks with a room full of people, and I’ve personally demonstrated voice coding in a demo
+            situation with a large room of more than 30 people having multiple conversations around me.<br>So while
+            outside noise disturbing you isn’t a problem, the other way around could be. Talking to your computer
+            might become a problem depending on your co-workers, office situation etc.<br>Anecdotally I’ve worked in
+            an open office plan using voice coding for a few days and when I asked my co-workers, nobody said that
+            it bothered them.</p></div>
+    </div>
+</div>
+<div class="section section--body">
+    <div class="section-divider">
+        <hr class="section-divider">
+    </div>
+    <div class="section-content">
+        <div class="section-inner sectionLayout--insetColumn"><p id="22c9"
+        >
+            Even though we’ve made some strides in editing and navigating code — being a developer is so much more
+            than our editor (unless you use Emacs, then it’s basically the same thing).<br>We use web browsers,
+            terminals, file systems etc. If you’re on Windows you get support for a lot of the normal customer
+            facing applications from Dragon, but if you’re not on Windows you’re out of luck. You can build support
+            for web browsing through browser extensions but for most applications you’re stuck emulating keyboard
+            input. For some applications that have good shortcut support, this is tolerable. For others, not having
+            a mouse is very difficult.</p></div>
+    </div>
+</div>
+<div class="section section--body">
+    <div class="section-divider">
+        <hr class="section-divider">
+    </div>
+    <div class="section-content">
+        <div class="section-inner sectionLayout--insetColumn"><p id="9de2"
+        >
+            Coding with voice isn’t real-time. When using a keyboard you get feedback after every keystroke —but
+            looking at voice coding, it usually consists of a sequence of words followed by a pause, after which the
+            commands are executed.<br>The feedback only comes at the very end of the command sequence. Now this has
+            some disadvantages —you’re not able to see if you’ve done the right thing before the very end of the
+            command. Unfortunately, this feedback delay is going to be hard to eliminate entirely. <br>Keystrokes
+            are stand-alone in a way that voice commands are not. Imagine the voice command “up ten” — meant to move
+            the caret ten lines up. Giving feedback before the end of this command is impossible, as the word said
+            after “up” has an effect on what “up” means.<br>So while continuous real-time feedback is probably not
+            possible, perhaps in the future we’ll see a hybrid approach of giving more continuous feedback during
+            commands, where it is possible to detect that the next commands have no influence on the previous, but
+            it’ll never be as real-time as it will with a keyboard.</p></div>
+    </div>
+</div>
+<div class="section section--body">
+    <div class="section-divider">
+        <hr class="section-divider">
+    </div>
+    <div class="section-content">
+        <div class="section-inner sectionLayout--insetColumn"><p id="4307"
+        >It strikes me
+            though, that no matter what approach you pick from this list, we’re still just emulating keyboards with
+            our voices. Saying things like “ak bar pam slap” is nonsensical, and using the voice in a monotone way
+            like that can even cause voice strain. We already have perfectly good spoken languages, and it seems
+            insane to me that we’ll have to invent another one, just so we can use our voices as a keyboard.<br>I
+            think voice coding is going to have it’s breakthrough soon, but I think it’ll be parsing natural
+            language. It’ll be me saying that dictionary above to my new dictionary” — rather than me
+            uttering what primarily sounds like an incantation for black magic, just to output some brackets. A
+            little work has been done on this, but so far it has primarily been academic, with little real world
+            usage.</p>
+        </div>
+    </div>
+
+    <!-- Begin MailChimp Signup Form -->
+    <div id="mc_embed_signup">
+        <form action="https://gustavwengel.us17.list-manage.com/subscribe/post?u=4665de11d74ac82100225dbce&amp;id=7b0d34b957" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+                <label for="mce-EMAIL">Sign up for news about RSI and Voice Coding</label>
+                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_4665de11d74ac82100225dbce_7b0d34b957" tabindex="-1" value=""></div>
+                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            </div>
+        </form>
+    </div>
+</div>
