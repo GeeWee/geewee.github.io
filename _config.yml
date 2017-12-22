@@ -5,11 +5,9 @@ show_downloads: false
 repository: "GeeWee/geewee.github.io"
 plugins:
   - "jekyll_theme_midnight"
-  - "jekyll-remote-theme"
 defaults:
   -
     scope:
       path: ""
     values:
       layout: default
-remote_theme: benbalter/retlab
