@@ -3,8 +3,6 @@ title: Tinkerer
 description: "Adventures in code"
 show_downloads: false
 repository: "GeeWee/geewee.github.io"
-plugins:
-  - "jekyll_theme_midnight"
 defaults:
   -
     scope:

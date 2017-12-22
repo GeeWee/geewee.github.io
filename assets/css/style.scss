@@ -6,6 +6,7 @@
 .layout-post {
   margin-bottom: 50px;
 }
+
 .centered {
   margin-right: auto;
   margin-left: auto;
@@ -33,16 +34,16 @@
   width: 100%;
 }
 
-.img-circle{
+.img-circle {
   border-radius: 50%;
 }
 
-.profile-picture-section{
+.profile-picture-section {
   display: flex;
   align-items: center;
 }
 
-.info-container{
+.info-container {
   padding-left: 40px;
   font-style: italic;
 }
@@ -54,7 +55,7 @@
   margin-bottom: 20px;
 }
 
-iframe{
+iframe {
   border: 0;
 }
 
@@ -62,3 +63,19 @@ code {
   margin: 0 2px;
   padding: 0;
 }
+
+// Mailchimp sign
+#mc_embed_signup {
+  clear: left;
+  font: 14px Helvetica, Arial, sans-serif;
+  width: 100%;
+  .button {
+    background-color: #777;
+    &:hover{
+      background-color: #c89200;
+    }
+  }
+}
+
+/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
