@@ -1,6 +1,5 @@
 ---
 title: "Converting a React Codebase to Typescript. Part 1: Getting it to compile"
-draft: true
 permalink: '/converting-typescript-to-javascript-part-1'
 short: "This is the first in a series of blog post that will deal with gradually converting an existing React codebase to Typescript
         and ending up with a completely typechecked codebase. This part deals with getting the first TypeScript file to compile along with the rest of the application."
