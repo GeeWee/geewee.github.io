@@ -113,7 +113,9 @@ import * as React from ‘react’
 ```
 
 ### Could not find declaration file for module
-**Error: (3,26): Could not find a declaration file for module 'react-redux'. ’flatris/node_modules/react-redux/lib/index.js' implicitly has an 'any' type.**
+```
+Error: (3,26): Could not find a declaration file for module 'react-redux'. ’flatris/node_modules/react-redux/lib/index.js' implicitly has an 'any' type.
+```
 
 ```
 Try `npm install @types/react-redux` if it exists or add a new declaration (.d.ts) file containing `declare module 'react-redux';`
