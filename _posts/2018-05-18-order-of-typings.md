@@ -51,7 +51,7 @@ This leads me to make the statement:
 Now let’s look at the next function: `getHeatedWater`
 ```
 function getHeatedWater(water, temperature) {
-	// Conver the water to a number
+	// Convert the water to a number
 	const waterAsNumber = parseInt(water, 10);
 	// We spilled some..
 	const remainingWater = waterAsNumber - 10;
