@@ -112,6 +112,9 @@ to
 import * as React from ‘react’
 ```
 
+**Update 24/05 - With [TypeScript 2.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html) and the new esModuleInterop, you can simply set this flag to true, and not change
+your imports**
+
 ### Could not find declaration file for module
 ```
 Error: (3,26): Could not find a declaration file for module 'react-redux'. ’flatris/node_modules/react-redux/lib/index.js' implicitly has an 'any' type.
@@ -163,6 +166,7 @@ localStorage.setItem('flatrisState', JSON.stringify((store.getState() as any).ga
 Luckily that's the only type error in the index file. Let's move on!
 
 ### React components contain invalid characters
+**Update 24/05 - This is no longer an issue you should face, after some new changes have been merged into react-scripts-ts**
 ```
 Error: InvalidCharacterError: String contains an invalid character
 ```
