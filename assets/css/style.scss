@@ -31,6 +31,14 @@
   margin-bottom: 30px;
 }
 
+.img-div-tall {
+  @extend .img-div;
+  max-height: 500px;
+  img {
+    max-height: 500px;
+  }
+}
+
 .full-width {
   width: 100%;
 }
