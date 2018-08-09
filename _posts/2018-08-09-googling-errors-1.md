@@ -126,7 +126,9 @@ This is the part we’ll be using in our search queries. In this case the error 
 
 Looking at the entire error message again, with the different parts annotated, it looks like this:
 
-ADD IMAGEEEE
+<div class="img-div-skyscraper">
+<img src="{{site.url}}/assets/img/err-msg/annotated_stacktrace.png"/>
+</div>
 
 ## Anatomy of a Python Error Message
 
@@ -185,7 +187,9 @@ A little better than the one from express, but still not as good as it could hav
 
 If we annotate the stack-trace with the different parts, it looks like this:
 
-TODOOOO
+<div class="img-div-skyscraper">
+<img src="{{site.url}}/assets/img/err-msg/annotated_stacktrace_2.png"/>
+</div>
 
 ## Fifty Shades of Stack Traces
 
