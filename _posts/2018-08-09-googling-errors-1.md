@@ -1,7 +1,6 @@
 ---
 title: "How to Read Programming Error Messages"
 permalink: "/googling-error-messages-1"
-draft: true
 short: "Much of modern development now is searching for the right things. Error messages can be tricky if you're new or working on a new stack.
 This is a short guide about the anatomy of an error message - what parts there are, which are important and which can be ignored."
 ---
@@ -196,178 +195,63 @@ Now, the two stack traces we’ve seen here are reasonably identical - there’s
 
 Sometimes there’s no **third-party** calls, as this Java example shows us:
 
-**public class ****Main {**
+<div class="img-div-skyscraper">
+<img src="{{site.url}}/assets/img/err-msg/image_8.png"/>
+</div>
 
-**   ****public static void ****main****(String[] args) {**
+This program tries to figure out the length of a java `String` which has been assigned to `null`.
+Running this program gives us a very minimal stack-trace:
 
-**       ****// Program starts here**
+```
+Exception in thread "main" java.lang.NullPointerException
+    at Main.randomFunction(Main.java:9)
+    at Main.main(Main.java:4)
+```
 
-**       ****_randomFunction_****()****;**
+Note there’s no startup-noise, no third party code.
+There’s only our code, ending at the exact line where we’ve made our mistake.
+If there’s no third-party code, the "last line of our code" is the place to check out to see what's gone wrong.
 
-**   ****}**
+### Dude Where's My Code?
 
-**   ****public static void ****randomFunction****(){**
+Now let’s look at an example using a large framework called Spring Boot. Spring works with both Java and Kotlin. This example is in Kotlin.
+Now we'll cause an error without ever really having our code appear in the stack trace.
+We can do this by defining a very small application with two classes that both want to listen to the same `/hello` HTTP endpoint.
+Spring can't decide which class should handle the `/hello` endpoint, and thus crashes at startup time.
 
-**       String s = ****null;**
-
-**       ****// Program crashes here**
-
-**       ****int ****lengthOfNullString = s.length()****;**
-
-**   ****}**
-
-**}**
-
-This program tries to figure out the length of a java **String, **which has been assigned to null. Running this program gives us a very minimal stack-trace:
-
-**Exception in thread "main" java.lang.NullPointerException**
-
-**    at Main.randomFunction(Main.java:9)**
-
-**    at Main.main(Main.java:4)**
-
-Note there’s no startup-noise, no third party code. There’s only our code, ending at the exact line where we’ve made our mistake. If there’s no third-party code, the "last line of our code" is often the first place to go.
-
-### But where’s my code?
-
-Now let’s look at an example using a large framework where we’ll cause an error without really having any of our code in the stack-trace. This is an example using the kotlin language, and the very popular Spring Boot library which works with both Java and Kotlin. We’ll define a very small application with two classes that both want to listen to the same endpoint - and that just can’t be.
-
-**@SpringBootApplication**
-
-**class ****MyprojectApplication**
-
-**// This is the main function, this is where the application kicks off.**
-
-**fun ****main****(args: Array<String>) {**
-
-**   ****_runApplication_****<MyprojectApplication>(*args)**
-
-**}**
-
-**// This is a controller that responds to web requests**
-
-**@RestController**
-
-**class ****RestController {**
-
-**   ****// This means that this controller will respond to the /hello endpoint**
-
-**   ****@RequestMapping****(****"/hello"****)**
-
-**   ****fun ****helloWorld****() = ****"Hello world!"**
-
-**}**
-
-**@RestController**
-
-**class ****IdenticalRestController {**
-
-**   ****// This controller will also respond to the /hello endpoint, oops!**
-
-**   ****@RequestMapping****(****"/hello"****)**
-
-**   ****fun ****helloWorldNumberTwo****() = ****"I want to be a REST controller too!"**
-
-**}**
+<div class="img-div-skyscraper">
+<img src="{{site.url}}/assets/img/err-msg/image_9.png"/>
+</div>
 
 The stack-trace we’ll get is this behemoth:
 
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'restController' method
+<div class="img-div-skyscraper">
+<img src="{{site.url}}/assets/img/err-msg/image_10.png"/>
+Straight out of the maws of hell
+</div>
 
+We're not going to dissect this intensely, as it's very large. Our main method is somewhere in it, but that method doesn't really do much.
+The stack-trace is instead dominated primarily by internal third party calls from the Spring Framework. If we strip the internal third party calls
+and remove the last part, as that's simply an inner Spring exception, and not that important - we get something more comprehensible.
+
+<div class="img-div-skyscraper">
+<img src="{{site.url}}/assets/img/err-msg/image_11.png"/>
+</div>
+
+Here it's easier to find the actual error message, which is luckily reasonably informative:
+
+```
+Ambiguous mapping. Cannot map 'restController' method
 public java.lang.String dk.gustavwengel.myproject.RestController.helloWorld()
-
 to {[/hello]}: There is already 'identicalRestController' bean method
+```
 
-public java.lang.String dk.gustavwengel.myproject.IdenticalRestController.helloWorldNumberTwo() mapped.
-
-    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1699) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
-
-    at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
-
-    at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:398) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
-
-    at org.springframework.boot.SpringApplication.run(SpringApplication.java:330) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
-
-    at org.springframework.boot.SpringApplication.run(SpringApplication.java:1258) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
-
-    at org.springframework.boot.SpringApplication.run(SpringApplication.java:1246) [spring-boot-2.0.4.RELEASE.jar:2.0.4.RELEASE]
-
-    at dk.gustavwengel.myproject.MyprojectApplicationKt.main(MyprojectApplication.kt:26) [main/:na]
-
-    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-
-    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-
-    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-
-    at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-
-    at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.0.4.RELEASE.jar:2.0.4.RELEASE]
-
-Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'restController' method
-
-public java.lang.String dk.gustavwengel.myproject.RestController.helloWorld()
-
-to {[/hello]}: There is already 'identicalRestController' bean method
-
-public java.lang.String dk.gustavwengel.myproject.IdenticalRestController.helloWorldNumberTwo() mapped.
-
-    at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.assertUniqueMethodMapping(AbstractHandlerMethodMapping.java:580) ~[spring-webmvc-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:544) ~[spring-webmvc-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:265) ~[spring-webmvc-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$1(AbstractHandlerMethodMapping.java:250) ~[spring-webmvc-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at java.util.LinkedHashMap.forEach(LinkedHashMap.java:684) ~[na:1.8.0_181]
-
-    at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:248) ~[spring-webmvc-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:218) ~[spring-webmvc-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:188) ~[spring-webmvc-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:136) ~[spring-webmvc-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1758) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1695) ~[spring-beans-5.0.8.RELEASE.jar:5.0.8.RELEASE]
-
-    ... 21 common frames omitted
-
-There’s no reason to dissect it, but it starts with our main method and then there’s nothing of our code after that. Luckily if we can find the error message in all the clutter, it’s reasonably good:
-
-**Ambiguous mapping. Cannot map 'restController' method**
-
-**public java.lang.String dk.gustavwengel.myproject.RestController.helloWorld()**
-
-**to {[/hello]}: There is already 'identicalRestController' bean method**
-
-Often if there’s no code of yours in the stack-trace, there’s some configuration that’s gone wrong in a framework. These errors can be hard to debug - especially if you’re new to the framework or the error message is bad.
+If you're using a large framework it happens quite a bit that there's no code of yours in the stack trace at all. 
+This usually means it's a configuration issue, but these errors can be extremely hard to debug. Often we rely on helpful images
+from the framework authors to get us through these kind of errors, as the stack-trace is close to useless.
 
 ## Summary
 
 We’ve seen how we can take an error message and divide it into different parts. We’ve discussed what parts are important, and what parts can usually be ignored. In the next part we’ll talk about how to select the right terms when searching, and how googling error messages is actually a process where you learn as you go, not just one where you find answers.
 
-*Are you excited for the next part? Did you have any thoughts on this one, or do you just want to gush about how that Elm error message was really great? Reach out to me on twitter at **[@GeeWenge*l](https://twitter.com/GeeWengel)
+*Are you excited for the next part? Did you have any thoughts on this one, or do you just want to gush about how that Elm error message was really great? Reach out to me on twitter at [@GeeWengel](https://twitter.com/GeeWengel)*
