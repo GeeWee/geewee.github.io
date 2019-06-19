@@ -282,5 +282,3 @@ Coding? Reach out to me on twitter_
 [_@GeeWengel_](https://twitter.com/GeeWengel)_, or_
 [_subscribe to my newsletter_](https://gustavwengel.us17.list-manage.com/subscribe?u=4665de11d74ac82100225dbce&id=7b0d34b957)
 _here. I usually send you a mail about once a year._
-
-![](img/0__zz3b__tJN8fcaXwVm.jpg)
