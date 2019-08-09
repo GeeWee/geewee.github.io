@@ -3,7 +3,6 @@ title: Optimizing Django REST Framework performance with django-auto-prefetching
 short:
   "Django-auto-prefetching is a library that automatically prefetches data from the database when using the django-rest-framework"
 permalink: "/introducing-django-auto-prefetching/"
-draft: true
 ---
 *tldr: django-auto-prefetching is a library that automatically optimizes your endpoints by using `prefetch_related` and `select_related` to fetch the correct objects
 from the database when using django-rest-framework. You can find it on [PyPI](https://pypi.org/project/django-auto-prefetching/) and [Github](https://github.com/GeeWee/django-auto-prefetching)*
@@ -44,4 +43,11 @@ This means that one line of code is all of the optimization many of your views w
 django-auto-prefetching is being used internally at the danish startup [reccoon](https://www.reccoon.dk/), in a Django codebase of about 20k lines of code.
 We had a lot of endpoints that weren’t optimized, and we’ve seen a general 30-40% speedup in response times across our whole API, just by inheriting our ViewSets from AutoPrefetchMixin
 
-But try it out for yourself. You can find it on [PyPI](https://pypi.org/project/django-auto-prefetching/), and make sure to report any issues you find on [Github](https://github.com/GeeWee/django-auto-prefetching)
+## What's next?
+I think there's many more improvements to be had in automatic prefetching, and I think it could potentially solve a lot of pain points in Django.
+With more engineering effort it should be possible to trace the lifespan of models coming from a specific `QuerySet`, and automatically prefetch the related
+objects needed. It's probably never going to be perfect, but Django is very smart in a lot of aspects,
+and it seems wild that we're still writing this part by hand. 
+
+
+Try `django-auto-prefetching` out for yourself. You can find it on [PyPI](https://pypi.org/project/django-auto-prefetching/), and make sure to report any issues you find on [Github](https://github.com/GeeWee/django-auto-prefetching)
