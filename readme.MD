@@ -12,3 +12,9 @@
 then ??? 
 gem pristine --all
 or just reinstall erryythingm
+
+
+# How to hide a post
+If you mark a post as
+draft: True
+it will not show up on the webpage
