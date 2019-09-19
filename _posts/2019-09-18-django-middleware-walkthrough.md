@@ -1,5 +1,5 @@
 ---
-title: An in-depth walkthrough to Djangos default mdidleware
+title: An in-depth walkthrough of Djangos default middleware
 short:
   "This is a very in-depth walkthrough of what the different pieces of Djangos default MiddleWare does, and how it relates to django-rest-framework.
   Most of this isn’t particularly relevant to know unless you’re debugging a Middleware issue - in that case it’s invaluable information. "
