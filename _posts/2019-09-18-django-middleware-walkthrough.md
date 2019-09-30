@@ -43,7 +43,7 @@ If the Middleware does something before control is handed to the view, we’ll a
 The SecurityMiddleware provides several independent security enhancements, like HTTPS redirect, and a bunch of security headers.
 
 ### On the way in
-Checks whether or not the response should be a HTTPS response, and if it should be, and isn’t, it returns a redirect instead of the regular response.
+Checks whether or not the request should be an HTTPS request, and if it should be, and isn’t, it returns a redirect instead of the regular response.
 
 ### On the way out
 Sets a bunch of security based headers, like `Strict-Transport-Security`, XSS protection headers and so forth.
