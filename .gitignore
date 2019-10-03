@@ -51,3 +51,7 @@ fabric.properties
 _site
 .sass-cache
 .idea
+
+# Gems
+.bundle
+vendor
