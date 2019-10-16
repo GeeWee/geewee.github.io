@@ -2,7 +2,6 @@
 title: "We're shutting down Reccoon - here's what we learned along the way"
 permalink: "/shutting-down-reccoon"
 short: "The post-mortem of our startup Reccoon. The journey, and the mistakes we made along the way."
-draft: true
 ---
 
 Today I'm sad to announce that we're shutting down our startup [Reccoon](https://reccoon.dk).
