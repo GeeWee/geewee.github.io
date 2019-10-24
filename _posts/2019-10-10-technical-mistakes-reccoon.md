@@ -2,7 +2,7 @@
 title: "The 3 technical mistakes we made while building our startup"
 permalink: "/reccoon-3-technical-mistakes"
 short: "Looking back at our failed startup Reccoon, we made a bunch of technical mistakes, that meant we weren't able to execute as succesfully as we'd like. Here are the three major ones."
-draft: true
+draft: false
 ---
 
 A few weeks we shut-down our startup Reccoon, a startup building waste
