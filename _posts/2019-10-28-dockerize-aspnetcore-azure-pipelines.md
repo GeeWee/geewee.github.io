@@ -1,6 +1,6 @@
 ---
 title: "How to Dockerize an ASP.NET Core Application with Azure Pipelines"
-permalink: "/reccoon-3-technical-mistakes"
+permalink: "/dockerize-aspnet-in-pipelines"
 short: "Building a docker image of an ASP.Net core application with Azure Pipelines can be surprisingly tricky - here's how you do it"
 draft: false
 ---
