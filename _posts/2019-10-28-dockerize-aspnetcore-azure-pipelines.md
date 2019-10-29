@@ -24,11 +24,11 @@ into the docker container, which then runs it.
 
 We build the project with the command:
 ```
-dotnet publish -c Release
+dotnet publish -c=Release -o=build
 ```
 
-This will publish our project into a folder with a path that looks something like this:
-`./YourProjectName/bin/Release/netcoreapp3.0/publish/`
+This will publish our project into a folder with the path:
+`./build/`
 
 We'll need to get this directory into our container.
  
@@ -46,7 +46,7 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
 # This will take the artifacts from the publish step (dotnet publish -c Release)
 # from before, and copy it into the root folder of this docker container. This means
 # we now have everything we need to run the image
-COPY ["./YourProjectName/bin/Release/netcoreapp3.0/publish/", "."]
+COPY ["./build", "."]
 
 # As we're running a web-server
 # we'd like docker to listen for traffic on port 80 (for http) and port 443 (for https) 
@@ -70,7 +70,7 @@ If we had a bash script that tested this functionality, it would look something 
 name="yourProjectName"
 
 # Build the C# Project
-dotnet publish -c Release
+dotnet publish -c=Release -o=build
 # Build the docker image from the Dockerfile we just created.
 # And name it "yourProjectName"
 docker build . -t ${name}
@@ -158,7 +158,7 @@ stages:
           inputs:
             command: "publish"
             zipAfterPublish: false
-            arguments: -c=Release
+            arguments: -c=Release o=build
         - task: Docker@2
           displayName: Build docker image
           inputs:
