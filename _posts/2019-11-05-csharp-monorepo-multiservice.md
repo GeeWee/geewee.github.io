@@ -2,7 +2,6 @@
 title: "How to deploy multiple ASP.Net Core Microservices from a monorepository"
 permalink: "/csharp-monorepo-multiservices"
 short: "We've had issues coordinating across different ASP.NET microservices that lived in different repositories, so we moved them all into one big repository."
-draft: false
 ---
 
 Currently I'm working on a project that has several small services, that communicate through posting events through [Azure Event Hubs.](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-about)
@@ -23,6 +22,7 @@ We went looking for a solution that fulfills the following criteria:
 - We want to be able to share code between services, and make service-wide refactorings
 - We still want to be able to deploy the services separately
 - We want the solution to be as light-weight as possible, so we don't have to spend time setting up tooling
+
 
 
 ## Enter the monorepository
