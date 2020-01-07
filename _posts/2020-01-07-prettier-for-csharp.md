@@ -1,6 +1,6 @@
 ---
 title: "Prettier for C# - Developing an auto-formatting pre-commit hook"
-permalink: "/csharp-monorepo-multiservices"
+permalink: "/csharp-prettier"
 short: |
         Many programming languages have automatic formatters. Go has `gofmt`, Rust has `rustfmt`, JavaScript has `prettier`
         and python has `black`.
