@@ -13,7 +13,7 @@ It then allows you to view this data in numerous ways, some of them rather cleve
 To do this, it C# collects *a lot* of data. Every log statement, outgoing and ingoing http call, every burp and sneeze.
 Application Insights is (primarily) priced per GB of data ingested - and it's pretty expensive.
 Some of their competitors charge much less. Humio charges approximately 0.9$ per gb of ingested data, and Datadog charges
-0.1$. Application Insights charges a whopping 2.76$ per ingested Gigabyte. And Application Insights can collect *a lot* of gigabytes.[0]
+0.1$. Application Insights charges a whopping 2.76$ per ingested Gigabyte. And Application Insights can collect *a lot* of gigabytes.
 
 
 With prices this expensive, you'll probably only want to collect the data you're actually interested in.
@@ -53,7 +53,7 @@ Turns out, it wasn't, and following the documentation *exactly*, lead to us send
 It's not all bad yet though! Application Insights knows it can generates a boatload of data. To prevent that, it has a feature
 called **Adaptive Sampling**
 
-### Adaptive Sampling - or how Microsoft gave me a gun
+### Adaptive Sampling - or the gun Microsoft gave me
 Adaptive Sampling attempts to take a representative sample of your data, and then only send that to the AI server.
 So if you have identical logs, or http requests, Adaptive Sampling tries to only send a representative sample of that.
 
@@ -94,7 +94,7 @@ Can you spot the difference? I certainly thought I was doing 1:1 what the docume
 ASP.NET Core heavily uses the [Options pattern](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1),
 which is how to inject configuration into your classes. You inject an `IOptionsMonitor<YourClass>`, and though that you get the configuration classes.
 So that's what I did, and it seemed to work fine. I got, seemingly, a fully functional TelemetryConfiguration. However, when updating this
-particular instance of the TelemetryConfiguration, nothing *actually* changed - as it was completely decoupled from the rest of
+particular instance of the `TelemetryConfiguration`, nothing *actually* changed - as it was completely decoupled from the rest of
 the Application Insights infrastructure.
 
 
@@ -118,11 +118,3 @@ Unfortunately, we don't look at our cost statements every day, and we deployed t
 <img src="{{site.url}}/assets/img/ai-cost-analysis.png"/>
 My boss did not think this was a nice christmas present
 </div>
-
-
-
-
-
----
-[0] - Naturally the pricing calculations aren't *quite* as simple as this. The feature-sets aren't completely equivalent,
-and e.g Datadog also charges you for querying the data, and Application Insights also has some other factors or usages that affect price.
