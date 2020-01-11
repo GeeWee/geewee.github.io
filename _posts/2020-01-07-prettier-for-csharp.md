@@ -2,12 +2,12 @@
 title: "Prettier for C# - Developing an auto-formatting pre-commit hook"
 permalink: "/csharp-prettier"
 short: |
-        Many programming languages have automatic formatters. Go has `gofmt`, Rust has `rustfmt`, JavaScript has `prettier`
-        and python has `black`.
+        Many programming languages have automatic formatters. Go has gofmt, Rust has rustfmt, JavaScript has prettier
+        and python has black.
         
         Being able to, in an editor-independent way, have your code automatically formatted without having to worry about it,
         is extremely freeing. It means there's a whole slew of religious wars you don't have to fight, and it means
-        you never have to review a pull request with a bunch of noise, because *this* particular editor or user thinks the braces
+        you never have to review a pull request with a bunch of noise, because this particular editor or user thinks the braces
         belong on some other line than they were.
         
         Unfortunately C# doesn't really have an equivalent, but here's my attempt at making one.
