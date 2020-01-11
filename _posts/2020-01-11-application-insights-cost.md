@@ -1,7 +1,6 @@
 ---
 title: "How Azure Application Insights cost our company 4k USD in a couple of weeks"
 permalink: "/application-insights-costs-lots-of-money"
-draft: true
 ---
 
 Or the alternative title, "How Microsoft shot me in one foot, and then gave me a gun so I could shoot my other one"
