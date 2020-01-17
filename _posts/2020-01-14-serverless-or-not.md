@@ -1,34 +1,14 @@
 ---
 title: "To Serverless or Not To Serverless"
 permalink: "/serverless-or-not"
-draft: true
 ---
 
-Internally at my company, we've had a lot of discussion whether or not to use serverless, Azure functions to be more specific,
+Internally at [SCADA MINDS](https://www.scadaminds.com/), we've had a lot of discussion whether or not to use serverless, Azure functions to be more specific,
 for a large project. This is my attempt to give a balanced overview of the pros and cons of Serverless, to help us make the right decision.
 
 A disclaimer: I haven't actually worked with serverless for long at all.
 Most of the information here is synthesized from reading, talking to co-workers, and tech leads from other companies about their experiences.
 
-
-### TODO consider removing
-Our project takes a lot of data from wind turbines, transforms it, and exposes it to some end-users.
-There's two major flows of data, which I'll describe here for some context.
-
-1. The first flow is for events, this is a continuous stream of events from the wind turbines to the consumer. The events are
-streamed every second, and should preferably have pretty low latency, as some of them require people to act on them
-reasonably quickly.
-2. The second flow is for high resolution data. Wind turbines generally give out more detailed data in ten minute intervals.
-This data is sent to our service every ten minutes, and needs to be processed and saved in some sort of permanent storage
-to allow for querying later.
-
-###todo end
-
-There's also a slight hitch at least in our project, that further complicates the picture. We're not able to run
-the functions on e.g. Azure cloud, we have to run them in Kubernetes, using Azure Kubernetes Service.
-We would be using a framework called [Kubernetes Event Driven Autoscaling(KEDA)](https://keda.sh/), which automatically
-scales out pods on the kubernetes cluster, when events happen, such as adding an item to a queue.
- 
 
 # Benefits of Serverless
 ### No managing servers manually
@@ -40,11 +20,11 @@ about physical infrastructure is much the same.
 
 
 ### Forces your code to be stateless
-Functions, being short-lived, forces your code to be stateless. There's no saving things in-memory,
-there's no need to debug anything that only happens because you somehow end up saving with some internal state you shouldn't, and then you fail later on.
+Functions, being short-lived, forces your code to be stateless, there's no need to debug anything that only happens because you somehow end up incorrectly modifying some internal state,
+and then whole thing comes crashing down later.
 
 Serverless simply requires that your code contains no state. I think that's a best practice anyway, and an architecture that enforces that, is a good thing. 
-Note that this doesn't mean that only serverless can be stateless. You can achieve the same with a regular application, it just requires a little more dilligence.
+Note that this doesn't mean that only serverless can be stateless. You can achieve the same with a regular application, it just requires a little more diligence.
 
 
 ### Easy to scale up and down
@@ -72,14 +52,14 @@ either because you can't get a bigger machine or because you need to be able to 
 This is usually solved by scaling out. Running the same code on multiple machines puts some requirements on the code.
 You need some sort of way to delegate your work across multiple instances, this can be a load balancer, a queue etc.
 You also normally can't expect your user to reach the same server instance multiple times. This means for most intents and purposes, your code has to be stateless!
-Scaling out is how Serverless architectures handle scaling. This means that scaling out imposes the same restrictions on your code as a serverless architecture does.
+Scaling out and serverless architectures generally impose the same restrictions on your code.
 
-The way I see it, Serverless doesn't have many advantages in comparison to traditional applications, when it comes to handle steady state scaling, except not having
-to think about it.
+The way I see it Serverless doesn't have many advantages in comparison to traditional applications, when it comess to handling steady state scaling.
+Apart potentially, the peace of mind where you know you don't even have to *think about it.*
 
 
 #### Peak scaling
-The second type of scaling is peak scaling. This is when your system has large spikes in traffic.
+Peak scaling is when your system has large spikes in traffic.
 Perhaps you run a shopping website and on Black Friday you have 10x the normal traffic, or you run a website with funny cats images,
 and your traffic doubles over lunch break.
 
@@ -99,9 +79,9 @@ that you're able to handle these spikes in traffic. This works brilliantly, but 
 
 2. You provision extra servers when you know you're going to have spikes.
 This is possible, if you know that e.g. you're going to have a fire sale, or you've sent out a newsletter.
-It requires a lot of manual work though and is error prone. What if someone forgets to provision more servers, right before a big sale and your server crashes? 
+It requires a lot of manual work though and is error prone. What if someone forgets to provision more servers, right before a big sale and everything goes down?
 
-3. Other auto-scaling solutions, like Kubernetes Horisontal Pod autoscaling, or Azure Autoscale where you specify some metrics, like response time or CPU usage, and you then scale on those.
+3. Other auto-scaling solutions, like Kubernetes Horizontal Pod autoscaling, or Azure Autoscale where you specify some metrics, like response time or CPU usage, and you then scale on those.
 This is usually a fine solution, but it requires you're on a technology stack where you have access to some of those capabilities.
 
 
@@ -112,9 +92,9 @@ tall peaks, for it to make financial sense to run functions.
 
 ### Lots of bindings
 If you're alright with accepting the vendor lock-in there's a lot of bindings.
-Lambda has bindings for lots of AWS services, and Azure Functions has the same for many of Azures. There's definitely 
+Lambda has bindings for lots of AWS services, and Azure Functions has the same for many Azure services. There's definitely 
 something freeing in just stating you're interested in handling events from `EventHub Foo` and then having the serverless runtime
-deal with the nitty gritty of how to get those events to you, and how to get them into a database, or to your end-user.
+deal with the nitty gritty of how to get those events to you, and how to get them into a database or your end-user.
 
 Depending on your use-case, there's definitely some lines of code saved here. However, the saving here is a constant lines of `n` code. If you have a business logic that's a thousand
 lines, saving 200 lines of code is a solid chunk. If you have 10.000 lines of business logic, saving 200 lines doesn't look all that appealing anymore.
@@ -139,7 +119,7 @@ public static async Task Run(
 ```
 Apart from that, all we need is a few files with instrumentation keys and some settings for how to read from the event hub.
 
-If we compare that with the non-function equivalent we currently have in our project: There's around 150 lines of code that configures how to read from the event hub,
+I have an implementation of the equivalent functionality: There's around 150 lines of code that configures how to read from the event hub,
 and around 100 lines of ceremony to launch an ASP.NET Core application.
 It's always nice to save some code, but 2-300 lines of code in a large application isn't that much.
 For smaller applications and initial developer velocity though, the bindings that come with most serverless environments are awesome. 
@@ -150,17 +130,11 @@ The cost model for serverless is different. It depends on your cloud-provider bu
 So if you have little traffic, you run less functions and you pay less.
 This often makes it a very good model for when you have large differences in peak and off-peak traffic.
 However, I've heard multiple stories of people actually paying *more* with serverless environments than they would with a regular server,
-particularly when peak and off-peak traffic didn't matter that much.
+particularly when peak and off-peak traffic didn't differ that much.
 
 Depending on your traffic model, the different cost model is either an advantage or a disadvantage.
 However one thing is for sure - it's more confusing than regular per hour billing for a server.
-You'll have to do some due dilligence, to ensure you're not paying too much for too little.
-
-
-In our project however, the cost model is a non-issue. As we'll be running our functions on KEDA, under the hood they'll be run
-on the machines in the kubernetes cluster, which means our cost model is stable. We'll pay for the kubernetes machines, and that's it.
-However this also puts a limit to the upper bound of scale we can achieve, unless we enable something like the [AKS Cluster Autoscaler](https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler)
-which should automatically provision more VMs, if the cluster needs additional scaling.
+You'll have to do some due diligence, to ensure you're not paying too much for too little.
 
 
 ### High availability
@@ -181,16 +155,10 @@ the binding code, but extract the business logic, usually following steps that l
 2. Make the actual function code a very thin wrapper around the function
 3. Test only the function
 
-
-### Debugging
-Depending on the serverless stack, debugging can be harder. You can run Azure Functions locally and attach a debugger,
-but it's not quite as easy to debug them server-side, as there's not necessarily a long-running process you can attach a remote debugger to.
-
-
-Especially in our case, I fear that the potential problem space is pretty wide. If we have to debug e.g. performance issues, we have much more to consider in regards to the issue.
-Is the KEDA autoscaler scaling pods wrong? Is our application code too inefficient? Is something wrong with the kubernetes cluster, or the virtual machines underneath?
-Regular web-services seems to be more predictable in that regards.
-I could be wrong and none of these issues ever happen. But if they do, it's going to be much harder to figure out where to start.
+I also think the ease of creating new functions encourages developers to build systems that consist of small
+functions composed together. This means we have to rely more on integration testing, because several functions often come
+together to deliver a piece of functionality. I think these functions working in tandem, generally make for a system
+that's harder to test, than an equivalent system not using functions would be.
 
 
 ### Vendor lock-in
@@ -207,10 +175,10 @@ In general, distributed monitoring is much harder than monitoring a single appli
 Monitoring functions isn't harder in itself, than than monitoring the equivalent amount of microservices would be.
 But I think when evaluating a technology stack, you need to consider the patterns the technology encourages.
 Serverless make it very easy to create many small functions, which might make your logging and monitoring "more distributed" than
-it would tend to be, by using a more classical approach.
+it would tend to be when using a more classical approach.
 
 ### Maturity
-Serverless is still a (reasonably new) player on the market. KEDA is approximately a year old, and only had 1.0 release a few months ago.
+Serverless is still a (reasonably new) player on the market.
 Azure Functions was made Generally Available in 2016, and their version 3, which we'd like to use, has only been live since December of 2019, around a month at the time of writing.
 
 While we haven't encountered that many actual bugs (only one, having to do with dependency injection), we have encountered many times where we felt like the documentation
@@ -219,29 +187,21 @@ the maturity of the platform.
 
 
 ### Loss of control
-You lose some control, and you're more at the mercy of the bindings. For example, there's some reasonably advanced optiosn
+You lose some control, and you're more at the mercy of the bindings. For example, there's some reasonably advanced options
 we'd like to configure in regards to how we read events from our Event Hubs. However these configurations aren't exposed
 by the Azure Functions runtime, so if we end up using Functions, we'll have to live with not being able to configure that.
 
-I think for most use-cases, giving up control is worth the bindings you get, but usually giving up control to some framework also
-has downsides when it doesn't do what you want it to do.
+I think for most use-cases, giving up control is worth the bindings you get. Giving up control to some framework is risky though,
+because you might end up somewhere where you're unable to tune some parameters that you need to make it work. 
 
 
 ### It's a different skill set
 There's a different skill set to learn when using functions. While much of the business logic might be the same,
-the way you architect systems doesn't necessarily carry over. This can either be nice, you get to learn something new, or a hassle,
-you can't use some of the skills you've previously acquired. I don't think this is a big for us, as most of our team is new
-to both C# and ASP.NET Core, so we don't have to acquire much new knowledge.
+the way you architect systems doesn't necessarily carry over. This can either be nice, you get to learn something new, or a hassle -
+you can't use some of the skills you've previously acquired.
 
 
 ### Caching is harder
-If you have a system that relies heavily on caches, that's harder to do using Functions. In regular applications you can cache things in-memory,
+If you have a system that relies heavily on caches, that's harder when using Functions. In regular applications you can cache things in-memory,
 but that's not always possible with functions, as you have no knowledge of how often a function is discarded and re-created. Optimally you would
 use some third party cache-provider like Redis or Memcached, instead of caching in-memory.
-
-
-# For our project
-
-
-# Summing up
-Todo...
