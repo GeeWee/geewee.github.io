@@ -7,6 +7,14 @@ p {
   font-size: 16px !important;
 }
 
+li {
+  font-size: 16px !important;
+}
+
+h4 {
+  font-size: 16px !important; // Same size as p, but different color. Theme size is too small
+}
+
 section {
   padding-bottom: 20px !important; // Theme padding is a little too aggressive for me.
 }
