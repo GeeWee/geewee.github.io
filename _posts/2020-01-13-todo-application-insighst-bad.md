@@ -1,6 +1,6 @@
 ---
-title: "How Azure Application Insights cost our company 4k USD in a couple of weeks"
-permalink: "/application-insights-costs-lots-of-money"
+title: "Azure Application Insights is awful"
+permalink: "/application-insights-awful"
 draft: true
 ---
 
