@@ -130,37 +130,43 @@ We can't expect people who are already trying their hardest and some, to try har
 
 Sharpening the saw is a great idea but it's hard to find time for it when you're in a death spiral.
 
-#TODO got to here
-
 ## Get help
 If you don't have the capacity to sharpen your saw, either because you're too swamped or because it's simply not possible
 to make the things you have to do more efficient - you might need more hands on deck. 
 
-More people to do the same work, means there's less work for everyone right? JojaCo could hire some new employees or temps, and
-Angela could hire someone, or get a friend to help treat the cat.
+More people to do the same work means there's less work for everyone right? JojaCo could hire some new employees or temps, and
+Angela could hire someone or get a friend to help treat the cat.
 
 It's not always that easy though. Getting outside help (potentially) comes with a whole new slew of difficulties.
 
-- You have to be able to *get* help.
-JojaCo might not be able to afford new hires, and even if they did - it's not sure they
-would be able to find qualified people who would want to work in a place that looks like it's in decline.
-Angela would have to either hire someone to treat the cat - but that's expensive. Perhaps she could ask a friend for help,
-but that requires she has someone in her life that has the time and the willingness to help for a long stretch of time. It's not an easy ask.
+#### You have to be able to *get* help.
+JojaCo might not be able to afford new hires. And if they do, can they find qualified people who would want to work in a place like that?
 
-- You have to teach them how to do things.
+Angela would either need to have the money to hire someone to treat the cat, or ask a friend for help.
+Asking a friend for help requires that she has someone in her life, with enough time and willingness to help for a long stretch of time.
+Not everyone is lucky enough to have that.
+
+
+#### Getting help has an upfront cost as well
+Getting someone to help you isn't always easy. You'll have to find a friend who is willing to help you, or spend time
+interviewing candidates.
+
 JojaCo will have to spend some time teaching the new employees how everything works.
 Angela would probably also have to spend some time teaching someone else how to treat her cat. It might some time before both
 JojaCo and Angela trusts their new people to do the work without them.
 
 
 ## Hope that something will change
-I think this is what often happens. You keep struggling along and you hope that something changes.
-Perhaps you'll wake up one day, invigorated with new energy.
-Perhaps you hope that Johnny’s going to start being sick with stress soon, and when he comes back, it’ll be easier.
-Perhaps you hope your cat will magically improve enough, so that it takes less work.
-Perhaps you don’t have a special thing you’re hoping for - but you just hope something will change.
+There's a few ways above to tackle the solution, each with their own difficulties to implement. None of them are
+easy.
+Maybe that's why people just often keep struggling along, while hoping that something will change.
 
-I don’t think they normally do.
+- Perhaps you'll wake up one day, invigorated with new energy.
+- Perhaps your employee will stop getting sick from stress soon
+- Perhaps your cat will improve so that you don't have to spend quite as much time caring for it.
+- Perhaps things will improve somehow, even though you're not really sure how.
+
+I don't think things tend to improve when you're in a death spiral.
 
 
 I think we hope and keep doing what's not working, because we feel trapped. We're in a slow steady decline, but 
@@ -175,5 +181,5 @@ I just hope the crash isn't so bad you can't recover from it.
 
 
 *Do you have any experiences with death spirals? How did you get out of it? I'd really like to hear some other opinions
-on this topic. Tweet at me at @GeeWengel* 
+on this topic. Tweet at me at [@GeeWengel](https://twitter.com/GeeWengel)* 
 
