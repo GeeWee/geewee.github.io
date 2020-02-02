@@ -1,123 +1,136 @@
 ---
-title: "Death spirals: Working harder than you can"
+title: "Death spirals: Working Too Hard"
 permalink: "/death-spirals"
 draft: true
 ---
-
-# Start off with the personal story
-Recently I've been thinking a lot about what I like to dramatically call 'death spirals'. A 'death spiral' is when
-you have so much you need to do, work-related or otherwise, that it's bordering on the edge of unreachable.
-We're not talking impossible tasks here - because then you'd give up. We're talking something that's either right
-on the edge of possibility for you to achieve if you work *really, really hard*.
-We're talking about work that never ends.
+Recently I've been thinking a lot about what I like to dramatically call *death spirals*. A death spiral is when
+you have so much you need to do, work-related or otherwise, that it's bordering on the edge of impossible.
 
 
-I first noticed this pattern when one of my good friends had taken a job at a tech support company, that we'll call *JojaCo*.
-Now, Jojaco was a consultancy that helped their customers manage their technical infrastructure. The department my friend
-worked at wasnt' particularly well-managed, but it survived. There was a lot of work, but it was manageable.
+One of my good friends used to work at a company that we'll call *JojaCo*.
+Now, JojaCo was a consultancy that helped their customers manage their technical infrastructure. The department my friend
+worked at wasn't particularly well-managed, but it wasn't a disaster. They had a little too much to do, but it wasn't a disaster.
+
+At least not until one of the employees fell ill with stress, and had to take a longer leave of absence.
+Now the other employees had to pick up the slack. The employees that already had a little too much work, now had a lot.
+
+They started cutting corners because they had to. The company used to have documentation for
+each customer describing their systems, the different passwords needed to make changes etc. This documentation
+slowly stopped being up-to-date as no one had time to update it.
+Not updating this saved time in the short run.
+Without this documentation, the next time someone had to help the customer it took longer.
+This is how a death spiral starts.
+
+With the deteriorating documentation making people even more pressed for time,
+other employees started to burn-out and take sick leaves,
+leaving even more work for even less people.
+
+At the end my friend was working 70+ hours a week.
+He was miserable. People were sick with stress or quitting, and new hires didn't stick around for long in a work
+environment that unhealthy. The company had turned into a burn-out factory for its employees.
+
+My friend lasted for about a year more before quitting.
 
 
-That is, until someone fell ill with stress, and had to take a longer leave of absence.
-The customers still took the same time, so the other employees had to cover for the sick employee.
-Naturally, if you take people right on the edge of having too much work and you add extra - they get overburdened.
-These new people then started to burn-out and become ill with stress, leaving even more work for even less people.
-This is how the "death spiral" starts.
-
---documentation--
-
-At the end, my friend was working 70+ hours a week (luckily he was paid for the overtime),
-but he was miserable. People kept becoming sick or quitting, and new hires didn't stick around for long in a work
-environment that unhealthy.
-My friend also ended up quitting after more than a year of the company spiralling to its death.
-I don't know how the company is doing now, but unless they've done something different, it's probably still a burn-out factory for its employees. 
+## The Death Spiral
+This is the story of a death spiral. It's the story of a company, where the employees had too much to do and not
+enough time to do it properly.
+The employees always work so much they're on the edge of burning out, if they haven't already.
+They don't have time to make their work situation better. The amount of work never decreases.
+They're spending all of their energy staying afloat, so there's none left to swim towards the shore.
 
 
-# Not sharpening the axe
-The story above, is the story of a death spiral. It's the story of a company, where the employees had too much to do and not
-enough time to do it properly. The employees don't have the time to make their work situation better, and they work so much that they're always
-on the edge of burning out.
-Death spirals come in many flavours, which I'm going to try and explore here - but the overarching principle is that people are so busy that
-they don't have the time to be less busy. They're stretched so thin that they don't have a moment to consider ??
-
-
-Stephen Covey tells a similar anecdote in his book The Seven Habits Of Highly Effective People.
-You come across a man who's trying to cut down a tree with a very dull saw.
-You ask him why he doesn't sharpen the saw - he looks at you like you're stupid, and tells you that he doesn't have time
+Stephen Covey tells a similar anecdote in his book [The Seven Habits Of Highly Effective People](https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People).
+He tells of a man who's trying to cut down a tree with a very dull saw.
+You ask him why he doesn't sharpen the saw, and  he tells you that he doesn't have time
 for that because he has to cut down this tree and he's already behind.
 
 
-When you put it into an anecdote like this, it's obviously silly that he doesn't spend an hour sharpening his saw, so he
-can cut down the tree faster. However, reality is usually more comlicated than anecdote. A more apt description would be:
+If you phrase it like this, it's obviously silly that he doesn't spend an hour sharpening his saw, so he can cut down the tree faster.
+That anecdote doesn't quite capture a death spiral though. A more apt description would be:
 
-The man is cutting down the tree with his dull saw. He doesn't have any sharpening tools, and he doesn't have money to buy any.
-He could make his own, but it would take him several days to create the tools and sharpen the saw.
+The man is cutting down the tree with his dull saw. He doesn't have any tools to sharpen it.
+He can't afford any, but he could make his own.
+It would take him several days to create the tools and sharpen the saw.
 His boss is expecting him to cut down this tree by today, and he's already behind.
 
 
-This is the dilemmma death spirals create. To make our work more efficient we need to spend time or energy that we don't have.
-So we keep carrying on - because it's all we can do.
- 
+This is the dilemma death spirals create. To improve our situation we need to spend time or energy that we don't have. 
+
 
 # Angela And Her Cats
-Death spirals aren't just work-related though. A thinly veiled example from my personal life.
-This is Angela. Angela has multiple cats. One of them is sick, and keeping it in good condition requires her to use many hours
-every day treating it.
-Angela also has some health issues that makes her tired. Medicine exists for her condition, but there are side-effects.
-The side-effects usually become less after a month or so. 
+Death spirals aren't just work-related though.
+This is Angela. Angela has multiple cats.
 
-Angela's death spiral here, is that she is *so exhausted* after taking care of her obligations. Her cat's going to suffer
-if she doesn't have the energy to treat it. She knows that she should take her medicine, but she's on the edge of collapse
-every day. She's so stressed out that there's no way she can cope with anymore problems in her personal life. 
+<div class="img-div">
+<a href="https://en.wikipedia.org/wiki/Angela_Martin#/media/File:Angela_Martin.jpg">
+<img src="https://upload.wikimedia.org/wikipedia/en/0/0b/Angela_Martin.jpg" />
+Let's say she hypothetically looks like this...
+</a>
+</div>
 
-So she endures. Her medical condition progresses slowly, but every attempt at taking her medicine fails. Her cat doesn't
-require less care with time, but as her condition progresses she gets more and more tired.
+One of Angela's cats is sick. Keeping the cat healthy requires her to use many hours every day treating it.
+Angela also has some health issues. The health issues makes her tired, and they will continue to get worse if she's not treated.
+Medicine exists for her condition but there are some rather rough side-effects. The side-effects usually start disappearing after a month or so. 
 
+Angela is *so exhausted* after taking care of her obligations. At the end of every day she's on the edge of collapse
+She knows that she should take her medicine, but she's so stressed out that there's no way she can cope with any additional stress.
+
+So she endures. Her medical condition progresses slowly, but every attempt at taking her medicine fails. She stops when
+the side-effects kick in, as it's too much.
 
 This is her death spiral. To get more energy, she needs to spend more energy than she has in her daily life.
-She can't muster that energy over large amounts of time, so she keeps spiralling.
-Death spirals tend to get worse over time. Not necessarily in the way that they go faster and faster, but that you
-keep getting farther away from "ok"  
+She can't muster that energy over large amounts of time, so she stays in the death spiral, getting more and more tired.
 
-
-# How to get out
-So how do you get out of a death spiral? I honestly wish there was a textbook example. A step-by-step recipe for
-how to get yourself, your loved ones or your company out of a death spiral. Unfortunately if there is, I haven't found it.
-The ways there are, aren't easy.
-
-## Leave
-just leave
+# How To Get Out of A Death Spiral
+So how do you get out of a death spiral? I wish there was a step-by-step guide for
+how to get yourself, your loved ones or your company out of a death spiral.
+Unfortunately if there is, I haven't found it. These are my best bets.
 
 ## Do Less
 This is a classical example of advice that's easy to give, but *really* hard to follow.
-Simply do less.
+Somehow, you have to reduce the amount of work you have to do. You have to *do less*.
+
 If you're JojaCo, call up some of your customers and tell them that you can't help them currently as you're understaffed.
-They're probably not going to like it very much, and they probably won't be your customers in the future, but you've (potentially)
-saved yourself from the death spiral.
+They're probably not going to like it very much, and they probably won't be your customers in the future.
+But potentially you've saved yourself from the death spiral.
 
 
-The rough part here is that doing less hurts. And often we chose to stay in the death spiral, because it hurts less than taking drastic action.
-The death spiral is worse for us in the long run, but "right now" - it's all we have the energy to do.
+If you're a JojaCo employee and you don't think anything is going to change - quit your job (if you can).
+There's no honor in staying in the death spiral until it crashes. Save yourself the heartache and stress and get out if you can.
 
-You're not always capable of doing that. What if you can't cut out any customers without losing profitabillity, or there's
-no duties you can 
+----
 
-This is the equivalent of cutting off a limb with gangrene. You don't want to do it, it's going to hurt as hell, and you'll miss 
-that limb when it's gone. But potentially it's all you can do, to save the rest.
+Doing less isn't always possible.
+You might not have the money saved up to quit your job, and no extra energy to look for a new one.
+Maybe you can't cut out any customers because then you can't pay your salaries.
+You can't tell your cat you need it to be less sick.
+
+Even if you're in a situation where you *can* do less, it's not an easy choice.
+Doing less hurts.
+We stay in death spirals because they hurt less than taking drastic action would.
+The death spiral is worse for us in the long run, but *right now* - it's all we have the energy to do.
+
+Doing less is like cutting off a limb with gangrene. You don't want to do it, it's going to hurt as hell, and you'll miss 
+that limb when it's gone. But sometimes it's all you can do to save the rest.
 
 ## Sharpening the saw
-You invest time to somehow make the things you have to do easier.
+If you can't do less, maybe can make the things you have to do easier.
+
 For JojaCo this could be taking the time to write proper documentation so that it's easier the next time around you
 have to deal with a customer.
-This is a good approach, but the difficulty is that it usually requires more resources.
-This is "sharpening the saw". In the long run it will make things more efficient, but in the short run you have to invest
-time or resources that you might not have. Often sharpening the saw requires extra effort that will pay itself back, but the trick
-is figuring out how to get the extra effort.
-You can try to "kick it up a notch" and work harder, but by the time we find out
-we're in a death spiral, this is often what we've been doing for a while, and we don't have the energy to do it even more..
+For Angela this would be getting on her medications, which in time will give her more energy.
 
-It's not always possible to sharpen your saw though.
-Angela can't make the treatment of her cat's illness more efficient.
+This is *sharpening the saw*. You'll make things more efficient in the long run, but in the short run you have to invest
+time or resources that you might not have.
 
+You can try to sharpen the saw by working even harder for a time, but often by the time we find out
+we're in a death spiral we've been trying that for a while.
+We can't expect people who are already trying their hardest and some, to try harder. They *will* break. 
+
+Sharpening the saw is a great idea but it's hard to find time for it when you're in a death spiral.
+
+#TODO got to here
 
 ## Get help
 If you don't have the capacity to sharpen your saw, either because you're too swamped or because it's simply not possible
