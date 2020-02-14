@@ -124,6 +124,7 @@ you lose.
 After doing the research and thinking about it, I think my opinion is this currently:
 
 - You should always create one constructor that maps 1:1 to the fields internally in the class.
+- If you need to do anything fancy to create the object, such as IO, or you're interested in caching objects and reusing them, use a static factory method.
 - If you need API stability, such as for library development, hide that constructor and use a static factory method because
  of the implementation flexibility it gives you.
 - If you have multiple different ways to create your class, create static factory methods and use those, because of the descriptiveness
