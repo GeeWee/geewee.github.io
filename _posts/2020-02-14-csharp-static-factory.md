@@ -77,7 +77,7 @@ A real-world example where this could be relevant:
 // This could create an IpV4IpAddress that implements IIpAddress 
 IIpAddress ipv4Address = IpAddress.FromString("127.0.0.1");
 
-// This could create an IpV4IpAddress that implements IIpAddress 
+// This could create an IpV6IpAddress that implements IIpAddress 
 IpAddress ipv6Address = IpAddress.FromString("2001:0db8:0a0b:12f0:0000:0000:0000:0001")
 ```
 Being able to return a different actual type depending on the input is probably pretty valuable when providing public APIs, such
