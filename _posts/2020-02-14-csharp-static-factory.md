@@ -37,11 +37,11 @@ to the method (or "method group" as they're officially called) in your code. Con
 
 ```csharp
 // Static factory method - the method group can be passed in directly as a function reference
-var IEnumerable<Bar> bars = myFoo
+var bars = myFoo
     .Select(bar.FromFoo)
 
 // Constructors - you have to pass in a lambda that constructs the instance via new.
-var IEnumerable<Bar> = myFoo
+var bars = myFoo
     .Select(f => new Bar(f));
 ```
 There's no functional difference in this code - it's only a matter of taste in code style, so it probably shouldn't
@@ -78,7 +78,7 @@ A real-world example where this could be relevant:
 IIpAddress ipv4Address = IpAddress.FromString("127.0.0.1");
 
 // This could create an IpV6IpAddress that implements IIpAddress 
-IpAddress ipv6Address = IpAddress.FromString("2001:0db8:0a0b:12f0:0000:0000:0000:0001")
+IIpAddress ipv6Address = IpAddress.FromString("2001:0db8:0a0b:12f0:0000:0000:0000:0001")
 ```
 Being able to return a different actual type depending on the input is probably pretty valuable when providing public APIs, such
 as in library contexts. Particularly because it means you can hide some implementation details behind an interface or a base class.
