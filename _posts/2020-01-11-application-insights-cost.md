@@ -1,7 +1,13 @@
 ---
 title: "How Azure Application Insights cost our company 4k USD in a couple of weeks"
 permalink: "/application-insights-costs-lots-of-money"
+short: "Or the alternative title, \"How Microsoft shot me in one foot, and then gave me a gun so I could shoot my other one\""
 ---
+
+*Update 02/03/2020 - the documentation error has since been fixed, and Microsoft has reached out to me for a full refund.
+Every engineer I've talked to from Microsoft has been nothing but wonderful, but the official support channels are still slow (we're talking weeks).
+I'm satisfied with the conclusion to this, even though I still maintain that the API choice is pretty questionable*
+
 
 Or the alternative title, "How Microsoft shot me in one foot, and then gave me a gun so I could shoot my other one"
 
