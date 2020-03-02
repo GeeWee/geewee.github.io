@@ -3,33 +3,50 @@ title: "Observables or not: A case study"
 permalink: "/csharp-observables-rewritten"
 draft: true
 ---
+```csharp
 
+// ----------------- Section - start logging -----------------------
+            using var _operationHolder = _telemetryClient.StartRequestOperation("eventHarmonizerProcessEvents");
+            var stopwatch = Stopwatch.StartNew();
+            
+            // ----------------- Section - convert to a different type -----------------------
+            var messageList = messages.ToList();
+            var uniformEventList = new List<UniformEventBatch>(messageList.Count);
+            foreach (var eventHubEvent in messageList)
+                try
+                {
+                    var rawEventBatch = GZip.Decompress<RawEventBatch>(eventHubEvent.Body);
+                    using (LogContext.PushProperty(LoggingManager.EventIdContextName, rawEventBatch.Guid))
+                    {
+                        var uniformEventBatch = await _uniformEventConverter.ConvertRawEventToUniform(rawEventBatch);
+                        uniformEventList.Add(uniformEventBatch);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e, $"Error processing message on partition {context.PartitionId}");
+                }
+            
+            // ----------------- Section - send off to the next eventhub -----------------------
+            using var _ =
+                LogContext.PushProperty(LoggingManager.EventIdContextName, uniformEventList.Select(u => u.Guid));
+            await _eventHubDispatcher.SendToEventHub(uniformEventList,
+                IEventHubDispatcher.FourHundredKiloBytesInBytes,
+                _digestEventHubOptions.CurrentValue.WtgEventHubName,
+                _digestEventHubOptions.CurrentValue.EventHubConnectionString
+            );
+
+            // ----------------- Section - logging and metrics -----------------------
+            stopwatch.Stop();
+            ReportMetrics(context, messageList.Last(), stopwatch, messageList);
+
+            await _checkpointer.Checkpoint(context, messageList.Count);
+        }
+
+```
 
 
 ```csharp
-
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reactive.Linq;
-using System.Reactive.Subjects;
-using System.Reactive.Threading.Tasks;
-using System.Threading;
-using System.Threading.Tasks;
-using EventHarmonizer.Services;
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.EventHubs.Processor;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using Serilog;
-using Serilog.Context;
-using Shared;
-using Shared.EventHub;
-using Shared.Logging;
-using Shared.Models;
-using Shared.Options;
-
 namespace EventHarmonizer.EventHub
 {
     public class EventProcessorFactory : IEventProcessorFactory
@@ -223,5 +240,119 @@ namespace EventHarmonizer.EventHub
         }
     }
 }
+
+```
+
+
+# Round two
+
+```csharp
+
+// EXTENSION METHOD
+public static IObservable<EventDataBatch> Batch<T>(this IObservable<T> source, int maxBatchSizeInBytes)
+        {
+            return source.Materialize()
+                .Scan(
+                    (emit: Enumerable.Empty<Notification<EventDataBatch>>(),
+                        currentBatch: new EventDataBatch(maxBatchSizeInBytes)),
+                    (acc, next) =>
+                    {
+                        acc.emit = Enumerable.Empty<Notification<EventDataBatch>>();
+
+                        next.Accept(
+                            // If we get a new element, try adding it to our currentbatch 
+                            onNext: (currentObjectToSend) =>
+                            {
+                                var gzippedObjectToSend =
+                                    GZip.Compress(JsonConvert.SerializeObject(currentObjectToSend));
+                                // LONG TAKES 21 byte
+
+                                var eventData = new EventData(gzippedObjectToSend);
+
+                                // If we can add it, do that and do nothing else.
+                                if (acc.currentBatch.TryAdd(eventData))
+                                {
+                                    Console.WriteLine("Succesfully added eventData");
+                                    // return acc;
+                                }
+
+                                // If we can't emit anymore. 
+                                else
+                                {
+                                    Console.WriteLine("Had to start a new batch");
+                                    // Emit the Current batch
+
+                                    // TODO acc.emit is never reset..??
+                                    acc.emit = Notification.CreateOnNext(acc.currentBatch).Yield();
+                                    acc.currentBatch = new EventDataBatch(maxBatchSizeInBytes);
+                                }
+                            },
+                            onError: exception =>
+                            {
+                                Console.WriteLine("Onerror");
+                                acc.emit = Notification.CreateOnError<EventDataBatch>(exception).Yield();
+                            },
+                            onCompleted: () =>
+                            {
+                                Console.WriteLine("Stream finished, emitting last");
+                                acc.emit = new Notification<EventDataBatch>[]
+                                {
+                                    Notification.CreateOnNext(acc.currentBatch),
+                                    Notification.CreateOnCompleted<EventDataBatch>(),
+                                };
+                            }
+                        );
+
+                        return acc;
+                    })
+                .SelectMany(acc => acc.emit)
+                .Dematerialize();
+        }
+        
+// METHOD CALL
+public async Task ProcessEventsAsyncObservable(PartitionContext context, IEnumerable<EventData> messages)
+        {
+            using var _operationHolder = _telemetryClient.StartRequestOperation("eventHarmonizerProcessEvents");
+            Stopwatch? stopwatch = Stopwatch.StartNew();
+
+            async Task<UniformEventBatch> ConvertEventDataToUniform(RawEventBatch eventData)
+            {
+                using (LogContext.PushProperty(LoggingManager.EventIdContextName, eventData.Guid))
+                {
+                    try
+                    {
+                        return await _uniformEventConverter.ConvertRawEventToUniform(eventData);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e, $"Error processing message on partition {context.PartitionId}");
+                        return await Observable.Empty<UniformEventBatch>();
+                    }
+                }
+            }
+
+            await messages.ToObservable()
+                // .SelectMany(i => i)
+                .Do(_ => stopwatch = Stopwatch.StartNew()) // done for each element currently
+                .Select(eventData => GZip.Decompress<RawEventBatch>(eventData.Body))
+                .SelectMany(ConvertEventDataToUniform)
+                // Compress
+                .Select(objectToGzip => GZip.Compress(JsonConvert.SerializeObject(objectToGzip)))
+                // Batch stuff 
+                .Batch(maxBatchSizeInBytes: 400_000)
+                .Do(async s => { await _eventHubClientAdapter.SendAsync(s); })
+                .Select(s => s.ToEnumerable().ToList())
+                .Do(async s =>
+                {
+                    // TODO what happens if it throws an exception 
+                    await _checkpointer.Checkpoint(context, s.Count);
+                    stopwatch.Stop();
+                    ReportMetrics(context, s.Last(), stopwatch, messages.ToList());
+                }).ToTask();
+            
+            // TODO how to return a TASK??
+
+            await Task.CompletedTask;
+        }
 
 ```
