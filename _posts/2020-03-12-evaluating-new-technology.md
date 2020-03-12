@@ -1,5 +1,5 @@
 ---
-title: "A checklist for evaluating new technology"
+title: "A Checklist For Evaluating New Technology"
 permalink: "/evaluating-new-technology"
 draft: false
 ---
