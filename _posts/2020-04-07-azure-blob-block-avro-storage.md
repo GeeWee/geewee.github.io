@@ -49,7 +49,7 @@ As we also have another concepts called blocks later on, I'll sometimes be refer
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/avro/avro-file.jpg" />
-The general structure of an avro file
+The structure of an avro file
 </div>
 
 The fact that Avro files are designed this way means that they're very good at being sliced into pieces and stitched back together again.
@@ -71,10 +71,11 @@ Each block consists of some data, and it has a unique `block id` which we can sp
 We use the `block id` to refer to the block later.
 
 A blob consists of one or more blocks. By re-ordering, replacing or adding blocks to a blob, we're able to efficiently
-update and change files with a mimimum of work.
+update and change files with a minimum of work.
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/avro/azure-block-blob.jpg" />
+The structure of an Azure Block Blob
 </div>
 
 *A word on words: While the "official" terms are `blocks` and `blobs`, where one `blob` consists of multiple
