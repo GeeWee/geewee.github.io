@@ -3,7 +3,7 @@ title: "To Serverless or Not To Serverless"
 permalink: "/serverless-or-not"
 ---
 
-Internally at [SCADA MINDS](https://www.scadaminds.com/), we've had a lot of discussion whether or not to use serverless, Azure functions to be more specific,
+Internally at [SCADA MINDS](https://www.linkedin.com/company/scada-minds/), we've had a lot of discussion whether or not to use serverless, Azure functions to be more specific,
 for a large project. This is my attempt to give a balanced overview of the pros and cons of Serverless, to help us make the right decision.
 
 A disclaimer: I haven't actually worked with serverless for long at all.

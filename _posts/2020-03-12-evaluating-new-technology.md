@@ -9,7 +9,7 @@ All of your troubles? *Shh, they're all better now.*
 The reality is, of course different. New technology sometimes solve problems in wonderful ways, but just as often it doesn't live up to the hype.
 It can be hard to determine whether something looks great because it solves a real problem or just because it's new and shiny. 
 
-I work at [SCADA MINDS](https://www.scadaminds.com/), a consultancy company primarily doing green-energy software projects.
+I work at [SCADA MINDS](https://www.linkedin.com/company/scada-minds/), a consultancy company primarily doing green-energy software projects.
 We're in the process of streamlining how we evaluate when to adopt new technology.
 We've created a checklist for evaluating the pros/cons of new technology and I've added my personal thoughts about each point.
 

@@ -3,7 +3,7 @@ title: "Our Decision Whether or Not To Use Serverless"
 permalink: "/serverless-decision"
 ---
 
-Internally at [SCADA MINDS](https://www.scadaminds.com/), we've had to make a decision whether or not to use a Serverless architecture for
+Internally at [SCADA MINDS](https://www.linkedin.com/company/scada-minds/), we've had to make a decision whether or not to use a Serverless architecture for
 a large project. I wrote a post earlier on the general [pros and cons of Serverless,]({{ site.baseurl }}{% link _posts/2020-01-14-serverless-or-not.md %})
 but like most projects, there are some unique circumstances that we need to consider.
 

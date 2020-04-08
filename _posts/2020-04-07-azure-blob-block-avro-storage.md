@@ -3,12 +3,12 @@ title: "Implementing A Fast Queryable Storage with Apache Avro and Azure Block B
 permalink: "/azure-blob-block-avro-storage"
 draft: true
 ---
-At my employer [SCADA MINDS](https://www.scadaminds.com/) we're currently working on implementing a data pipeline for one of the larger wind companies
-in the world. Wind turbines have _a lot_ of sensors, that generate, among others, a lot of timeseries data. 
+At my employer [SCADA MINDS](https://www.linkedin.com/company/scada-minds/) we're currently working on implementing a data pipeline for one of the larger wind companies
+in the world. Wind turbines have _a lot_ of sensors, that generate a lot of time-series data. 
 For the amount of turbines we need to support, we need to be able to process upwards of 1GB/sec.
 
 This is a blog post about how, using Azure Block blobs, we've made a performant API that can handle that
-amount of data, and still maintain a respectable latency (<500ms for most cases)
+amount of data, and still maintain a respectable latency when queried (<500ms for most cases)
 
 When considering solutions we had a few criteria that needed to fulfill:
 
@@ -19,7 +19,7 @@ query for a *sensor id in a specific time interval*. This is the only query type
 - <b>We need to allow incremental updates of the data</b><br>
 Sometimes sensors go offline or turbines are a little slow to catch up.
 This means that for a given interval, we're not sure when we'll have all the given sensor data.
-Our solution needs to be able to handle getting the data incrementally. 
+Our solution needs to be able to handle updating the data efficiently.
 
 - <b>Our solution must be cost-efficient</b><br>
 We also need to keep an eye towards cost. While we could fulfill all the other criteria by dumping all of our data
@@ -31,12 +31,12 @@ Let's zoom out a bit and look at the two major components of the solution.
 
 # The Structure of An Avro File
 An `.avro` file is a row-based open source binary format developed by Apache, originally for use within the Hadoop.
-The avro format is defined by the eminently readable [spec](https://avro.apache.org/docs/current/spec.html), but in short
-it contains of two parts: A header and one or more data blocks.
+The avro format is defined by the very readable [spec](https://avro.apache.org/docs/current/spec.html).
+For this to make sense, all you need to know is that an avro file consists of two parts: A header and one or more data blocks.
 
 ### Avro File Header
-The file header generally consists of metadata describing the rest of the avro file.
-It also contains the `avro schema` which is JSON describing the format of the rest of the file.
+The file header consists of metadata describing the rest of the avro file. 
+It contains the `avro schema` which is JSON describing the format of the rest of the file.
 The file header ends with a `sync marker`, which is a randomly generated block of sixteen bytes.
 The `sync marker` is used internally in an Avro file at the end of the header and each data block.
 
@@ -44,16 +44,16 @@ The `sync marker` is randomly generated when writing a file. It's unique within 
 
 ### Avro data block
 After the header, the avro file consists of data blocks, or rows. Each data block contains encoded data as specified by the header schema.
-At the end of each block is the `sync marker` - so that we can tell where one block ends and another begins.
-
----
-
-The fact that Avro files are designed this way means that they're very good at being sliced into pieces and stitched back together again.
-As long as you know the schema and the sync marker, the data blocks can both be _read_ and _written_ independently.
+At the end of each block is the `sync marker` - so we can tell where one block ends and another begins.
+As we also have another concepts called blocks later on, I'll sometimes be referring to the avro data blocks as _rows_.
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/avro/avro-file.jpg" />
+The general structure of an avro file
 </div>
+
+The fact that Avro files are designed this way means that they're very good at being sliced into pieces and stitched back together again.
+As long as you know the schema and the sync marker, the data blocks can both be _read_ and _written_ independently.
 
 We'll be using that property to construct a storage that efficiently handles handles both incremental updates,
 and partial reads of these files.
@@ -66,13 +66,12 @@ However it has a few more tricks up its sleeve than just being able to upload an
 It has [three different types of blobs](https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs),
 each with their own characteristics. The ones we'll be using are called _block blobs._
 
-A block blob is a file or blob, that consists of several different pieces, which are called blocks.
-Each block consists of two things.
-The first thing is a `block id`, which is a unique base64-encoded string, that we can use to refer to the blob later.
-The second thing is the contents of the block, which is whatever you upload.
+A block blob is a blob/file, that consists of several different pieces which are called blocks.
+Each block consists of some data, and it has a unique `block id` which we can specify.
+We use the `block id` to refer to the block later.
 
-A blob then consists of one or more blocks. By re-ordering, replacing or adding blocks to a blob, we're able to efficiently
-update and change files with a miminum of work.
+A blob consists of one or more blocks. By re-ordering, replacing or adding blocks to a blob, we're able to efficiently
+update and change files with a mimimum of work.
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/avro/azure-block-blob.jpg" />
@@ -80,7 +79,7 @@ update and change files with a miminum of work.
 
 *A word on words: While the "official" terms are `blocks` and `blobs`, where one `blob` consists of multiple
 `blocks`, I feel the two terms are a little too close to each other, and I certainly often get confused.
-From here-on I'll call the blobs `files`. It's less-correct, but hopefully easier to understand.*
+From here-on I'll call the blobs `files`. It's less-correct, but hopefully harder to get them mixed up.*
 
 ## Writing files
 Writing a file via the block blob interface consists of two parts.
@@ -94,9 +93,9 @@ they don't really do anything.
 ### Commit the blocks
 The next step is committing the blocks which creates a fully formed file.
 You commit the blocks by sending a list of block ids to be committed.
-The file will then consist of these blocks, *in the order* that the block ids are provided.
-The block ids can either be uncommitted blocks we've staged via the previous steps, or blocks that
-are already in the file.
+The file will then consist of these blocks, in the order that the block ids are provided.
+The block ids can either be uncommitted blocks we've staged via the previous steps or blocks that
+already exist in the file.
 
 This means that if we want to write a block and put it in the middle of a file, we'd do the following:
 - Stage the block with a unique id
@@ -106,20 +105,14 @@ This means that if we want to write a block and put it in the middle of a file, 
 
 
 ## Reading from block blobs
-Out of the box, the `block blobs` don't give us that many ways to read individual blocks.
-However, it does give us the ability to query for the list of blocks and how many bytes are in each.
+We can query an Azure Block blob for the list of blocks and how many bytes are in each.
 
-The Azure Blob Storage API also allows you to specify only a range of bytes to fetch.
+The Azure Blob Storage API allows you to specify only a range of bytes to fetch.
 This means that using the list of blocks, we can figure out what byte range a given block exists in.
-Using these two mechanisms together, we're able to fetch any given block from a file if we know the `block id`
+Using these two mechanisms together, we're able to fetch any given block from a file if we know the block id.
 
 
 # Our solution
-Reminder, what we need to do is:
-- Allow querying on a given sensor for a given time interval
-- Allow incremental updates of the data
-- Be able to know which sensor data is available for a given interval
-
 The general structure we've created is as follows:
 
 For each 10 minute interval, we create a new `.avro` file in our blob storage.
@@ -131,25 +124,29 @@ for the sensor in the given interval.
 
 We split the avro file up into blocks as follows
 - One block for the avro header. The `block id` is something unique such as `$$$_HEADER_$$$`
-- One block for each row in the avro file. The `block id` here is the `sensor id` 
+- One block for each row in the avro file. The `block id` here is the `sensor id`.
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/avro/avro-block-blob.jpg" />
+Like this. Each data block in the avro file corresponds to a block in the Azure Block Blob.
+They're even both called blocks!
 </div>
 
 
 ## Querying For Specific Sensor Data
-The next is querying for a specific amount of data. We allow querying for a time interval on a specific sensor id.
+We allow querying for a time interval on a specific sensor id.
 First of, we have to calculate which files are relevant, when given an interval to search for. Depending on the interval you
-search for this could be one or many `.avro` files.
+search for this could be multiple `.avro` files.
 
 We do that by listing the file names in the blob storage. As each file name contains its interval, finding the right
 files is a matter of some reasonably simple string matching.
 
 We can then use the unique properties of the block blobs and avro files to only fetch the data we need.
+As the `sensor id` is the `block id` of the block, we can quickly see which block contains the data for a particular sensor.
+
 The process of extracting data for a specific sensor is then:
 
-- Use the block list to figure out which block has the avro row
+- Use the block list to figure out which block contains the avro row
 - Fetch the header block and the block containing the sensor data 
 - Stitch the two blocks together to form a complete avro file.
 - Parse the avro file and return the result
@@ -161,12 +158,12 @@ We generate a header and stage that in the first block. Afterwards we stage each
 We then commit all the blocks we just staged. 
 
 Later on when we get new data for an interval, all we need to do is stage blocks with the new data.
-As mentioned previously when writing to an avro file, all we need is the `schema` and the `sync marker`, aka the header.
+As mentioned previously when writing a row to an avro file, all we need is the schema and the sync marker.
 
 So we can update our intervals like this:
 - We fetch the header block from the existing file, and extract the schema and sync marker
 - We stage each new row with the `sensor id` as the `block id`, using the schema and sync marker retrieved from above.
-- Commit the old block ids along with the newly staged ones. This allows us to create a file combining the new and old data
+- We commit the old block ids along with the newly staged ones. This allows us to create a file combining the new and old data
 without ever touching the old data. 
 
 
