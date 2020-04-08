@@ -31,14 +31,18 @@ Let's zoom out a bit and look at the two major components of the solution.
 
 # The Structure of An Avro File
 An `.avro` file is a row-based open source binary format developed by Apache, originally for use within the Hadoop.
-The avro format is defined by the very readable [spec](https://avro.apache.org/docs/current/spec.html).
-For this to make sense, all you need to know is that an avro file consists of two parts: A header and one or more data blocks.
+Officially the avro format is defined by the very readable [spec](https://avro.apache.org/docs/current/spec.html),
+but you can also think of it as a more advanced `.csv` file.
+
+Like a csv file an avro files also has a header and multiple rows, called data blocks.
+Unlike csv files, data blocks in an avro file are compressed and can contain a variable amount of data.
+Let's dive a little more into the two parts of an avro file.
 
 ### Avro File Header
 The file header consists of metadata describing the rest of the avro file. 
 It contains the `avro schema` which is JSON describing the format of the rest of the file.
 The file header ends with a `sync marker`, which is a randomly generated block of sixteen bytes.
-The `sync marker` is used internally in an Avro file at the end of the header and each data block.
+The `sync marker` is used internally in an Avro file at the end of the header and each data block. I
 
 The `sync marker` is randomly generated when writing a file. It's unique within the same file but different between files.
 
@@ -55,7 +59,7 @@ The structure of an avro file
 The fact that Avro files are designed this way means that they're very good at being sliced into pieces and stitched back together again.
 As long as you know the schema and the sync marker, the data blocks can both be _read_ and _written_ independently.
 
-We'll be using that property to construct a storage that efficiently handles handles both incremental updates,
+We'll be using that property to construct a storage that efficiently handles both incremental updates,
 and partial reads of these files.
 
 But first, we need to know a little more about Azure Block Blobs.
