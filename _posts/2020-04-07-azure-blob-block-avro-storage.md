@@ -29,7 +29,7 @@ We ended up with a solution where we store `.avro` files in [Azure blob storage]
 in a way that effectively allows us to only update and fetch parts of the file.
 Let's zoom out a bit and look at the two major components of the solution.
 
-# The Structure of An Avro File
+# The Structure of an Avro File
 An `.avro` file is a row-based open source binary format developed by Apache, originally for use within the Hadoop.
 Officially the avro format is defined by the very readable [spec](https://avro.apache.org/docs/current/spec.html),
 but you can also think of it as a more advanced `.csv` file.
@@ -42,7 +42,7 @@ Let's dive a little more into the two parts of an avro file.
 The file header consists of metadata describing the rest of the avro file. 
 It contains the `avro schema` which is JSON describing the format of the rest of the file.
 The file header ends with a `sync marker`, which is a randomly generated block of sixteen bytes.
-The `sync marker` is used internally in an Avro file at the end of the header and each data block. I
+The `sync marker` is used internally in an Avro file at the end of the header and each data block.
 
 The `sync marker` is randomly generated when writing a file. It's unique within the same file but different between files.
 
