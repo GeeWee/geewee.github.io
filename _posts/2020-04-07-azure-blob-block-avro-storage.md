@@ -1,7 +1,7 @@
 ---
 title: "Implementing A Fast Queryable Storage with Apache Avro and Azure Block Blobs"
 permalink: "/azure-blob-block-avro-storage"
-draft: true
+draft: false
 ---
 At my employer [SCADA MINDS](https://www.linkedin.com/company/scada-minds/) we're currently working on implementing a data pipeline for one of the larger wind companies
 in the world. Wind turbines have _a lot_ of sensors, that generate a lot of time-series data. 
@@ -51,8 +51,8 @@ After the header the avro file consists of multiple rows. Each row contains enco
 At the end of each block is the `sync marker` - so we can tell where one row ends and another begins.
 These are officially called `data blocks`, but as we have another type of block later, we'll stick to calling them rows.
 
-<div class="img-div">
-<img src="{{site.url}}/assets/img/avro/avro-file.jpg" />
+<div class="img-div-tall">
+<img src="{{site.url}}/assets/img/avro/avro-file.png" />
 The structure of an avro file
 </div>
 
@@ -78,7 +78,7 @@ A blob consists of one or more blocks. By re-ordering, replacing or adding block
 update and change files with a minimum of work.
 
 <div class="img-div">
-<img src="{{site.url}}/assets/img/avro/azure-block-blob.jpg" />
+<img src="{{site.url}}/assets/img/avro/block-blob.svg" />
 The structure of an Azure Block Blob
 </div>
 
@@ -132,8 +132,8 @@ We split the avro file up into blocks as follows
 - One block for each row in the avro file. The `block id` here is the `sensor id`.
 
 <div class="img-div">
-<img src="{{site.url}}/assets/img/avro/avro-block-blob.jpg" />
-Like this. Each data block in the avro file corresponds to a block in the Azure Block Blob.
+<img src="{{site.url}}/assets/img/avro/avro-block-blob.svg" />
+Each row in the avro file corresponds to a block in the Azure Block Blob.
 They're even both called blocks!
 </div>
 
