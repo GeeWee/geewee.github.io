@@ -34,8 +34,8 @@ An `.avro` file is a row-based open source binary format developed by Apache, or
 Officially the avro format is defined by the very readable [spec](https://avro.apache.org/docs/current/spec.html),
 but you can also think of it as a more advanced `.csv` file.
 
-Like a csv file an avro files also has a header and multiple rows, called data blocks.
-Unlike csv files, data blocks in an avro file are compressed and can contain a variable amount of data.
+Like a csv file an avro files also has a header and multiple rows.
+Unlike csv files, rows in an avro file are compressed and can contain a variable amount of data.
 Let's dive a little more into the two parts of an avro file.
 
 ### Avro File Header
@@ -46,10 +46,10 @@ The `sync marker` is used internally in an Avro file at the end of the header an
 
 The `sync marker` is randomly generated when writing a file. It's unique within the same file but different between files.
 
-### Avro data block
-After the header, the avro file consists of data blocks, or rows. Each data block contains encoded data as specified by the header schema.
-At the end of each block is the `sync marker` - so we can tell where one block ends and another begins.
-As we also have another concepts called blocks later on, I'll sometimes be referring to the avro data blocks as _rows_.
+### Avro Row
+After the header the avro file consists of multiple rows. Each row contains encoded data as specified by the header schema.
+At the end of each block is the `sync marker` - so we can tell where one row ends and another begins.
+These are officially called `data blocks`, but as we have another type of block later, we'll stick to calling them rows.
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/avro/avro-file.jpg" />
@@ -57,7 +57,7 @@ The structure of an avro file
 </div>
 
 The fact that Avro files are designed this way means that they're very good at being sliced into pieces and stitched back together again.
-As long as you know the schema and the sync marker, the data blocks can both be _read_ and _written_ independently.
+As long as you know the schema and the sync marker, the rows can both be _read_ and _written_ independently.
 
 We'll be using that property to construct a storage that efficiently handles both incremental updates,
 and partial reads of these files.
@@ -168,7 +168,7 @@ As mentioned previously when writing a row to an avro file, all we need is the s
 So we can update our intervals like this:
 - We fetch the header block from the existing file, and extract the schema and sync marker
 - We stage each new row with the `sensor id` as the `block id`, using the schema and sync marker retrieved from above.
-- We commit the old block ids along with the newly staged ones. This allows us to create a file combining the new and old data
+- We commit the old block ids along with the newly staged ones. This allows us to update the old file with the new data,
 without ever touching the old data. 
 
 
