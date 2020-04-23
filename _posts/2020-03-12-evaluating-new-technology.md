@@ -88,3 +88,8 @@ We should balance the rewards new technology gives us with paying the price of l
 We often have to write code that our clients have to maintain in the end. When you know someone else has to take
 over a project it can be important in writing something they can understand. If your client works primarily with Java,
 they probably wouldn't appreciate a project written in OCaml very much.
+
+
+## Can you afford it?
+Does it have a permissive license both for development and production usage? If it costs money, are the potential
+advantages worth the cost?
