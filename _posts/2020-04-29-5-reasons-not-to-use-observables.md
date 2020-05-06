@@ -1,6 +1,6 @@
 ---
-title: "5 Reasons Not to Use Observables in C#"
-permalink: "/5-reasons-not-to-use-observables"
+title: "5 Reasons To Not Use Observables in C#"
+permalink: "/5-reasons-to-not-use-observables"
 draft: false
 extra_sources: "
 https://stackoverflow.com/questions/8221097/tricks-for-debugging-with-reactive-extensions
