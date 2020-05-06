@@ -20,7 +20,7 @@ When I was first introduced to Observables in C#, they sounded pretty damn good.
 After working with them for a little while, I don't think they're as good as I was told.
 
 The statements above might be true. Observables might be simple from a birds-eye perspective. 
-Unfortunately simple doesn't alaways mean easy and there's are some things that will end up biting you in the ass.
+Unfortunately simple doesn't always mean easy and there's are some things that will end up biting you in the ass.
 Here's five of them.
 
 
