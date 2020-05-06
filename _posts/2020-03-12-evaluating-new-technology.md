@@ -24,6 +24,12 @@ There's a value in **defaulting to dull.** Go for the battle-tested un-sexy tech
 The best time to adopt a new technology is when you *need* it - not before.
 
 
+## Does it come with any downsides?
+It's easy to only think about what you can get out of something new - but you often lose something as well. Does this new
+technology lack integrations with the services you use? Is it opinionated in a way that doesn't align with how you already do things?
+Is it really time-consuming to learn?
+We should always consider both the downsides and the upsides of the new technology.
+
 ## Is it easily replaced?
 If it turns out your bet on this technology is wrong - how easy is it to replace it? Is it contained in one part of your
 application or does it leak into every part?
