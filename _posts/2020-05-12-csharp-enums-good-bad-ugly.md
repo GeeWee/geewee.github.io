@@ -7,26 +7,57 @@ extra_sources: "
 "
 ---
 
-# Todo update jekyll and add footnotes
 https://stackoverflow.com/questions/19483975/jekyll-on-github-pages-any-way-to-add-footnotes-in-markdown
 
 
 While C# is generally a pleasant language to use, I really dislike the way they've chosen to implement Enums.
-An Enum is a way to enumerate and give name to a set of different values. Each of these values have an integer[^0]
+An Enum is a way to enumerate and give name to a set of different values. Each of these values have an integer[^1]
 assigned to them.
 
-- They're basically named ints
-- Can't distinguish between the Name of the Enum and the toString() value. (You can do some hacky stuff w/ attributes though)
-- Can't save arbitrary metadata (only name and integer) (unless you implement your own attributes)
-- TryParse
-- Order matters
-- Serialization ?
-- You might not *want* an integer value
-- Weird casting behaviour
-- Bit flags are cool
-- Extension methods
-- Sorted by their integral values
-- Bit flags
+An enum is basically a named integer, example here. There's a few more things you can do in regards to the initialization,
+but this is the basic example.[link]
+
+Let's try to look at what they can and can't do.
+
+## Basic Operations You Can Do
+
+You can then require an enum for some method, if you want to limit the amount of choices that some function can take.
+
+You can cast an enum to the corresponding integer value
+
+You list all the values/names of an Enum
+
+You can create extension methods
+
+You can parse them from an int or a string (case sensitive or not)
+
+You can create extension methods
+
+You can sort them on their integral values
+
+
+## Basic Operations you can't do
+
+You can't disregard the order (in many cases)
+
+You can't assign anything but ints
+
+You can't implement your own toString method (without reflection or attribute)
+
+You can't specify extra values enums can contain
+(Except for reflection-based things like)
+You can specify how they are serialized ([Desscription], [EnumMember], [JsonConverter(StringEnumConverter)])
+
+
+## Enums and Ordering
+Ordering matters
+Enums implement sorting
+
+
+## Advanced things
+- You can assign any integer to an enum!
+- You can use Enums as bit-flags
+- Exhaustive switches
 
 
 ```csharp
@@ -119,6 +150,6 @@ assigned to them.
         }
     }
 
-
-
 ```
+
+[^1]: Technically an blablabla chars and stuff
