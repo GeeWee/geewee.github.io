@@ -23,6 +23,14 @@ is as true as ever. Both for actual code, but also for new technology.
 There's a value in **defaulting to dull.** Go for the battle-tested un-sexy technologies until they fail you.
 The best time to adopt a new technology is when you *need* it - not before.
 
+## Does it come with any advantages?
+New technology often promises many things that might, or might not, turn out to be true.
+It might solve the simple cases, but have issues with the more complex scenarios you'll actually encounter
+in daily life.
+
+Of course, consider the advantages new technology gives you. Just keep in mind they are much fluffier and harder to evaluate than the
+point above. It's always easier to evaluate whether or not the technology solves a problem you have currently, than how much
+any "new advantages" are worth.
 
 ## Does it come with any downsides?
 It's easy to only think about what you can get out of something new - but you often lose something as well. Does this new
