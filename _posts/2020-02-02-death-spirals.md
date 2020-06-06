@@ -1,185 +1,91 @@
 ---
-title: "Death spirals: Working Too Hard"
+title: "Death Spirals and Working Too Damn Hard"
 permalink: "/death-spirals"
 draft: true
 ---
-Recently I've been thinking a lot about what I like to dramatically call *death spirals*. A death spiral is when
-you have so much you need to do, work-related or otherwise, that it's bordering on the edge of impossible.
 
+Recently I've been thinking a lot about what I call *Death Spirals*. The name might be a bit much but I like the dramatic flair.
 
-One of my good friends used to work at a company that we'll call *JojaCo*.
-Now, JojaCo was a consultancy that helped their customers manage their technical infrastructure. The department my friend
-worked at wasn't particularly well-managed, but it wasn't a disaster. They had a little too much to do, but it wasn't a disaster.
-
-At least not until one of the employees fell ill with stress, and had to take a longer leave of absence.
-Now the other employees had to pick up the slack. The employees that already had a little too much work, now had a lot.
-
-They started cutting corners because they had to. The company used to have documentation for
-each customer describing their systems, the different passwords needed to make changes etc. This documentation
-slowly stopped being up-to-date as no one had time to update it.
-Not updating this saved time in the short run.
-Without this documentation, the next time someone had to help the customer it took longer.
-This is how a death spiral starts.
-
-With the deteriorating documentation making people even more pressed for time,
-other employees started to burn-out and take sick leaves,
-leaving even more work for even less people.
-
-At the end my friend was working 70+ hours a week.
-He was miserable. People were sick with stress or quitting, and new hires didn't stick around for long in a work
-environment that unhealthy. The company had turned into a burn-out factory for its employees.
-
-My friend lasted for about a year more before quitting.
-
+A Death Spiral is a special kind of positive feedback loop.
+A positive feedback loop is something that's self-reinforcing.
+Examples of positive feedback loops:
+- When you have a lot of followers on social media, more people view and share your content. When more people share it, more people see it and follow you. The more followers you have, the easier it is to get new ones.
+- When you're out of shape, exercise is harder so you're less likely to do it. The less likely you are to exercise, the more you become out of shape, the less likely you are to exercise, and so it goes.
 
 ## The Death Spiral
-This is the story of a death spiral. It's the story of a company, where the employees had too much to do and not
-enough time to do it properly.
-The employees always work so much they're on the edge of burning out, if they haven't already.
-They don't have time to make their work situation better. The amount of work never decreases.
-They're spending all of their energy staying afloat, so there's none left to swim towards the shore.
+A Death Spiral is special kind of positive feedback with some unique characteristics:
+- Breaking out of it requires more resources than you currently have
+- The longer you're in it, the harder it is to break out of it
 
+Death Spirals can happen for many reasons and hit both companies and individuals. Let's take a look at two examples.
 
-Stephen Covey tells a similar anecdote in his book [The Seven Habits Of Highly Effective People](https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People).
-He tells of a man who's trying to cut down a tree with a very dull saw.
-You ask him why he doesn't sharpen the saw, and  he tells you that he doesn't have time
-for that because he has to cut down this tree and he's already behind.
+## Jane And Her Diabetes
+Jane has diabetes. She hasn't responded well to any medicine[^0] and she's feeling very sick.
+Her doctor tells her that exercise will help her.  
+Jane's symptoms are so severe that after coming home from work she has no energy left to exercise.  
+Jane is in a Death Spiral. Her diabetes will continually get worse. As it gets worse, she gets and less energy for exercising.
+The longer she waits, the harder it becomes to break out.
 
+## JojaCo: The Burnout Factory
+Death Spirals happen to companies too. 
+One of my good friends used to work at a company *JojaCo*.
+JojaCo helped their customers manage technical infrastructure.
 
-If you phrase it like this, it's obviously silly that he doesn't spend an hour sharpening his saw, so he can cut down the tree faster.
-That anecdote doesn't quite capture a death spiral though. A more apt description would be:
+JojaCo employees were a little overworked. Then someone became long-term sick. Fewer people had to do the same work.
+To get all of the new work done on time, the employees had to cut some corners.  
 
-The man is cutting down the tree with his dull saw. He doesn't have any tools to sharpen it.
-He can't afford any, but he could make his own.
-It would take him several days to create the tools and sharpen the saw.
-His boss is expecting him to cut down this tree by today, and he's already behind.
+The company used to have documentation for each customer describing how to make changes in their systems.
+You usually updated this after interacting with a customer.
+This documentation slowly stopped being up-to-date as no one had time to update it anymore.  
+While not updating it saved time in the short run, helping the customer the next time took much longer.
+This meant that the employees got further behind, and had to cut even more corners.
 
+In a stressful environment like this, people started falling ill due to stress. This left even more work for fewer people.
+At the end my friend was working 70+ hours a week.
+He was miserable. Everyone were sick or quitting, and new hires didn't stick around for long.  
 
-This is the dilemma death spirals create. To improve our situation we need to spend time or energy that we don't have. 
-
-
-# Angela And Her Cats
-Death spirals aren't just work-related though.
-This is Angela. Angela has multiple cats.
-
-<div class="img-div">
-<a href="https://en.wikipedia.org/wiki/Angela_Martin#/media/File:Angela_Martin.jpg">
-<img src="https://upload.wikimedia.org/wikipedia/en/0/0b/Angela_Martin.jpg" />
-Let's say she hypothetically looks like this...
-</a>
-</div>
-
-One of Angela's cats is sick. Keeping the cat healthy requires her to use many hours every day treating it.
-Angela also has some health issues. The health issues makes her tired, and they will continue to get worse if she's not treated.
-Medicine exists for her condition but there are some rather rough side-effects. The side-effects usually start disappearing after a month or so. 
-
-Angela is *so exhausted* after taking care of her obligations. At the end of every day she's on the edge of collapse
-She knows that she should take her medicine, but she's so stressed out that there's no way she can cope with any additional stress.
-
-So she endures. Her medical condition progresses slowly, but every attempt at taking her medicine fails. She stops when
-the side-effects kick in, as it's too much.
-
-This is her death spiral. To get more energy, she needs to spend more energy than she has in her daily life.
-She can't muster that energy over large amounts of time, so she stays in the death spiral, getting more and more tired.
-
-# How To Get Out of A Death Spiral
-So how do you get out of a death spiral? I wish there was a step-by-step guide for
-how to get yourself, your loved ones or your company out of a death spiral.
-Unfortunately if there is, I haven't found it. These are my best bets.
+# Breaking Out of Death Spirals
+So how *do* you break out of a Death Spiral? You somehow have to find energy and resources you don't have.
+This can be extremely difficult, and if there is a step-by-step guide I haven't found it.  
+These are my best bets:
 
 ## Do Less
-This is a classical example of advice that's easy to give, but *really* hard to follow.
-Somehow, you have to reduce the amount of work you have to do. You have to *do less*.
+If you don't have to do as much, you'll have more resources to break free of the Death Spiral.
 
-If you're JojaCo, call up some of your customers and tell them that you can't help them currently as you're understaffed.
-They're probably not going to like it very much, and they probably won't be your customers in the future.
-But potentially you've saved yourself from the death spiral.
+If you're JojaCo you can call up some of your customers, and tell them that you can't currently help them.
+They probably won't be your customers in the future. But it might save you from losing other customers because your employees are burned out.
 
+If you're Jane, try to take some days off from your job and use them to start exercising.
+Or maybe you can do less chores at home. Clean less and eat food that's faster to make. 
 
-If you're a JojaCo employee and you don't think anything is going to change - quit your job (if you can).
-There's no honor in staying in the death spiral until it crashes. Save yourself the heartache and stress and get out if you can.
-
-----
-
-Doing less isn't always possible.
-You might not have the money saved up to quit your job, and no extra energy to look for a new one.
-Maybe you can't cut out any customers because then you can't pay your salaries.
-You can't tell your cat you need it to be less sick.
-
-Even if you're in a situation where you *can* do less, it's not an easy choice.
-Doing less hurts.
-We stay in death spirals because they hurt less than taking drastic action would.
-The death spiral is worse for us in the long run, but *right now* - it's all we have the energy to do.
-
-Doing less is like cutting off a limb with gangrene. You don't want to do it, it's going to hurt as hell, and you'll miss 
-that limb when it's gone. But sometimes it's all you can do to save the rest.
-
-## Sharpening the saw
-If you can't do less, maybe can make the things you have to do easier.
-
-For JojaCo this could be taking the time to write proper documentation so that it's easier the next time around you
-have to deal with a customer.
-For Angela this would be getting on her medications, which in time will give her more energy.
-
-This is *sharpening the saw*. You'll make things more efficient in the long run, but in the short run you have to invest
-time or resources that you might not have.
-
-You can try to sharpen the saw by working even harder for a time, but often by the time we find out
-we're in a death spiral we've been trying that for a while.
-We can't expect people who are already trying their hardest and some, to try harder. They *will* break. 
-
-Sharpening the saw is a great idea but it's hard to find time for it when you're in a death spiral.
+"Do less" is advice that's easy to give, but *really* hard to follow.
+It's not always possible to do less. Your boss might not let you take days off. You might not be able to pay your
+salaries if you turn away some of your customers.
 
 ## Get help
-If you don't have the capacity to sharpen your saw, either because you're too swamped or because it's simply not possible
-to make the things you have to do more efficient - you might need more hands on deck. 
+If you can't reduce the amount of work, you might be able to share it among more people.
+More people to do the same work means there's less work for everyone.
 
-More people to do the same work means there's less work for everyone right? JojaCo could hire some new employees or temps, and
-Angela could hire someone or get a friend to help treat the cat.
+JojaCo could hire new employees or temps.  
+Jane could get someone to run with, or help her with some of the other responsibilities she has.
 
-It's not always that easy though. Getting outside help (potentially) comes with a whole new slew of difficulties.
+Getting help isn't always easy though. Perhaps you don't have the social support to find someone to run with.
+Maybe you can't afford or find qualified people to work at JojaCo.
 
-#### You have to be able to *get* help.
-JojaCo might not be able to afford new hires. And if they do, can they find qualified people who would want to work in a place like that?
+---
 
-Angela would either need to have the money to hire someone to treat the cat, or ask a friend for help.
-Asking a friend for help requires that she has someone in her life, with enough time and willingness to help for a long stretch of time.
-Not everyone is lucky enough to have that.
+Death Spirals are particularly tricky because there's often no easy way out once you're in them.
+Often we keep struggling along, while hoping that something will change.
 
-
-#### Getting help has an upfront cost as well
-Getting someone to help you isn't always easy. You'll have to find a friend who is willing to help you, or spend time
-interviewing candidates.
-
-JojaCo will have to spend some time teaching the new employees how everything works.
-Angela would probably also have to spend some time teaching someone else how to treat her cat. It might some time before both
-JojaCo and Angela trusts their new people to do the work without them.
-
-
-## Hope that something will change
-There's a few ways above to tackle the solution, each with their own difficulties to implement. None of them are
-easy.
-Maybe that's why people just often keep struggling along, while hoping that something will change.
-
-- Perhaps you'll wake up one day, invigorated with new energy.
-- Perhaps your employee will stop getting sick from stress soon
-- Perhaps your cat will improve so that you don't have to spend quite as much time caring for it.
+- Perhaps you'll wake up one day, invigorated with new energy to start exercising.
+- Perhaps your employee will stop getting sick from stress soon.
 - Perhaps things will improve somehow, even though you're not really sure how.
 
-I don't think things tend to improve when you're in a death spiral.
+I don't think Death Spirals usually correct themselves until you hit rock bottom.
+We just stay in that slow, steady decline, because all the ways to break free are either impossible or requires
+choices we can't get ourselves to make. 
 
 
-I think we hope and keep doing what's not working, because we feel trapped. We're in a slow steady decline, but 
-all ways to get better are either blocked to us, or they're more painful than staying in the death spiral.
-Perhaps if we're lucky, the consequences of the death spiral will at some point get so severe that we start cutting off work.
-Perhaps JojaCo will start losing customers because they're unable to service them, and the work load then reduces.
-Perhaps Angela will get so sick that she thinks the medicine is better than the alternative or perhaps she'll realize she
-can't take care of her cat in her condition, and decide to euthanize it.
+*Do you have any experiences with death spirals? How did you get out of it? I'd really like to hear some other opinions or stories!*
 
-Doing the same thing usually leads to staying in the death spiral all the way into it crashes.
-I just hope the crash isn't so bad you can't recover from it.
-
-
-*Do you have any experiences with death spirals? How did you get out of it? I'd really like to hear some other opinions
-on this topic. Tweet at me at [@GeeWengel](https://twitter.com/GeeWengel)* 
-
+[^0]: I'm not actually sure if there are people who don't respond well to diabetes medicine. However I have seen the situation play out in real life with people who were unwilling to take it.
