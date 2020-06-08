@@ -1,7 +1,6 @@
 ---
 title: "Death Spirals and Working Too Damn Hard"
 permalink: "/death-spirals"
-draft: true
 ---
 
 Recently I've been thinking a lot about what I call *Death Spirals*. The name might be a bit much but I like the dramatic flair.
@@ -56,7 +55,7 @@ If you're JojaCo you can call up some of your customers, and tell them that you 
 They probably won't be your customers in the future. But it might save you from losing other customers because your employees are burned out.
 
 If you're Jane, try to take some days off from your job and use them to start exercising.
-Or maybe you can do less chores at home. Clean less and eat food that's faster to make. 
+Or maybe you can do find a routine that requires less chores, or try some healthy meal box services. 
 
 "Do less" is advice that's easy to give, but *really* hard to follow.
 It's not always possible to do less. Your boss might not let you take days off. You might not be able to pay your
@@ -84,6 +83,9 @@ Often we keep struggling along, while hoping that something will change.
 I don't think Death Spirals usually correct themselves until you hit rock bottom.
 We just stay in that slow, steady decline, because all the ways to break free are either impossible or requires
 choices we can't get ourselves to make. 
+
+So here's my plea to you: If you observe someone in a Death Spiral - say something.
+Breaking free without help can be extremely difficult. It's okay to ask if someone needs help.
 
 
 *Do you have any experiences with death spirals? How did you get out of it? I'd really like to hear some other opinions or stories!*
