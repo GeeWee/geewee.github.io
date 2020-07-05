@@ -36,6 +36,7 @@ where there's a primary (or master) instance, we describe it as a `master/slave`
 But we can do better than that. If we describe it as `primary/standby`, we get extra information. There's a primary instance, *and the role of the follower instance is to be a standby in case of errors*.
 Changing `master/slave` means that we get to use much more expressive terminology.   
 
+
 ## Dummies vs. Placeholders
 I think `placeholder value` is a much better term than `dummy value`. It's much more explicit.  
 You might think `dummy value` is pretty explicit already - but I'd argue it's not.
@@ -43,7 +44,7 @@ As an international developer, I had no idea that you could "dummy up" something
 I knew that `dummy` could mean something that resembled the real thing, but I'd never made the connection between
 that and `dummy value`.  
 It was just one of those terms I used because *that's what we call it.*
-Contrast that with `placeholder value` - whcih says *exactly* what it is.
+Contrast that with `placeholder value` - which says *exactly* what it is.
 
 ---
 
