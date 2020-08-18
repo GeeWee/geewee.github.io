@@ -2,7 +2,7 @@ theme: jekyll-theme-midnight
 title: Tinkerer
 description: "Adventures in code"
 show_downloads: false
-url: https://gustavwengel.dk
+url: https://www.gustavwengel.dk
 repository: "GeeWee/geewee.github.io"
 author: Gustav Wengel
 defaults:

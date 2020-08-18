@@ -23,13 +23,25 @@ It's primarily about adding heading, checking everything through once, and addin
 ### 3. Publish to own website
 When I've then made my post into markdown, I publish it here at [www.gustavwengel.com](www.gustavwengel.com).
 It's a Jekyll based blog which uses markdown, so when I have the markdown from above, I'm basically good to go.
-(TODO: RSS. Add plugin and links!)
+I use the [jekyll-feed](https://github.com/jekyll/jekyll-feed) plugin to automatically create an RSS feed based on my content as well.
+
 
 ### 4. Syndicate To Other Platforms
-dev.to
-hackernoon
-Medium
+The main reason I write, is because it helps me to learn and that I enjoy it. With that being said - I get immense joy
+from someone telling me that they enjoyed something I've written.
+Because of that, I also try to syndicate the content to some different platforms to get a bunch of different eyes on it.
 
+I syndicate content to:
+
+# TODO link author profiles
+- [Medium](https://medium.com/@geewee)
+Say what you will about the UX these days, but the Import Feature of Medium is very nice to use.
+Syndicating to medium is almost frictionless.
+- Dev.to
+A nice developer community. Dev.to allows you to automatically import your stories from your RSS feeds as drafts, which
+also makes syndicating pretty easy.
+- Hackernoon.
+TODO write and research hackernoon importing
 
 
 ### 5. Post on social media
