@@ -7,7 +7,10 @@
     <section>
         <div id="title">
             <h1>{{ site.title | default: site.github.repository_name }}</h1>
-            <p>{{ site.description | default: site.github.project_tagline }}</p>
+            <p>{{ site.description | default: site.github.project_tagline }}
+            {% include rss_icon.html %}
+            {% include twitter_author_button.html %}
+            </p>
             <hr>
         </div>
         <h1>{{page.title}}</h1>
