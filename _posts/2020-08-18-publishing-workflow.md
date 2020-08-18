@@ -1,5 +1,5 @@
 ---
-title: "My publishing workflow"
+title: "My Publishing Workflow"
 permalink: "/publishing-workflow"
 ---
 
