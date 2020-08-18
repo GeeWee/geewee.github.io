@@ -1,12 +1,10 @@
 ---
 title: "My publishing workflow"
 permalink: "/publishing-workflow"
-short: |
-    foo
-draft: true
 ---
 
-I'm trying to get a little more structured when it comes to how I publish and syndicate the content I write. These are primarily my notes to myself about my process, but maybe you'll find them interesting.
+I'm trying to get a little more structured when it comes to how I publish and syndicate the content I write.
+These are primarily my notes to myself about my process, but maybe you'll find them interesting.
 
 ### 1. Write in Google Docs
 I've tried a couple of different ways to write, including plain text editors, using markdown and using a collaborative editor like Google Docs.
@@ -33,20 +31,17 @@ Because of that, I also try to syndicate the content to some different platforms
 
 I syndicate content to:
 
-# TODO link author profiles
 - [Medium](https://medium.com/@geewee)
-Say what you will about the UX these days, but the Import Feature of Medium is very nice to use.
-Syndicating to medium is almost frictionless.
+Say what you will about the UX these days, but the Import Feature of Medium is very nice to use. Apart from code blocks
+which the auto-importer doesn't get, syndicating to medium is pretty frictionless.
 - Dev.to
-A nice developer community. Dev.to allows you to automatically import your stories from your RSS feeds as drafts, which
-also makes syndicating pretty easy.
-- Hackernoon.
-TODO write and research hackernoon importing
+Dev.to is a nice developer community. It gives you the ability to automatically import your stories from your RSS feeds as drafts.
+This functionality works extremely well, and I almost don't have to do anything to make the stories work on dev.to
+
+I'm also considered syndicating to Hackernoon, but I never really got around to switching over after they moved off, of Medium.
+I also don't know how big their reach is anymore.
 
 
 ### 5. Post on social media
-Twitter
-subreddits
-/r/programming
-/r/csharp
-
+I'm part of a couple of communities on social media, primarily twitter, hacker news and the subreddits /r/csharp and /r/programming.
+If I think the post might speak to an audience in any of these groups, I also try to share them there.
