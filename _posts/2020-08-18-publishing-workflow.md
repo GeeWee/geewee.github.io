@@ -8,7 +8,7 @@ These are primarily my notes to myself about my process, but maybe you'll find t
 
 ### 1. Write in Google Docs
 I've tried a couple of different ways to write, including plain text editors, using markdown and using a collaborative editor like Google Docs.
-An actual word processor is best for the following reasons
+I used to author my posts in markdown, but I've since gone away from that for the following reasons
 
 - It's much easier to collaborate and get feedback and reviews. A markdown file published to github somewhere is much less accessible than Google Docs, where reviewers can leave actual comments.
 - It's just a little easier. In markdown you're free to add spaces to the lines, but you also have to manual do line breaking, and you need a separate window open to check the output of your work.
@@ -34,7 +34,7 @@ I syndicate content to:
 - [Medium](https://medium.com/@geewee)
 Say what you will about the UX these days, but the Import Feature of Medium is very nice to use. Apart from code blocks
 which the auto-importer doesn't get, syndicating to medium is pretty frictionless.
-- Dev.to
+- [Dev.to](https://dev.to/geewee)
 Dev.to is a nice developer community. It gives you the ability to automatically import your stories from your RSS feeds as drafts.
 This functionality works extremely well, and I almost don't have to do anything to make the stories work on dev.to
 
