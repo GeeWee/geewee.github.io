@@ -261,7 +261,7 @@ code {
 .twitter-author-button {
   width: 1.5rem;
   height: 1.5rem;
-  vertical-align: text-top;
+  vertical-align: middle;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -308,6 +308,7 @@ code {
 
 .twitter-button em {
   position: relative;
+  vertical-align: middle;
   top: 2px;
   bottom: 2px;
   display: inline-block;
@@ -326,4 +327,5 @@ code {
 
 .rss-feed-image {
   max-height: 1.5rem;
+  vertical-align: middle;
 }
