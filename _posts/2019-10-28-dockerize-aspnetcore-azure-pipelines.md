@@ -18,24 +18,18 @@ What we're interested in is:
 
 
 ## The local build procedure
-Let's first look at the procedure for building the project locally.
-We want to build the application, and then copy the resulting output
-into the docker container, which then runs it.
+Let's first look at the procedure for building the project locally. We want to build the application, and then copy the resulting output into the docker container, which then runs it. 
 
 We build the project with the command:
 ```
 dotnet publish -c=Release -o=build
 ```
 
-This will publish our project into a folder with the path:
-`./build/`
-
+This will publish our project into a folder with the path: `./build/`
 We'll need to get this directory into our container.
  
 ## The dockerfile
-We need a dockerfile that specifies how our service should look. Luckily it's reasonably simple.
-[Microsoft maintains public .NET images](https://hub.docker.com/_/microsoft-dotnet-core) we can base our own image off.
-
+We need a dockerfile that specifies how our service should look. Luckily it's reasonably simple. [Microsoft maintains public .NET images](https://hub.docker.com/_/microsoft-dotnet-core) we can base our own image off.
 Our docker file (with explanations) looks like this.
 
 ```dockerfile
@@ -63,9 +57,7 @@ For more info, the [Dockerfile reference](https://docs.docker.com/engine/referen
 
 ## Bringing it together
 
-Now we're able to build our application locally, and put it in a docker image.
-We should be able to test that it works by running the docker container.
-If we had a bash script that tested this functionality, it would look something like this:
+Now we're able to build our application locally, and put it in a docker image. We should be able to test that it works by running the docker container. If we had a bash script that tested this functionality, it would look something like this:
 ```sh
 name="yourProjectName"
 
@@ -85,25 +77,18 @@ docker run --name ${name} -p 5001:80 ${name}
 
 ```
 
-This script when run, should build your C# project, copy it into a docker image,
-and run that image in a container.
+This script when run, should build your C# project, copy it into a docker image, and run that image in a container.
 
 
 # Doing it in Azure Pipelines
 
 Now let's try to look at how we can mimic this build procedure in Azure Pipelines.
 
-We'll create a new YAML-based pipeline. The Azure Pipeline YAML format
-can be pretty confusing, but [this reference](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema)
-is pretty good.
+We'll create a new YAML-based pipeline. The Azure Pipeline YAML format can be pretty confusing, but [this reference](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema) is pretty good.
 
-We'll create a pipeline, which will run tests on all commits, but only push
-to the container registry, when it's building the master branch.
+We'll create a pipeline, which will run tests on all commits, but only push to the container registry, when it's building the master branch.
 
-Note that before this pipeline will work, you will need to set up a service connection
-to your Azure Container Registry. You can see how to do that [here.](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#sep-docreg)
-If you do not have an Azure Container Registry yet, here is a guide on how to [create one.](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)
- 
+Note that before this pipeline will work, you will need to set up a service connection to your Azure Container Registry. You can see how to do that [here.](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#sep-docreg) If you do not have an Azure Container Registry yet, here is a guide on how to [create one.](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)  
 ```yaml
 # Trigger this pipeline on all branches
 trigger:
@@ -170,13 +155,11 @@ stages:
               latest
 ```
 
-Now we have a pipeline that runs tests on all commits, and on the master build, it pushes our docker image
-to a container registry of our choice.
+Now we have a pipeline that runs tests on all commits, and on the master build, it pushes our docker image to a container registry of our choice.
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/azure-pipeline-steps.png" />
 Hooray! 
 </div>
 
-What you decide to do with the image at this point is up to you, but [Azure Web App for Containers](https://azure.microsoft.com/da-dk/services/app-service/containers/)
-is a good bet, featuring things like automatically re-deploying when your latest docker image changes.
+What you decide to do with the image at this point is up to you, but [Azure Web App for Containers](https://azure.microsoft.com/da-dk/services/app-service/containers/) is a good bet, featuring things like automatically re-deploying when your latest docker image changes.

@@ -13,3 +13,5 @@ defaults:
       layout: default
 plugins:
   - jekyll-feed
+kramdown:
+  hard_wrap: true

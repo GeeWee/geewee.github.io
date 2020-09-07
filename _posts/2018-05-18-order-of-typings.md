@@ -12,8 +12,7 @@ I’ll present three statements I think are true about the process of adding typ
 
 ## An Example
 
-Let’s view a fictional example written in JavaScript of a function. It boils some water - gets the potId to boil it in and the water from some APIs.
-It’s a little hard to guess what the different things are, but code is like that sometimes.
+Let’s view a fictional example written in JavaScript of a function. It boils some water - gets the potId to boil it in and the water from some APIs. It’s a little hard to guess what the different things are, but code is like that sometimes.
 
 ```
 function boilWater(){
@@ -25,8 +24,7 @@ function boilWater(){
 }
 ```
 
-In this example, apart from the URL-strings, it’s impossible to type anything from this code. The input from the API could be in **any** format - there’s certainly no way to tell based on the code.
-If we wanted to type it, we’d need to record the responses at runtime.
+In this example, apart from the URL-strings, it’s impossible to type anything from this code. The input from the API could be in **any** format - there’s certainly no way to tell based on the code. If we wanted to type it, we’d need to record the responses at runtime.
 
 The return values from the API is passed to untyped functions - e.g. they accept arguments of any types. So we also can’t gleam anything of the actual types from what functions they’re passed to.
 In general, I think this statement holds true:

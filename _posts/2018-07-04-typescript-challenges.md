@@ -16,9 +16,7 @@ This is a general problem in the JavaScript world. Build systems are *not* easy 
 
 I think that this labyrinth of complexity is one of the reasons opinionated build tools with no configuration like the angular cli, Create React App, and ParcelJS is gaining momentum.
 
-While TypeScript has some reasonably sane defaults, there’s still (count ‘em) **54** compiler flags in the `tsconfig.json` file that gets created when setting up a project.
-Now, most of them have reasonably sane defaults, and a lot of them are added to prevent breaking changes - but after having helped debug my share of faulty `tsconfig` files,
-I can tell you people *definitely* get it wrong.
+While TypeScript has some reasonably sane defaults, there’s still (count ‘em) **54** compiler flags in the `tsconfig.json` file that gets created when setting up a project. Now, most of them have reasonably sane defaults, and a lot of them are added to prevent breaking changes - but after having helped debug my share of faulty `tsconfig` files, I can tell you people *definitely* get it wrong.
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/all-the-flags-meme.png"/>

@@ -5,17 +5,13 @@ short: "This is the first in a series of blog post that will deal with gradually
         and ending up with a completely typechecked codebase. This part deals with getting the first TypeScript file to compile along with the rest of the application."
 ---
 
-This is the first in a series of blog post that will deal with gradually converting an existing React codebase, [Flatris](https://github.com/skidding/flatris) by [@skidding](https://twitter.com/skidding) to Typescript
-and ending up with a completely typechecked codebase. This part deals with getting the first TypeScript file to compile along with the rest of the application.
+This is the first in a series of blog post that will deal with gradually converting an existing React codebase, [Flatris](https://github.com/skidding/flatris) by [@skidding](https://twitter.com/skidding) to Typescript and ending up with a completely typechecked codebase. This part deals with getting the first TypeScript file to compile along with the rest of the application.
 
 **_This part of the blog post has taken approximately four hours, including all the mistakes and dead-ends I didn't write about (but not including the writing)_**
 
+I’ve recently become interested in the process of converting an existing javascript codebase to typescript. Typescript and React play wonderfully together, and I’ve started quite a few projects with them, but I’ve never been in the situation of having to convert an already existing codebase.
 
-I’ve recently become interested in the process of converting an existing javascript codebase to typescript.
-Typescript and React play wonderfully together, and I’ve started quite a few projects with them, but I’ve never been in the situation of having to convert an already existing codebase.
-
-Getting buy-in from your managers to convert an entire codebase at once is not always possible, so our goal is to do a *gradual* conversion, where we can keep Javascript and Typescript side by side until our conversion is complete.
-This means that some parts of the team can work on the migration, while others can develop new features and fix bugs.
+Getting buy-in from your managers to convert an entire codebase at once is not always possible, so our goal is to do a *gradual* conversion, where we can keep Javascript and Typescript side by side until our conversion is complete. This means that some parts of the team can work on the migration, while others can develop new features and fix bugs.
 
 # Flatris
 
@@ -31,22 +27,18 @@ Flatris is a good pick to port, as it’s written in very idiomatic react/redux 
 
 # Plugging in the Typescript compiler
 
-Flatris uses **Create React App(CRA)**, which makes life easy for us. CRA works by having an internal module called "**react-scripts**"
-that deal with most of the build configuration. Luckily someone’s made **react-scripts-ts (RST),** which is the typescript equivalent. 
+Flatris uses **Create React App(CRA)**, which makes life easy for us. CRA works by having an internal module called "**react-scripts**" that deal with most of the build configuration. Luckily someone’s made **react-scripts-ts (RST),** which is the typescript equivalent. 
 
 ## Copy-and-pasting our way to victory
 
-I’ve experimented with a few different ways of doing the porting, and the easiest is to create a new project with react-scripts-ts, and then copy all the files from react-scripts-ts into the Flatris project.
-We create the new app with the following commands:
+I’ve experimented with a few different ways of doing the porting, and the easiest is to create a new project with react-scripts-ts, and then copy all the files from react-scripts-ts into the Flatris project. We create the new app with the following commands:
 ```
 npm install -g create-react-app # Or use yarn
 
 create-react-app flatris --scripts-version=react-scripts-ts
 ```
 
-This creates a repository that’s fully established with all the files needed to start a brand new Typescript project.
-Now we’ll copy all files related to the typescript configuration to our old project.
-The list of files we need to copy over is:
+This creates a repository that’s fully established with all the files needed to start a brand new Typescript project. Now we’ll copy all files related to the typescript configuration to our old project. The list of files we need to copy over is:
 ```
 tsconfig.json
 tsconfig.test.json
@@ -91,15 +83,13 @@ Error: (1,8): Module/flatris/node_modules/@types/react/index"' has no default ex
 Now this is a bit of an interesting error. In the Javascript most if not all transpilation happens via babel, and babel has made some choices in regards to interoperabillity of the different module formats.
 
 What babel does is, if there’s a module.exports defined in a module, but no default export, it automatically assigns the entirety of the module.exports to the default export as well.
-[This is usually referred to as a fake or synthetic default export](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/5128#issuecomment-131638288)
-This synthetic default export is what allows lines such as:
+[This is usually referred to as a fake or synthetic default export](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/5128#issuecomment-131638288) This synthetic default export is what allows lines such as:
 
 ```
 import React from "react";
 ```
 
-That you’ll see in most React codebases. It means we’re importing the default export from the react package and naming it React.
-
+That you’ll see in most React codebases. It means we’re importing the default export from the react package and naming it React. 
 The React package doesn’t actually have a default export, it just has a bunch of named ones, but this works because babel creates the synthetic default export out of all the named exports. [Typescript decided not to do this](https://github.com/Microsoft/TypeScript/issues/2719).
 
 Luckily the fix is simple. In our index.tsx simply change:
@@ -112,8 +102,7 @@ to
 import * as React from ‘react’
 ```
 
-**Update 24/05 - With [TypeScript 2.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html) and the new esModuleInterop, you can simply set this flag to true, and not change
-your imports**
+**Update 24/05 - With [TypeScript 2.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html) and the new esModuleInterop, you can simply set this flag to true, and not change your imports**
 
 ### Could not find declaration file for module
 ```
@@ -126,7 +115,6 @@ This is because we’re trying to import react-redux, but we don’t have any ty
 Typescript normally allows us to use untyped javascript modules without any problems, but you can opt-in to more comprehensive checking. The tsconfig that was generated from us from RST has opted-in to some increased strictness for us. 
 
 The extra strictness makes sense when you’re starting out on a new project, but right now we’ll want to opt out of it.
-
 Let’s go to our **tsconfig.json** file and remove the following lines:
 
 ```
@@ -155,9 +143,7 @@ The culprit for this type error is this line:
 localStorage.setItem('flatrisState', JSON.stringify(store.getState().game);
 ```
 
-Typescript cannot properly infer the type of store.getState() so it says there is no property game on it.
-This is a problem for another time, so let’s now let’s use Typescripts escape hatch - casting the object to `any`,
-which completely opts out of typechecking. So the line is now:
+Typescript cannot properly infer the type of store.getState() so it says there is no property game on it. This is a problem for another time, so let’s now let’s use Typescripts escape hatch - casting the object to `any`, which completely opts out of typechecking. So the line is now:
 
 ```
 localStorage.setItem('flatrisState', JSON.stringify((store.getState() as any).game));
@@ -176,13 +162,9 @@ This was an interesting error to fix. If you look at the console the full error 
 Warning: </static/media/App.e52f775a.jsx /> is using uppercase HTML. Always use lowercase HTML tags in React.
 ```
 
-That’s **not** what importing App.jsx html should look like - it should be a bunch of html tags.
-Turns out RST doesn’t support loading js and jsx files, even though typescript does.
+That’s **not** what importing App.jsx html should look like - it should be a bunch of html tags. Turns out RST doesn’t support loading js and jsx files, even though typescript does.
 
-We can fix that though, but we’ll have to go into the tenth circle of hell - the `node_modules` folder.
-Now generally changes you make inside `node_modules` aren’t permanent, as they get wiped on every `yarn install`
-but they can be if you use the wonderful [patch-package](https://www.npmjs.com/package/patch-package).
-Patch-package lets you make permanent changes to `node_modules` folder, and then after each yarn install the changes will be reapplied.
+We can fix that though, but we’ll have to go into the tenth circle of hell - the `node_modules` folder. Now generally changes you make inside `node_modules` aren’t permanent, as they get wiped on every `yarn install` but they can be if you use the wonderful [patch-package](https://www.npmjs.com/package/patch-package). Patch-package lets you make permanent changes to `node_modules` folder, and then after each yarn install the changes will be reapplied.
 
 <div class="img-div">
 <img src="{{site.url}}/assets/img/dante-inferno.jpeg"/>

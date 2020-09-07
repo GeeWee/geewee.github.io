@@ -5,8 +5,7 @@ short: "Much of modern development now is searching for the right things. Error 
 This is a short guide about the anatomy of an error message - what parts there are, which are important and which can be ignored."
 ---
 
-Maybe software-development used to be different.
-Maybe you spent hours devising algorithms, huddled together over whiteboards until your markers ran out and you were covered in sweat and dried-out coffee spots.
+Maybe software-development used to be different. Maybe you spent hours devising algorithms, huddled together over whiteboards until your markers ran out and you were covered in sweat and dried-out coffee spots.
 
 For most of us, that’s not quite the case anymore - most of modern software development consists of googling the right terms.
 
@@ -46,17 +45,13 @@ A stack trace, or a traceback as Python prefers to call it.
 </div>
 
 
-Now when googling what’s going wrong - you use the error message more often than the stack trace.
-The stack trace is useful as it tells us all kinds of contextual information - e.g. which line you’re making a mistake, or what library is throwing an error.
-
-
+Now when googling what’s going wrong - you use the error message more often than the stack trace. The stack trace is useful as it tells us all kinds of contextual information - e.g. which line you’re making a mistake, or what library is throwing an error.
 
 ## Anatomy of a Javascript Error Message
 
 Let’s try to look at a very small Javascript program to see how we can use both the error message and the stack-trace.
 
-This is the reasonably simple program. It consists of three files. The first `index.js` is where the application starts,
-the next `some-random-file.js` doesn’t do much - it’s just there to make the stack-trace longer, and `server.js` starts an `express` server listening on port 3000.
+This is the reasonably simple program. It consists of three files. The first `index.js` is where the application starts, the next `some-random-file.js` doesn’t do much - it’s just there to make the stack-trace longer, and `server.js` starts an `express` server listening on port 3000.
 
 <div class="img-div-skyscraper">
 <img src="{{site.url}}/assets/img/err-msg/image_4.png"/>
@@ -75,16 +70,13 @@ Stack-traces (often) go from the oldest entries in the bottom to the newest on t
 
 These often happen when using frameworks. What they have in common, is that they’re usually runtime initialization logic, and most of the times they have nothing to do our actual error.
 
-It can be hard to tell what’s startup-noise when starting out, but after having seen a few errors you usually learn to tune it out pretty quickly.
-A good rule of thumb is that anything between the **first line of your code** and the start of the stack trace is potentially startup-noise.
+It can be hard to tell what’s startup-noise when starting out, but after having seen a few errors you usually learn to tune it out pretty quickly. A good rule of thumb is that anything between the **first line of your code** and the start of the stack trace is potentially startup-noise.
 
 In this particular example, the first line is startup-noise.
 
 ### Your code
 
-This is the code you’ve written. You can usually tell what code is yours from the file names or paths.
-In this case we can see: `"/home/geewee/WebstormProjects/myproject/index.js:5:1"`
-which is the path to our `index.js` file.
+This is the code you’ve written. You can usually tell what code is yours from the file names or paths. In this case we can see: `"/home/geewee/WebstormProjects/myproject/index.js:5:1"` which is the path to our `index.js` file.
 
 There’s two parts of our code are a little more special than the others. The **first line of your code** is important, as the lines before it are often startup-noise.
 
@@ -92,10 +84,7 @@ The most important part however, is the last line of your code.
 
 ### Last line of your code.
 
-This is often where the magic happens.
-What you’re looking for is the last line of the stack trace that you wrote.
-This means the last line that's not from the language runtime or libraries you’re using.
-It's usually the most interesting line, as this is the last line where you could have made a mistake.
+This is often where the magic happens. What you’re looking for is the last line of the stack trace that you wrote. This means the last line that's not from the language runtime or libraries you’re using. It's usually the most interesting line, as this is the last line where you could have made a mistake.
 
 In this particular example, the last line of our code is:
 `"module.exports.startServer (/home/geewee/WebstormProjects/myproject/server.js:8:9)"`
@@ -132,9 +121,7 @@ Looking at the entire error message again, with the different parts annotated, i
 
 ## Anatomy of a Python Error Message
 
-Let’s try to look at the same situation in Python, to see how stack-traces vary from language to language.
-This is mostly the same program as before with the same files.
-The only difference is, that it uses the Python framework called `bottle` instead of `express` to listen to port 3000.
+Let’s try to look at the same situation in Python, to see how stack-traces vary from language to language. This is mostly the same program as before with the same files. The only difference is, that it uses the Python framework called `bottle` instead of `express` to listen to port 3000.
 
 <div class="img-div-skyscraper">
 <img src="{{site.url}}/assets/img/err-msg/image_6.png"/>
@@ -176,8 +163,7 @@ File "/home/geewee/PycharmProjects/myproject/venv/lib64/python3.7/site-packages/
 	server.run(app)
 ```
 
-Worth noting here is that `/site-packages/` is where python stores third-party libraries. So based on that directory we know the next call is to a third party library.
-Reading the directory name, `bottle/` - we can guess that the error is coming from the `bottle` library.
+Worth noting here is that `/site-packages/` is where python stores third-party libraries. So based on that directory we know the next call is to a third party library. Reading the directory name, `bottle/` - we can guess that the error is coming from the `bottle` library.
 
 Then there’s internal third party calls in the bottle library, and at the end, the actual error message:
 
@@ -203,8 +189,7 @@ Sometimes there’s no **third-party** calls, as this Java example shows us:
 <img src="{{site.url}}/assets/img/err-msg/image_8.png"/>
 </div>
 
-This program tries to figure out the length of a java `String` which has been assigned to `null`.
-Running this program gives us a very minimal stack-trace:
+This program tries to figure out the length of a java `String` which has been assigned to `null`. Running this program gives us a very minimal stack-trace:
 
 ```
 Exception in thread "main" java.lang.NullPointerException
@@ -212,16 +197,11 @@ Exception in thread "main" java.lang.NullPointerException
     at Main.main(Main.java:4)
 ```
 
-Note there’s no startup-noise, no third party code.
-There’s only our code, ending at the exact line where we’ve made our mistake.
-If there’s no third-party code, the "last line of our code" is the place to check out to see what's gone wrong.
+Note there’s no startup-noise, no third party code. There’s only our code, ending at the exact line where we’ve made our mistake. If there’s no third-party code, the "last line of our code" is the place to check out to see what's gone wrong.
 
 ### Dude Where's My Code?
 
-Now let’s look at an example using a large framework called Spring Boot. Spring works with both Java and Kotlin. This example is in Kotlin.
-Now we'll cause an error without ever really having our code appear in the stack trace.
-We can do this by defining a very small application with two classes that both want to listen to the same `/hello` HTTP endpoint.
-Spring can't decide which class should handle the `/hello` endpoint, and thus crashes at startup time.
+Now let’s look at an example using a large framework called Spring Boot. Spring works with both Java and Kotlin. This example is in Kotlin. Now we'll cause an error without ever really having our code appear in the stack trace. We can do this by defining a very small application with two classes that both want to listen to the same `/hello` HTTP endpoint. Spring can't decide which class should handle the `/hello` endpoint, and thus crashes at startup time.
 
 <div class="img-div-skyscraper">
 <img src="{{site.url}}/assets/img/err-msg/image_9.png"/>
@@ -234,9 +214,7 @@ The stack-trace we’ll get is this behemoth:
 Straight out of the maws of hell
 </div>
 
-We're not going to dissect this intensely, as it's very large. Our main method is somewhere in it, but that method doesn't really do much.
-The stack-trace is instead dominated primarily by internal third party calls from the Spring Framework. If we strip the internal third party calls
-and remove the last part, as that's simply an inner Spring exception, and not that important - we get something more comprehensible.
+We're not going to dissect this intensely, as it's very large. Our main method is somewhere in it, but that method doesn't really do much. The stack-trace is instead dominated primarily by internal third party calls from the Spring Framework. If we strip the internal third party calls and remove the last part, as that's simply an inner Spring exception, and not that important - we get something more comprehensible.
 
 <div class="img-div-skyscraper">
 <img src="{{site.url}}/assets/img/err-msg/image_11.png"/>
@@ -250,9 +228,7 @@ public java.lang.String dk.gustavwengel.myproject.RestController.helloWorld()
 to {[/hello]}: There is already 'identicalRestController' bean method
 ```
 
-If you're using a large framework it happens quite a bit that there's no code of yours in the stack trace at all. 
-This usually means it's a configuration issue, but these errors can be extremely hard to debug. Often we rely on helpful images
-from the framework authors to get us through these kind of errors, as the stack-trace is close to useless.
+If you're using a large framework it happens quite a bit that there's no code of yours in the stack trace at all. This usually means it's a configuration issue, but these errors can be extremely hard to debug. Often we rely on helpful images from the framework authors to get us through these kind of errors, as the stack-trace is close to useless.
 
 ## Summary
 
