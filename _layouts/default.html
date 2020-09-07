@@ -29,5 +29,26 @@
     ga('send', 'pageview');
 </script>
 {% endif %}
+
+
+<!-- Enable littlefoot - this is the one that makes footnotes into tooltips -->
+<script
+src="https://unpkg.com/littlefoot/dist/littlefoot.js"
+type="application/javascript"
+></script>
+<script type="application/javascript">
+littlefoot.littlefoot({
+buttonTemplate: `
+<sup
+  aria-expanded="false"
+  class="footnote-superscript"
+  id="<% reference %>"
+  title="See Footnote <% number %>"
+>
+[<% number %>]
+</sup>
+`})  // Pass any littlefoot settings here.
+</script>
+
 </body>
 </html>
