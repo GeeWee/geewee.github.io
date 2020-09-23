@@ -1,5 +1,5 @@
 ---
-title: "Efficient Pull Requests"
+title: "How To Work Efficiently With Pull Requests"
 permalink: "/efficient-pull-requests"
 draft: false
 short: |
