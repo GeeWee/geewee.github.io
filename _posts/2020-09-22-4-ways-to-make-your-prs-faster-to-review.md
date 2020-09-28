@@ -19,14 +19,14 @@ Pull Requests that are shorter, are much faster to review.
 
 The shorter your pull request is - the better:
 -   It's easier to think through each change and how it interacts with the other changes. This means the review process will take less time.
--   It takes less time to review. While a short PR can be done when you have 20 minutes of downtime, a longer one might require finding several hours in the calendar.\
+-   It takes less time to review. While a short PR can be done when you have 20 minutes of downtime, a longer one might require finding several hours in the calendar.
     Which one do you think will be looked at faster?
--   Studies indicate that shorter PR's lead to finding more issues - if your PR has 300 lines, the reviewer will read them carefully, but if it has 2000 they will skim it.\
+-   Studies indicate that shorter PR's lead to finding more issues - if your PR has 300 lines, the reviewer will read them carefully, but if it has 2000 they will skim it.
     Shorter PR's make the reviews more impactful
 
 # 2. Split Your Changes Up
 
-To keep pull requests short, you'll often need to split the work you're doing up into multiple pull requests.\
+To keep pull requests short, you'll often need to split the work you're doing up into multiple pull requests.
 While working, you might spot something that needs to be refactored, or a rename of a field that will touch many files.
 
 Don't make the changes directly in your branch[^0] - instead:
