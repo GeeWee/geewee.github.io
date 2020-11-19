@@ -1,11 +1,14 @@
 ---
 title: "C# Enums - The Good The Bad And The Ugly"
 permalink: "/csharp-enums-good-bad-ugly"
-draft: true
+draft: false
 extra_sources: "
 https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum#enumeration-types-as-bit-flags
 "
 ---
+
+TODO comprehensive guide?
+
 C# is generally a pretty pleasant language to use. I often consider it *Java done right*.  
 Except for enums.
 I really think C# made some odd choices in regards to what Enums can and can't do. Let's try to explore what they're good
