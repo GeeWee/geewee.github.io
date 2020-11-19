@@ -1,7 +1,6 @@
 ---
-title: ""
-permalink: '/css-in-js'
-draft: true
+title: "css in js"
+permalink: "/css-in-js"
 ---
 
 *This is a text version of a talk I did at the Aarhus React Meetup Group*

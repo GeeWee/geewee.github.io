@@ -1,7 +1,7 @@
 ---
 title: "Azure Application Insights is awful"
 permalink: "/application-insights-awful"
-draft: true
+draft: false
 ---
 
 Blurb about what application insights is, and that my experience has generally been basd.
