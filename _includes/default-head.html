@@ -1,0 +1,52 @@
+<meta charset="utf-8">
+<!-- Canonical url -->
+<link rel="canonical" href="{{ page.url | absolute_url }}"/>
+
+<!-- Default styleset-->
+<link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+
+<!-- Littlefoot (footnotes as tooltip) stylesheet -->
+<link
+        rel="stylesheet"
+        href="https://unpkg.com/littlefoot/dist/littlefoot.css"
+/>
+
+
+<!-- RSS Feed -->
+{% feed_meta %}
+
+
+<!-- Show "Tinkerer - {page title}" for posts and just "Tinkerer" for index-->
+{% if page.title %}
+<title>{{ site.title }} - {{page.title}}</title>
+{% else %}
+<title>{{ site.title }}</title>
+{% endif %}
+
+
+<!--IE shims-->
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel="stylesheet" href="{{ '/assets/css/ie.css' | relative_url }}">
+<![endif]-->
+
+
+
+<!-- (Cookieless) Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-111460485-1',
+        {
+        'storage': 'none'
+    });
+
+    ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
