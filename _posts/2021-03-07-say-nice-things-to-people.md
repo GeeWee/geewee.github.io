@@ -1,5 +1,5 @@
 ---
-title: "Don't say nice things about people"
+title: "Don't Say Nice Things About People"
 permalink: "/say-nice-things-to-people"
 short: |
     Say it to them! <br>
