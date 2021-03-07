@@ -10,3 +10,4 @@ https://github.com/juruen/rmapi
 
 Password: GGwPxt8pcm
 IP adress: 192.168.1.222
+IP adress: 10.11.99.1
