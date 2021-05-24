@@ -125,7 +125,7 @@ Creates a subscription. You send off a list of items you'd like to subscribe to 
 how the subscription will work, and then it will send you a list of errors which is hopefully empty.
 It will send you a subscription id which is what you use when doing polled refreshes
 
-Yoy can also ask for the current values of all the items when creating the subscription - in that case you get those
+You can also ask for the current values of all the items when creating the subscription - in that case you get those
 back.
 
 ## Subscription Polled Refresh: SubscriptionPolledRefresh, SubscriptionPolledRefreshResponse
