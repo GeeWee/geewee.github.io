@@ -1,3 +1,10 @@
+// ==UserScript==
+// @name     Google arrow navigation
+// @version  1
+// @grant    none
+// @match https://*.google.com/search*
+// ==/UserScript==
+
 function isAriaHidden(element){
     if (element.getAttribute('aria-hidden') === 'true'){
         return true;
