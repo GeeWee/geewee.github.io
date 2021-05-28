@@ -1,8 +1,9 @@
--------------------------------
+---
 title: Don't implement equals because of tests
 permalink: '/dont-implement-object-equals'
 draft: true
--------------------------------
+---
+
 Back in the days where I still wrote Java[^0], I was writing some tests where I needed to ensure that two objects were equal.
 At the time it seemed obvious to me that the right call was just to implement `Object.Equals()` to allow for object comparison.
 
