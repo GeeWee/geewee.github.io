@@ -1,5 +1,5 @@
 ---
-title: Don't implement equals because of tests
+title: Object Equality and Testing
 permalink: '/dont-implement-object-equals'
 draft: True
 short: You should rarely implement Object.Equals. And you should definitely never do it for testing purposes. Here's why.
