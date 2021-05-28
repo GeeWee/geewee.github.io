@@ -96,44 +96,15 @@ I think about half of my test assertions are that one object equals another.
 For value-types like strings and numbers, using the built-in assertion libraries work great.
 But as soon as we want to assert that two of our own classes are equal, we start running into issues.
 Seeing as our classes don't implement `Equals()` there's not really any good way for the built-in libraries to see if they're equal to one another.
-So what do we do? Well we have two options[^2]:
+So what do we do? Well if we want to use the built-in assertions we have two options[^2]:
 
-For value-types such as integers or strings this works fine using the "regular" assertion libraries, but as soon as we want to do assertion on most classes we start running into issues - they don't implement Equals so we don't have a "good" way to compare them to an actual value.
-
-This leaves us with two options:
 ## Option 1: Implementing Object.Equals for use in tests
-Now, I'm not a huge fan of implementing Object.Equals() in general for the following reason.
+Now, I'm not a huge fan of implementing Object.Equals() in general, and [I've written about that before.]({{site.baseurl}}/dont-implement-object-equals).
+To sum it up briefly:
+- Object equivalence is harder than it seems, and your production code and your tests might not agree on what it means for two objects to be equal.
+- It's a lot of extra lines of code you have to write and keep updated just to be able to test your code.
 
-### What is equality anyways?
-A great of objects don't have *one* stable way to consider whether or not they're equivalent. Take the following example.
-```csharp
-// We query the database for an object with the primary key 1
-var objectFromDatabase = Database.QueryForId(1);
-
-Thread.Sleep(50_000); // A lot of time passes, the row *in the database* is changed by someone else in this time
-
-// We query the database again for the same row
-var maybeSameObjectFromDatabase = Database.QueryForId(1);
-```
-Now - is `objectFromDatabase` and `maybeSameObjectFromDatabase` equivalent?
-From the database point of view they might be because they refer to the same row.
-However they have different fields, so they don't have the same in-memory representation currently.
-
-All I'm saying is that object equivalence is hard the way you compare them in your tests might not be the same way you would in application code.
-
-### Test driven damage
-I'm of the firm belief that, as much as possible, we shouldn't change our code to make it easier to test.
-The "optimal" world is one where you'd write the most straightforward code - and that would be testable.
-The real isn't quite like that - but I still think we should resist making our code more unwieldy, just so we can test it.
-
-So obviously I'm not a huge fan of implementing object.equals just to compare objects in tests.
-
-### Maintenance cost
-When an object has an `Equals()` defined, each update to it triggers a maintenance cost. If you add a field, you have to remember to add it in both your `Equals` and your `Hashcode`, otherwise you'll end up with some potentially hard
-to catch bugs.
-
-
-Okay, so maybe implementing object.equals isn't the best idea - what's our other alternative?
+So what's our other option?
 
 ## Option 2: Testing for each property individually
 
@@ -168,14 +139,15 @@ public void Test()
 ```
 
 However this has three drawbacks:
-1. It's verbose - that's a lot of lines, and if your objects grow so will the amount of lines
-2. It doesn't force you to change your tests if your object gains a property. If we add an extra field to the object this test will continue to pass. We're not reminded that there's a new field to assert on, even if we wanted to assert on all the fields.
-3. Multiple test failures aren't aggregated - e.g. in this case the second assert will fail. After we fix that, the third assert will fail. Conceptually all of these assertions are a single assertion on the object state - not 3 independent assertions[^3].
+1. It's verbose. As your object grows, so does the amount of lines you'll need in each test to do assertions.
+2. It doesn't force you to change your tests if you add a field to your class. In this case if we added an extra field our test would continue to pass.
+We're not reminded that there's a new field to assert on.
+3. Multiple test failures aren't aggregated - in the test case above both the second and the third asserts will fail - but we'll only get one error at a time. We want all errors at once, as these assertions are a single assertion on the object state - not 3 independent assertions[^3].
 
 
 ## The real solution - BeEquivalentTo
-This is the real killer feature of `FluentAssertions` for me. It allows you to compare whether or not two object have equivalent fields.
-It uses reflection to determine whether or not two objects are equal, without us having to write multiple lines of assertions or implement any `Equals` methods.
+`BeEquivalentTo` is the real killer feature of FluentAssertions for me. It allows you to compare whether or not two object have equivalent fields.
+It uses reflection to determine whether or not two objects are equal, without needing us to write multiple lines of assertions or implement any `Equals` methods.
 
 The test above becomes:
 ```csharp
@@ -190,18 +162,17 @@ Error Message:
 Expected member Parameter2 to be "earth", but "world" differs near "wor" (index 0).
 Expected member Parameter3 to be "not bye", but "goodbye" differs near "goo" (index 0).
 ```
-It tells us which members are wrong, and the value of both the actual and the expected object!
-We get all of our errors at once, it's concise and we don't have to write *any* extra code to make it work!
+It tells us which members are wrong, and the value of both the `actual` and the `expected` object.
+It's concise, we get all of our errors at once and we don't have to write *any* extra code to make it work!
 
 
 Testing for list content
 =================================
-I often I find myself wanting to assert that "This list has these 3 elements" but without caring what order the elements are in.
+I often I find myself wanting to assert that "This list has these 3 elements" but without caring what order the elements are in, for example when retrieving values from a database.
 
-There isn't really a good way to do this with xUnit's built-in asserts[^4].
-Luckily FluentAssertions `BeEquivalentTo()`` has a few extra tricks up its sleeve!
-It can't only be used to compare objects - it can also be used to compare collections, and you can tell it whether or not you care about the element order!
-
+There isn't a good way to do this with xUnit's built-in asserts[^4] , but luckily `BeEquivalentTo()` has a few extra tricks up its sleeve.
+It's not only for comparing objects - it can also be used to compare collections, and you get to tell it whether or not you care about the element order.
+Take the example below.
 ```csharp
 var class1 = new MyCustomClass("hello", "world", "goodbye");
 var class2 = new MyCustomClass("hello", "earth", "not bye");
@@ -213,31 +184,25 @@ var actual = new List<MyCustomClass>
 };
 var expected = new List<MyCustomClass>
 {
-    class2, class1
+    class2,
+    class1
 };
 
-// This will pass
+// This will pass - BeEquivalentTo ignores order by default
 actual.Should().BeEquivalentTo(expected);
 
-// This will not
+// This will not - we've specified we care about the ordering
 actual.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
 ```
 
-Now ain't that much easier than sorting lists?
-
-
 You'll want to use parts of it anyways
 ==========================================
-The power of `BeEquivalentTo` means that at some point you'll probably want to include FluentAssertions or a similar assertion library that gives you better assertions.
-So if you have to use it anyways - you might as well go all the way and use it for everything. That way you won't need to remember the syntax and conventions of two assertion libraries.[^5]
-
+The power of `BeEquivalentTo` means that at some point you'll probably want to include FluentAssertions or a similar assertion library that gives you better assertions, and it's pretty nice to not have to remember the syntax for multiple assertion libraries[^5].
 So if you're going to take a sip of the kool-aid anyways, you might as well down the whole bottle, and just use FluentAssertions for all your assertions. Forever.
-
 
 [^0]: Happened while writing this post as a matter of fact.
 [^1]: It does come at a cost of a slightly more unwieldy stacktrace though.
 [^2]: Apart from just flipping the table over, and vowing to never write a test again.
-[^3]: If you've asserted on HTTP responses, you might have tried your test failing on a non 2xx status code.
-Then the error message wouldn't contain the server response and you would have no idea why your test failed.
+[^3]: If you've asserted on HTTP responses, you might have tried your test failing on a non 2xx status code. Then the error message wouldn't contain the server response and you would have no idea why your test failed.
 [^4]: Apart from either sorting the list, or manually selecting each entry through something like an ID and then asserting on it.
 [^5]:  What was the difference between Assert.Equals vs Assert.Same again? <br> Is it Assert.Equals(actual, expected) or Assert.Equals(expected, actual)?
