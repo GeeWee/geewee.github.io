@@ -1,7 +1,7 @@
 ---
 title: Just Use FluentAssertions
 permalink: '/use-fluentassertions'
-draft:true
+draft: True
 ---
 
 Testing frameworks in C# generally come with a built-in way to do assertions. Today I'm here to argue that instead of using those, you should use [FluentAssertions](https://fluentassertions.com/) for all your test assertions.
