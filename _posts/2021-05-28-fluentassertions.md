@@ -1,6 +1,7 @@
 -------------------------------
 title: Just Use FluentAssertions
-permalink: '/remarkable-2setup'
+permalink: '/use-fluentassertions'
+draft:true
 -------------------------------
 
 Testing frameworks in C# generally come with a built-in way to do assertions. Today I'm here to argue that instead of using those, you should use [FluentAssertions](https://fluentassertions.com/) for all your test assertions.
@@ -10,7 +11,7 @@ FluentAssertions is a library that, well.. allows you to write fluent assertions
 var someValue = 3;
 someValue.Should().Be(3);
 ```
-While the name `FluentAssertions` talks about the style you write the assertions in - that's not a big selling point for me personally. FluentAssertion does however come *packed* with features you don't get out-of-the-box.
+While you can feel whatever you want about the syntax, the real selling point is that FluentAssertions comes *packed* with features you don't get out-of-the-box.
 
 In this post I'm going to compare FluentAssertions to the built-in xUnit assertions, and hopefully convince you to just use FluentAssertions for your next (or current) project.
 
@@ -25,10 +26,7 @@ This seems like something that would be pretty easy to get right, so let's see h
 ## xUnit
 ```csharp
 var someIntFromAMethod = 23;
-
 var expectedInt = 24;
-
-// Expected, actual
 Assert.Equal(expectedInt, someIntFromAMethod);
 ```
 It returns the following error message:
@@ -66,20 +64,13 @@ FluentAssertion gives you the same information as xUnit, but it *also gives you 
 
 ----
 
-Let's take a look at a little more complicated example - comparing two lists. I think these are some of the harder assertion errors to spot - because sometimes these lists are pretty long,
-and the differences when printing them to the console might be subtle.
+Let's take a look at a little more complicated example - comparing two lists.
+When comparing collections it can sometimes be hard to tell which elements aren't equal. Especially with long lists where the differences when printing them to the console might be subtle.
 
-Let's try comparing these two lists that have a subtle difference - notice the whitespace after the `"3 "` in the first list.
+Let's try comparing these two lists that have a subtle difference - notice the whitespace after the `"3 "` in the `actual` list.
 ```csharp
-var actual = new List<string>
-{
-    "1", "2", "3 "
-};
-
-var expected = new List<string>
-{
-    "1", "2", "3"
-};
+var actual = new List<string> { "1", "2", "3 " };
+var expected = new List<string> { "1", "2", "3" };
 ```
 ### XUnit
 ```
@@ -207,7 +198,7 @@ Testing for list content
 =================================
 I often I find myself wanting to assert that "This list has these 3 elements" but without caring what order the elements are in.
 
-There isn't really a good way to do this with xUnit's built-in asserts[^5].
+There isn't really a good way to do this with xUnit's built-in asserts[^4].
 Luckily FluentAssertions `BeEquivalentTo()`` has a few extra tricks up its sleeve!
 It can't only be used to compare objects - it can also be used to compare collections, and you can tell it whether or not you care about the element order!
 
@@ -238,13 +229,15 @@ Now ain't that much easier than sorting lists?
 You'll want to use parts of it anyways
 ==========================================
 The power of `BeEquivalentTo` means that at some point you'll probably want to include FluentAssertions or a similar assertion library that gives you better assertions.
-So if you have to use it anyways - you might as well go all the way and use it for everything. That way you won't need to remember the syntax and conventions of two assertion libraries.[^6]
+So if you have to use it anyways - you might as well go all the way and use it for everything. That way you won't need to remember the syntax and conventions of two assertion libraries.[^5]
 
 So if you're going to take a sip of the kool-aid anyways, you might as well down the whole bottle, and just use FluentAssertions for all your assertions. Forever.
 
 
-# todo write footnotes
-#todo shorter example, and structure it a little better
-
-[^5:]: Apart from either sorting the list, or manually selecting each entry through something like an ID and then asserting on it.
-[^6]:  What was the difference between Assert.Equals vs Assert.Same again? <br> Is it Assert.Equals(actual, expected) or Assert.Equals(expected, actual)?
+[^0]: Happened while writing this post as a matter of fact.
+[^1]: It does come at a cost of a slightly more unwieldy stacktrace though.
+[^2]: Apart from just flipping the table over, and vowing to never write a test again.
+[^3]: If you've asserted on HTTP responses, you might have tried your test failing on a non 2xx status code.
+Then the error message wouldn't contain the server response and you would have no idea why your test failed.
+[^4]: Apart from either sorting the list, or manually selecting each entry through something like an ID and then asserting on it.
+[^5]:  What was the difference between Assert.Equals vs Assert.Same again? <br> Is it Assert.Equals(actual, expected) or Assert.Equals(expected, actual)?
