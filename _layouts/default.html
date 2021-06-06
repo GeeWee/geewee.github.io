@@ -2,61 +2,6 @@
 <html lang="en">
 <head>
     {% include default-head.html %}
-
-
-    <!--  Twitter card stuff - adapted from http://davidensinger.com/2013/04/supporting-twitter-cards-with-jekyll/  -->
-    <!-- Hard-coded twitter stuff -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@GeeWengel">
-    <meta name="twitter:creator" content="@GeeWengel">
-
-    <!-- If the page has a title use that, otherwise default to site-title. Most posts have a title -->
-    {% if page.title %}
-    <meta name="twitter:title" content="{{ page.title }}">
-    <meta content="{{ page.title }}" property="og:title">
-    {% else %}
-    <meta name="twitter:title" content="{{ site.title }}">
-    <meta content="{{ site.title }}" property="og:title">
-    {% endif %}
-
-    <!--    open graph - define as article if it's a blog post. Pages that have a custom title are articles-->
-    {% if page.title %}
-    <meta content="article" property="og:type">
-    {% else %}
-    <meta content="website" property="og:type">
-    {% endif %}
-
-    {% if page.url %}
-    <meta name="twitter:url" content="{{ page.url | absolute_url }}">
-    <meta content="{{ page.url | absolute_url }}" property="og:url">
-    {% endif %}
-
-    <!-- If there is a custom page.short use that - otherwise default to truncating some text from the page -->
-    {% if page.short %}
-    <meta name="twitter:description" content="{{ page.short }}">
-    <meta content="{{ page.short }}" property="og:description">
-    {% else %}
-    <meta name="twitter:description" content="{{ page.excerpt | strip_html | xml_escape | truncate: 200 }}">
-    <meta content="{{ page.excerpt | strip_html | xml_escape | truncate: 200 }}" property="og:description">
-    {% endif %}
-
-    <!--    Date -->
-    {% if page.date %}
-    <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
-    <meta content="{{ site.url }}/about/" property="article:author">
-    {% endif %}
-
-
-    <!-- If a specific image is declared in the page use that - otherwise use a default one -->
-    <!--    todo uplaod image -->
-    {% if page.image %}
-    <meta name="twitter:image:src" content="{{ site.url }}/assets/img/{{ page.image }}">
-    <meta content="{{ site.url }}/assets/img/{{ page.image }}" property="og:image">
-    {% else %}
-    <meta name="twitter:image:src" content="{{ site.url }}/assets/img/default-header.jpg">
-    <meta content="{{ site.url }}/assets/img/default-header.jpg" property="og:image">
-    {% endif %}
-
 </head>
 <body>
 
