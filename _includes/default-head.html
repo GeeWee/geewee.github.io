@@ -47,6 +47,7 @@
 <!-- SOCIAL MEDIA STUFF STARTS HERE (TWITTER CARDS ETC) -->
 
 <!--  Twitter card stuff - adapted from http://davidensinger.com/2013/04/supporting-twitter-cards-with-jekyll/  -->
+<!--and http://davidensinger.com/2013/04/adding-open-graph-tags-to-jekyll/ -->
 <!-- Hard-coded twitter stuff -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@GeeWengel">
@@ -91,6 +92,8 @@
 {% if page.date %}
 <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
 <meta content="{{ site.url }}/about/" property="article:author">
+<!--(for linkedin)-->
+<meta name="publish_date" property="og:publish_date" content="{{ page.date | date_to_xmlschema }}">
 {% endif %}
 
 
@@ -102,5 +105,9 @@
 <meta name="twitter:image:src" content="{{ site.url }}/assets/img/default-hero-image.jpg">
 <meta content="{{ site.url }}/assets/img/default-hero-image.jpg" property="og:image">
 {% endif %}
+
+<!-- For linkedin -->
+<meta name="author" content="Gustav Wengel">
+<meta name="author" content="[Author name here]">
 
 <!-- SOCIAL MEDIA STUFF ENDS HERE (TWITTER CARDS ETC) -->
