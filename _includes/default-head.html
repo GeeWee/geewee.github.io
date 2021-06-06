@@ -73,13 +73,18 @@
 <meta content="{{ page.url | absolute_url }}" property="og:url">
 {% endif %}
 
-<!-- If there is a custom page.short use that - otherwise default to truncating some text from the page -->
+
+<!-- If there is a custom page.short use that - otherwise default to truncating some text from the excerpt if it has one (i.e. it is an article.
+ Fallback to site description. -->
 {% if page.short %}
 <meta name="twitter:description" content="{{ page.short }}">
 <meta content="{{ page.short }}" property="og:description">
-{% else %}
+{% elsif page.excerpt.size %}
 <meta name="twitter:description" content="{{ page.excerpt | strip_html | xml_escape | truncate: 200 }}">
 <meta content="{{ page.excerpt | strip_html | xml_escape | truncate: 200 }}" property="og:description">
+{% else %}
+<meta name="twitter:description" content="{{ site.description }}">
+<meta content="{{ site.description }}" property="og:description">
 {% endif %}
 
 <!--    Date -->
