@@ -34,32 +34,55 @@ Hetzner doesn't do *much* apart from having a real solid VPS service though. The
 
 Hetzner seems to be easy enough to audit. They have a dedicated [security page](https://www.hetzner.com/assets/Uploads/downloads/Sicherheit-en.pdf) and a valid [ISO27001:20013 certificate](https://www.hetzner.com/unternehmen/zertifizierung). Unfortunately their data processing agreement isn't publicly available, so you have to sign up with them first to be able to view it. 
 
+[Terraform provider](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs)
+
 # todo add compliance details after they respond
 
 # Scaleway
+Scaleway is a french cloud, which feels very modern in both its pricing and the featureset it offers.
+It's not on par with the big US cloud providers, but it seems to be getting there.
+The list of features it offers are: 
+- VPS's (prices start from 7€ a month for their cheapest development instance, and at 60€ a month for their cheapest production grade instance)
+- Bare metal servers
+- Kubernetes hosting
+- Managed databases (Postgres and MySQL). Starts at 7.30€/month for standalone nodes and 18€/month for high-availability setups, which seems extremely cheap.
+- Object and block storages. They have an S3 alternative where the first 75GB is free.
+- [Terraform provider](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs)
 
-- Feels very modern
-  
-Lots of nifty features in public beta like serverless containers
-# Todo got to here
+They also have some nifty features in open beta like serverless functions and a container runtime where you just provide a docker image for them to run. I haven't tested out the stability or the startup time of those features yet.
 
-- Intro
-- Additional features
-- Drawbacks
-- Data sovereignty
-- Certification and ease of auditing
+I haven't found any major drawbacks, except that some people say that the support can be a tad slow, particularly if you don't spend a lot of money there.
+
+Scaleway sends you a DPA when you sign up which says Scaleway will:
+> refrain from transmitting, disseminating or storing Personal Data to or in a non-EU country 
+> without the Client’s prior and express consent. In the event that Online is required to  transfer Personal Data to a third country or international organisation under EU law or the  law of the Member State to which it is subject, it must notify the Client of this prior to  processing and provide proof of the mandatory nature of this obligation, unless the  applicable law prohibits such notification for important reasons in the public interest;
+
+Scaleway has a lot of [certifications](https://www.scaleway.com/en/about-us/our-certifications/) which also should make auditing them a painless process.
 
 
 # Open Telekom cloud
+I stumbled across this cloud provider on [twitter](https://twitter.com/dalbuschat/status/1403662955238105090)[^1], and it seems like a very sophisticated german cloud, born out of the german telecommunications industry. 
 
-- Has email capabilities
+They have a pretty expensive set of features including:
+- VPS's - goes from 10€ if you run `Open Linux` as your operating system (whatever that means) to around 40€/month for things like Windows or RHEL servers. 
+- Managed redis instances
+- Managed databases - a single instance of postgres will run you around 30€/month, doubling that if you want a primary/standby setup
+- [Container hosting in the cloud](https://open-telekom-cloud.com/en/products-services/cloud-container-engine)
+- Object and file storage
+- [Email gateways](https://open-telekom-cloud.com/en/solutions/mailing-services/secure-mail-gateway)
+- [Terraform provider](https://registry.terraform.io/providers/opentelekomcloud/opentelekomcloud/latest/docs)
 
+Generally Open Telekom cloud seems to be a tad on the pricier side of the other cloud providers, but it seems to have some very solid features as well. I've heard rumors that support isn't [particularly responsive](https://twitter.com/dalbuschat/status/1403662955238105090).
 
-- Intro
-- Additional features
-- Drawbacks
-- Data sovereignty
-- Certification and ease of auditing
+Open Telekom Cloud have data sovereignty in the EU, and you can even lock it into a specific country (germany or netherlands) - and [they make a big deal out of it](https://open-telekom-cloud.com/en/security/data-protection-and-compliance) 
+
+They also have every certification you could possibly dream of, so auditing them should be painless.
+
+-------
+
+While the cloud game in the European Union is still lagging behind its US counterparts, some really solid cloud providers are definitely starting to crop up.
+However, they seem to be really hard to find still. While writing this article I stumbled upon [eucloud.tech](https://www.eucloud.tech/) which seems to be a legitimate resource for finding european cloud providers.
 
 
 [^0]: They do have some managed servers, but that seems mainly to be a Wordpress/PHP sort of solution.
+[^1]: The whole thread is worth reading. Some good experiences and pros/cons are listed.
