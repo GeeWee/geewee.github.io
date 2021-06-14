@@ -26,7 +26,7 @@ The three clouds I've considered is listed in the table below.
 | Open Telekon Cloud | Yes, German      | Yes, and configurable between countries | Yes, ISO 27001 and many others | Not via public facing web                                      | VPS’s, bare metal servers, managed databases, storage and more                         | The most expensive of the clouds        |
 
 
-#Hetzner
+# Hetzner
 [Hetzner](https://www.hetzner.com/cloud) is a german company and the cloud with the lowest initial price point by far of the three clouds. Their VPS's start at 2-5€/month which is a supremely impressive price point.
 
 Apart from regular VPS' they have snapshots, backups, volumes and support a wide variety of linux-based operating systems.
