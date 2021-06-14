@@ -17,33 +17,35 @@ I've judged them on
 2. Compliance (data locality, sensible data processing agreement and ease of auditing) 
 3. Pricing
 
-The three clouds are:
+The three clouds I've considered is listed in the table below.
 
-- Hetzner
-- Open Telekom Cloud
-- Scaleway
+| Cloud Provider     | European company | Data sovereignty                        | Certificates                   | Easily-accessible DPA                                          | Features                                                                               | Pricing                                 |
+|--------------------|------------------|-----------------------------------------|--------------------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------|
+| Hetzner            | Yes, German      | TODO                                    | Yes, ISO 27001                 | Not via public facing web                                      | VPS’s, firewalls and storage                                                           | Cheapest to get started with            |
+| Scaleway           | Yes, French      | Yes                                     | Yes, ISO 27001 and many others | Not via public facing web, it is sent to you when you register | VPS’s, bare metal servers, managed databases, serverless functions (in beta), and more | Not as cheap as Hetzner but competitive |
+| Open Telekon Cloud | Yes, German      | Yes, and configurable between countries | Yes, ISO 27001 and many others | Not via public facing web                                      | VPS’s, bare metal servers, managed databases, storage and more                         | The most expensive of the clouds        |
 
-# todo definitely add a table here
 
 #Hetzner
 [Hetzner](https://www.hetzner.com/cloud) is a german company and the cloud with the lowest initial price point by far of the three clouds. Their VPS's start at 2-5€/month which is a supremely impressive price point.
 
 Apart from regular VPS' they have snapshots, backups, volumes and support a wide variety of linux-based operating systems.
+They also have a [Terraform provider](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs)
 
 Hetzner doesn't do *much* apart from having a real solid VPS service though. They have a storage solution, but apart from that there are no managed databases or additional features[^0]. 
 
 Hetzner seems to be easy enough to audit. They have a dedicated [security page](https://www.hetzner.com/assets/Uploads/downloads/Sicherheit-en.pdf) and a valid [ISO27001:20013 certificate](https://www.hetzner.com/unternehmen/zertifizierung). Unfortunately their data processing agreement isn't publicly available, so you have to sign up with them first to be able to view it. 
 
-[Terraform provider](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs)
-
 # todo add compliance details after they respond
 
+
 # Scaleway
-Scaleway is a french cloud, which feels very modern in both its pricing and the featureset it offers.
+Scaleway is a french cloud, which feels very modern in both its pricing, and the features it offers.
 It's not on par with the big US cloud providers, but it seems to be getting there.
 The list of features it offers are: 
 - VPS's (prices start from 7€ a month for their cheapest development instance, and at 60€ a month for their cheapest production grade instance)
 - Bare metal servers
+- Object and file storage
 - Kubernetes hosting
 - Managed databases (Postgres and MySQL). Starts at 7.30€/month for standalone nodes and 18€/month for high-availability setups, which seems extremely cheap.
 - Object and block storages. They have an S3 alternative where the first 75GB is free.
@@ -76,12 +78,16 @@ Generally Open Telekom cloud seems to be a tad on the pricier side of the other 
 
 Open Telekom Cloud have data sovereignty in the EU, and you can even lock it into a specific country (germany or netherlands) - and [they make a big deal out of it](https://open-telekom-cloud.com/en/security/data-protection-and-compliance) 
 
-They also have every certification you could possibly dream of, so auditing them should be painless.
+They also have every certification you could possibly dream of, so auditing them should be painless. This cloud definitely seems like the heavyweight in regard to compliance.
 
 -------
 
 While the cloud game in the European Union is still lagging behind its US counterparts, some really solid cloud providers are definitely starting to crop up.
-However, they seem to be really hard to find still. While writing this article I stumbled upon [eucloud.tech](https://www.eucloud.tech/) which seems to be a legitimate resource for finding european cloud providers.
+
+Personally, I think these three cloud providers are good bets.
+You can choose Hetzner if you want to get started for cheap, and you dont' need e.g. managed databases. Scaleway seems to be a reasonably priced cloud that can be used for a wide variety of usecases. And Open Telekom Cloud is the way to go if you have more strict compliance needs, and you're willing to pay a little extra for them.
+
+While writing this article I also stumbled upon [eucloud.tech](https://www.eucloud.tech/) which seems to be a legitimate resource for finding european cloud providers. Check that out for some other alternatives.
 
 
 [^0]: They do have some managed servers, but that seems mainly to be a Wordpress/PHP sort of solution.
