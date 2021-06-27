@@ -8,6 +8,10 @@ https://github.com/rschroll/rmfuse
 rmapi is nice
 https://github.com/juruen/rmapi
 
+https://github.com/ddvk/remarkable-hacks
+
 Password: GGwPxt8pcm
-IP adress: 192.168.1.222
-IP adress: 10.11.99.1
+IP address: 192.168.1.222
+IP address: 10.11.99.1
+
+(If you can't see both ip addresses consider switching the cable and/or usb port.)
