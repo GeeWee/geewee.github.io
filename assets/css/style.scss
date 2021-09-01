@@ -349,11 +349,15 @@ code {
 // --------------------------------- Accordions
 
 .accordion {
-  background-color: #eee;
-  color: #444;
+  text-align: center;
+}
+
+.accordion-button {
+  background-color: #444444;
+  color: #e8e8e8;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  width: 80%;
   border: none;
   text-align: left;
   outline: none;
@@ -361,25 +365,29 @@ code {
   transition: 0.4s;
 }
 
-.active, .accordion:hover {
-  background-color: #ccc;
+.accordion-button:hover {
+  background-color: rgba(255, 204, 0, 0.2);
 }
 
-.accordion:after {
+.accordion-active {
+  border: 1px #ffcc00 dashed;
+}
+
+.accordion-button:after {
   content: '\002B';
-  color: #777;
+  color: #e8e8e8;
   font-weight: bold;
   float: right;
   margin-left: 5px;
 }
 
-.active:after {
+.accordion-active:after {
   content: "\2212";
 }
 
-.panel {
+.accordion-content {
   padding: 0 18px;
-  background-color: white;
+  width: 80%;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;

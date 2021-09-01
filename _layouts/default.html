@@ -44,15 +44,21 @@ buttonTemplate: `
 <!--TODO change-->
 <script>
     const acc = document.getElementsByClassName("accordion");
+
     for (let i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
+        const accordion = acc[i];
+        const accordionButton = accordion.getElementsByClassName("accordion-button")[0];
+        const accordionContent = accordion.getElementsByClassName("accordion-content")[0];
+
+        console.log(accordionButton, accordion, accordionContent);
+
+        accordionButton.addEventListener("click", function() {
+            accordion.classList.toggle("accordion-active");
             //todo this doesn't work as both things are wrapped in a <p> tag.
-            const panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
+            if (accordionContent.style.maxHeight) {
+                accordionContent.style.maxHeight = null;
             } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
+                accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
             }
         });
     }
