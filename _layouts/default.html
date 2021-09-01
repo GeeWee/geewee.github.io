@@ -49,6 +49,7 @@ buttonTemplate: `
     for (i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
             this.classList.toggle("active");
+            //todo this doesn't work as both things are wrapped in a <p> tag.
             var panel = this.nextElementSibling;
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
