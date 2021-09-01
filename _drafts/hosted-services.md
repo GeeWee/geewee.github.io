@@ -9,9 +9,11 @@ permalink: '/remarkable-2setup'
 SEO-y intro. Why does my BackgroundService stop running. What are the differences between an IHostedService and an BackgroundService,
 when should I use which. Best practices for BackgroundService, blabla.
 
-<button class="accordion">Error Handling</button>
+<div class="accordion">
+<button class="accordion-button">Error Handling</button>
 <div class="accordion-content">
   <p>Lorem ipsum...</p>
+</div>
 </div>
 
 
