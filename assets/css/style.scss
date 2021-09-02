@@ -348,8 +348,16 @@ code {
 
 // --------------------------------- Accordions
 
+.accordion-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 .accordion {
   text-align: center;
+  width: 90%;
 }
 
 .accordion-button {
@@ -357,7 +365,7 @@ code {
   color: #e8e8e8;
   cursor: pointer;
   padding: 18px;
-  width: 80%;
+  width: 100%;
   border: none;
   text-align: left;
   outline: none;
@@ -369,11 +377,11 @@ code {
   background-color: rgba(255, 204, 0, 0.2);
 }
 
-.accordion-active {
+.accordion-border {
   border: 1px #ffcc00 dashed;
 }
 
-.accordion-button:after {
+.accordion-button:not(.accordion-button-active):after {
   content: '\002B';
   color: #e8e8e8;
   font-weight: bold;
@@ -381,13 +389,23 @@ code {
   margin-left: 5px;
 }
 
-.accordion-active:after {
-  content: "\2212";
+.accordion-button-active {
+  margin-bottom: 8px;
 }
+
+.accordion-button-active:after {
+  content: '\2212';
+  color: #e8e8e8;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
 
 .accordion-content {
   padding: 0 18px;
-  width: 80%;
+  width: 100%;
+  text-align: start;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;

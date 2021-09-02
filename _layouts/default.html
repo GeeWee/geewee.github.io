@@ -53,7 +53,7 @@ buttonTemplate: `
         console.log(accordionButton, accordion, accordionContent);
 
         accordionButton.addEventListener("click", function() {
-            accordion.classList.toggle("accordion-active");
+            accordionButton.classList.toggle("accordion-button-active");
             //todo this doesn't work as both things are wrapped in a <p> tag.
             if (accordionContent.style.maxHeight) {
                 accordionContent.style.maxHeight = null;
