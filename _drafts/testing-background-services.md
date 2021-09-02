@@ -1,7 +1,8 @@
 -------------------------------
-title: IHostedService and BackgroundService
-permalink: '/remarkable-2setup'
+title: Testing ASP.NET Core BackgroundServices
+permalink: '/testing-aspnetcore-backgroundservices'
 -------------------------------
+
 (note all of this is .net 5) ??
 
 # Todo figure out how to do foldable sections for e.g. error handling?
@@ -121,6 +122,9 @@ public Task StartAsync(CancellationToken cancellationToken)
 ```
 (in regards to error handling if this throws an error you'll never know!)
 
+# Cancellationtokens in IHostedService
+weird cus it only happens on startup
+
 However Microsoft in their infinite wisdom realized that this was a pattern that people were going to use often, so they baked it into the framework.
 Meet the `BackgroundService`.
 
@@ -152,7 +156,22 @@ public async Task StartAsync(CancellationToken cancellationToken)
     throw new Exception("oh no something went horribly wrong");
 }
 ```
-your application will crash at the start. That seems rather obvious it would, but 
+your application will crash at the start. That seems rather obvious it would, but what happens if we do this instead:
+
+```csharp
+public async Task StartAsync(CancellationToken cancellationToken)
+{
+    await Task.Yield();
+    throw new Exception("oh no something went horribly wrong");
+}
+```
+Would you like to guess?
+Nothing at all happens.
+The BackgroundService fails silently
+
+
+# Testing IHostedervices
+
 
 # Cancellationtokens in IHostedService
 
