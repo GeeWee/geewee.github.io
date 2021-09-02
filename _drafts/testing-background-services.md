@@ -1,7 +1,7 @@
--------------------------------
+---
 title: Testing ASP.NET Core BackgroundServices
 permalink: '/testing-aspnetcore-backgroundservices'
--------------------------------
+---
 
 (note all of this is .net 5) ??
 

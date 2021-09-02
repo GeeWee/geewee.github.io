@@ -1,20 +1,20 @@
--------------------------------
-title: The difference between an IHostedService and BackgroundService
-permalink: '/difference-between-hostedservice-and-backgroundservice'
--------------------------------
+---
+title: ASP.NET Core IHostedService, BackgroundService and error handling 
+permalink: '/difference-and-error-handling-between-hostedservice-and-backgroundservice'
+---
 
-When I first started learning about ASP.NET Core, the `IHostedService` and the `BackgroundService` was a mystery to me. I wasn't quite clear on how to use the, what the difference between an `IHostedService` and a `BackgroundService` was, and when I should use which.
-
-# TODO a little extra intro here
-
+When I first started learning about ASP.NET Core, the `IHostedService` and the `BackgroundService` was a mystery to me.
+I wasn't quite clear on how to use them or what the difference between an `IHostedService` and a `BackgroundService` was or when I should use which.
+I also didn't know how to do error handling in them or why my `BackgroundService` started failing silently.
+But pain is a harsh mistress and now I know better. Read on, and you can too.
 
 # IHostedService
 An `IHostedService` is a service that allows for running code _before_ the rest of your ASP.NET Core application starts.
 
 The interface has two methods, a `StartAsync` that is run on application start and `StopAsync` that is run on application exit.
 
-When your application starts up, the framework awaits the `StartAsync` method of each `IHostedService` in the [order they are configured](https://andrewlock.net/controlling-ihostedservice-execution-order-in-aspnetcore-3/) in your `Startup.cs`
-The `StopAsync` is called in the opposite order on application shutdown.
+When your application starts up, the framework `await`s the `StartAsync` method of each `IHostedService` in the [order they are configured](https://andrewlock.net/controlling-ihostedservice-execution-order-in-aspnetcore-3/) in your `Startup.cs`
+The `StopAsync` method is called in the opposite order on application shutdown.
 
 This means that the following `IHostedService`s.
 ```csharp
@@ -70,7 +70,7 @@ exit 2
 exit 1
 ```
 
-Seeing as the ASP.NET Core runtime awaits the call to `StartAsync` before starting the next `IHostedService`, this means that you can't do any  sort of longer-lasting work inside `StartAsync` without your application never starting.
+As the ASP.NET Core runtime waits for the first `StartAsync` to finish before starting the next `IHostedService`, this means that you can't do any  sort of longer-lasting work inside `StartAsync` without your application never starting.
 
 That means if you have a `StartAsync` that looks like this:
 
@@ -79,14 +79,14 @@ public async Task StartAsync(CancellationToken cancellationToken)
 {
     while (true)
     {
-        // do something on a timer
+        DoSomethingEverySecond();
         await Task.Delay(1000);
     }
 }
 ```
-Your application will never start,  as the runtime will wait for the method to finish which it never does.
+Your application will never start, as the runtime will wait for the method to finish - which it never does.
 
-So how do you handle long-running tasks inside an `IHostedService`? You generally start a new thread, which you do not await.
+So how do you handle long-running tasks inside an `IHostedService`? You generally start a new thread without awaiting it:
 ```csharp
 public Task StartAsync(CancellationToken cancellationToken)
 {
@@ -95,7 +95,7 @@ public Task StartAsync(CancellationToken cancellationToken)
     {
         while (true)
         {
-            // do something on a timer
+            DoSomethingEverySecond();
             await Task.Delay(1000);
         }
     });
@@ -104,10 +104,10 @@ public Task StartAsync(CancellationToken cancellationToken)
 }
 ```
 
-Note one important thing here - if you use this pattern and the code inside Task.Run throws an exception - *you will never know*! As the Task is not awaited, the exception will not bubble to the surface.
-This is, to put it mildly, a problem. We'll get back to it.
+Note one important thing here: If you use this pattern, and the code inside `Task.Run` throws an exception - *you will never know*!
+As the Task is not awaited, the exception will not bubble to the surface.  This is, to put it mildly, a problem, which we'll look at solutions for a little later.
 
-Because Microsoft in their infinite wisdom realized that this was a pattern that people were going to often use, they baked it into the framework.
+Because Microsoft in their infinite wisdom realized that this `Task.Run` pattern was something people were going to often use, they baked it into the framework.
 Meet the `BackgroundService`.
 
 {% capture accordion_1_content %}
@@ -124,11 +124,11 @@ However as soon as your method returns, the cancellation token is never used aga
 {% include accordion.html title="Extra info: CancellationTokens in IHostedServices" content=accordion_1_content %}
 
 # BackgroundService
-A BackgroundService is a very small HostedService that basically implements the pattern above.
+A BackgroundService is a very small `IHostedService` that basically implements the pattern above.
 If you're interested you [can view the source on GitHub](https://github.com/aspnet/Hosting/blob/master/src/Microsoft.Extensions.Hosting.Abstractions/BackgroundService.cs) - it's less than 100 lines.
 
-It has one method you can implement `ExecuteAsync` - and this method *is not* awaited. 
-This means that code like the below works without blocking the application:
+It has one method you can implement `ExecuteAsync` - and this method is **not** awaited. 
+This means that code like below works without blocking the application:
 
 ```csharp
 public class BackgroundService1 : BackgroundService
@@ -137,7 +137,7 @@ public class BackgroundService1 : BackgroundService
     {
         while (true)
         {
-            // do something on a timer
+            DoSomethingEverySecond();
             await Task.Delay(1000, stoppingToken);
         }
     }
@@ -154,6 +154,7 @@ public class BackgroundService1 : BackgroundService
 }
 ```
 It will bubble the exception up, and your application will not start. That makes sense.
+
 We would expect the same thing to happen with a method like this:
 ```csharp
 protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -162,7 +163,7 @@ protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     throw new Exception("oh nooo");
 }
 ```
-It doesn't behave though. In this case, the exception is silently swallowed, and the application continues without so much as the dignity of writing any log output telling us that something went wrong.
+The same thing doesn't happen though. In this case, the exception is silently swallowed, and the application continues without so much as the courtesy of writing an error message in the terminal:
 ```
 info: Microsoft.Hosting.Lifetime[0]
       Now listening on: https://localhost:5001
@@ -175,11 +176,13 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Content root path: /home/geewee/programming/Blogproject/BlogProject/HostedServiceAsp
 ```
-This is because there's fundamentally two paths a `BackgroundService` can take in regards to exceptions. If it throws one before yielding control (by e.g. awaiting something), the exception bubbles up, but as soon as there's an `await` call before the exception, the service will just die silently.
-It seems like Microsoft has realized that this is weird behaviour, because in .NET 6 we'll at least [get some log output if the service dies](https://github.com/dotnet/runtime/issues/43637
+This is because there's fundamentally two paths a `BackgroundService` can take in regards to exceptions.
+If your `ExecuteAsync` throws before yielding control (by e.g. `await`ing something), the exception bubbles up, but as soon as there's an `await` call before the exception, **the service will just die silently.**
+
+Microsoft has realized that this is weird behaviour and in .NET 6 we'll at least [get some log output if the service dies](https://github.com/dotnet/runtime/issues/43637
 ).
 
-In the meantime, I have written a tiny library `BetterHostedServices` that allow you to inherit from a `CriticalBackgroundService`, which will crash the application if an uncaught error happens in your `BackgroundService` - no matter if you've yielded first.
+In the meantime, I have written a tiny library [BetterHostedServices](https://github.com/GeeWee/BetterHostedServices) that allow you to inherit from a `CriticalBackgroundService`, which will crash the application if an uncaught exception happens in your `BackgroundService` - no matter what.
 
 {% capture accordion_2_content %}
 <p>
