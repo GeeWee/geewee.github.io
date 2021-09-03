@@ -1,6 +1,8 @@
 ---
 title: Testing and scope management in ASP.NET Core BackgroundServices
 permalink: '/testing-and-scope-management-aspnetcore-backgroundservices'
+short: |
+    <p>BackgroundServices in ASP.NET Core seem simple but can be tricky to get right. Here I'm going to try to write down what I wish I had known when I started, by answering the following questions: "How do I test my BackgroundServices", and "How do I manage scope inside my BackgroundServices"</p>
 ---
 _This is part 2 of my series about ASP.NET Core series about BackgroundServices and IHostedService. Part 1 can be found [here]({% post_url 2021-09-02-hosted-services-difference %})_.
 
