@@ -1,181 +1,170 @@
 ---
-title: Testing ASP.NET Core BackgroundServices
-permalink: '/testing-aspnetcore-backgroundservices'
+title: Testing and scope management in ASP.NET Core BackgroundServices
+permalink: '/testing-and-scope-management-aspnetcore-backgroundservices'
 ---
+# TODO split up into scope management and testing?
+# TODO update previous post
 
-(note all of this is .net 5) ??
-
-# Todo figure out how to do foldable sections for e.g. error handling?
-
-SEO-y intro. Why does my BackgroundService stop running. What are the differences between an IHostedService and an BackgroundService,
-when should I use which. Best practices for BackgroundService, blabla.
+_This is part 2 of my series about ASP.NET Core series about BackgroundServices and IHostedService. Previous part can be found [here]({% post_url 2021-09-02-hosted-services-difference %})_
 
 
-{% capture accordion_1_content %}
-<p>
-This is some really cool accordion stuff
-</p>
-{% endcapture %}
-
-{% include accordion.html title="Read more about error handling" content=accordion_1_content %}
-
-
-# IHostedService
-An `IHostedService` is a service that allows for some sort of synchronous or asynchronous startup when running your .NET application.
-
-They have two methods, a `StartAsync` that is run on application start and `StopAsync` that is run on application exit.
-
-However it doesn't behave quite as you'd think. The `IHostedService`s are awaited before anything else happens, and they are run in order.
-
-Let's take an example about the ordering. Let's say we have two `IHostedService`
-
-```csharp
-    public class IHostedService1 : IHostedService
-    {
-        public Task StartAsync(CancellationToken cancellationToken)
-        {
-            Console.WriteLine("1");
-            return Task.CompletedTask;
-        }
-
-        public Task StopAsync(CancellationToken cancellationToken)
-        {
-            Console.WriteLine("exit 1");
-            return Task.CompletedTask;
-        }
-    }
-
-    public class IHostedService2 : IHostedService
-    {
-        public Task StartAsync(CancellationToken cancellationToken)
-        {
-            Console.WriteLine("2");
-            return Task.CompletedTask;
-        }
-
-        public Task StopAsync(CancellationToken cancellationToken)
-        {
-            Console.WriteLine("exit 2");
-            return Task.CompletedTask;
-        }
-    }
-```
-And the following ConfigureService
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddHostedService<IHostedService1>();
-    services.AddHostedService<IHostedService2>();
-}
-```
-
-In what order will the output come out if we run it?
-
-```
-1
-2
-info: Microsoft.Hosting.Lifetime[0]
-      Now listening on: https://localhost:5001
-...
-info: Microsoft.Hosting.Lifetime[0]
-      Application is shutting down...
-exit 2
-exit 1
-```
-
-They're not randomly interspersed. `IHostedService` are always run in order, and in [reverse order when the application exits](https://andrewlock.net/controlling-ihostedservice-execution-order-in-aspnetcore-3/
-).
-
-This is because the ASP.NET runtime awaits the call to `StartAsync` before starting the next IHostedService.
-This also means that you can't do any sort of longer-lasting work inside `StartAsync` without your application never being able to start.
-
-So if you have some background work you'd like to do, and you try to do it like this:
-
-```csharp
-public async Task StartAsync(CancellationToken cancellationToken)
-{
-    while (true)
-    {
-        // do something on a timer
-        await Task.Delay(1000);
-    }
-}
-```
-Your application will never start, as the runtime will wait for this `StartAsync` to finish, and it never does.
-
-So how do you handle long-running tasks inside an `IHostedService`? You generally tend to start a new thread, and then return the method.
-Something like.
-```csharp
-public Task StartAsync(CancellationToken cancellationToken)
-{
-    Task.Run(async () =>
-    {
-        while (true)
-        {
-            // do something on a timer
-            await Task.Delay(1000);
-        }
-    });
-
-    return Task.CompletedTask;
-}
-```
-(in regards to error handling if this throws an error you'll never know!)
-
-# Cancellationtokens in IHostedService
-weird cus it only happens on startup
-
-However Microsoft in their infinite wisdom realized that this was a pattern that people were going to use often, so they baked it into the framework.
-Meet the `BackgroundService`.
+BackgroundServices in ASP.NET Core is a broad topic which I could write much about (and previously have). They can be tricky to use right, so here I'm going to try to answer the following questions: "How do I test my BackgroundServices", and "How do I manage scope inside my BackgroundServices". Let's go. 
 
 # BackgroundService
-A BackgroundService is a HostedService that basically implements the pattern above.
-It has one method you can implement `ExecuteAsync` - and this method is not awaited.
-The `BackgroundService` assigns it to a Task it keeps track of, but does not await. This means you can do patterns like the below and have it work, and not block the application.
+A BackgroundService is a service for running longer-lasting or periodic tasks in the background. It has one method `ExecuteAsync`.
 
+I would say that 90% of the BackgroundServices I've written or seen are more advanced versions of this:
 ```csharp
-protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+public class BackgroundService1 : BackgroundService
 {
-    while (true)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        // do something on a timer
-        await Task.Delay(1000, stoppingToken);
-        Console.WriteLine("1");
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            DoSomePeriodicTask();
+            await Task.Delay(1000, stoppingToken);
+        }
     }
 }
 ```
 
+As we've talked about previously, this will fail silently if `DoSomePeriodicTask()` ends up throwing an error.
+That means you'll need some sort of top-level error handling, so nothing bubbles all the way up. You should also consider using [BetterHostedServices](https://github.com/GeeWee/BetterHostedServices) to crash the application on uncaught exceptions as an extra precaution.
 
-
-
-# Error handling (mbe separate post)
-However because this `StartAsync` is awaited it also means that if you throw an error from the method
+So with some extra error handling and a little more realistic business logic a BackgroundService that processes something from a queue every second could look like this:
 ```csharp
-public async Task StartAsync(CancellationToken cancellationToken)
+public class QueueProcessingBackgroundService : BackgroundService
 {
-    throw new Exception("oh no something went horribly wrong");
+    private ILogger<QueueProcessingBackgroundService> _logger;
+    private IQueue _queue;
+    private IBusinessLogicService _businessLogicService;
+
+    public QueueProcessingBackgroundService(IQueue queue,
+        IBusinessLogicService businessLogicService,
+        ILogger<QueueProcessingBackgroundService> logger)
+    {
+        _queue = queue;
+        _businessLogicService = businessLogicService;
+        _logger = logger;
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        // Try to dequeue a message, process it, and respond every 1 second
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            try
+            {
+                var message = await _queue.ReadNextMessage();
+                // If there is a message, handle it.
+                if (message != null)
+                {
+                    var response = _businessLogicService.CalculateResponse(message);
+                    _queue.PostMessage(response);
+                }
+            }
+            catch (Exception e)
+            {
+                // On exception - log and retry
+                _logger.LogError(e, "Exception while processing queue message");
+            }
+                            
+            // Wait one second before trying to read from the queue again
+            await Task.Delay(1000, stoppingToken);
+        }
+    }
 }
 ```
-your application will crash at the start. That seems rather obvious it would, but what happens if we do this instead:
+
+You take in some parameters, you do some work every _x_ seconds, and then you make sure to not throw any errors.
+
+Now there's a few issues with services looking like this.
+
+
+    - They're extremely difficult to test. 
+You'll have to mock everything, if you need to test multiple calls you'll need to wait in your test 
+
+
+There's issues with scoping. HostedServices don't get their own scope.
+All of your dependencies need to be good at handling state for this. If you have a single `Scoped` bean
+inside the dependencies you use (such as an EfCore DbContext), this won't work.
+
+If you have transient beans with state you also have issues - you'll end up with Captured dependencies and potentially hard to track
+bugs.
+
+What you can (and should do) is split up the responsibilities. The goal is that your BackgroundService only does error handling, scope management and scheduling.
+It should be so simple that there's no need to test it.
+
+Everything else is delegated to a service that you recreate each time.
+Splitting the BackgroundService from before out into two services, it would look like this. Let's take a look at it first, and then
+discuss it afterwards.
 
 ```csharp
-public async Task StartAsync(CancellationToken cancellationToken)
+public class QueueProcessingBackgroundService : BackgroundService
 {
-    await Task.Yield();
-    throw new Exception("oh no something went horribly wrong");
+    private ILogger<QueueProcessingBackgroundService> _logger;
+    private IServiceProvider _serviceProvider;
+
+    public QueueProcessingBackgroundService(
+        ILogger<QueueProcessingBackgroundService> logger,
+        IServiceProvider serviceProvider)
+    {
+        _logger = logger;
+        _serviceProvider = serviceProvider;
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            try
+            {
+                var processor = _serviceProvider.GetRequiredService<QueueProcessor>();
+                await processor.ProcessMessage();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Exception while processing queue message");
+            }
+
+            await Task.Delay(1000, stoppingToken);
+        }
+    }
+
+public class QueueProcessor
+{
+    private IQueue _queue;
+    private IBusinessLogicService _businessLogicService;
+
+    public QueueProcessor(IQueue queue, IBusinessLogicService businessLogicService)
+    {
+        _queue = queue;
+        _businessLogicService = businessLogicService;
+    }
+
+    public async Task ProcessMessage()
+    {
+        var message = await _queue.ReadNextMessage();
+        if (message != null)
+        {
+            var response = _businessLogicService.CalculateResponse(message);
+            _queue.PostMessage(response);
+        }
+    }
 }
 ```
-Would you like to guess?
-Nothing at all happens.
-The BackgroundService fails silently
+
+This gives us several advantages.
+- We get a new, *consistent* scope for each time we want to process something. This is just like when we use a Controller and we
+  get a fresh scope for each request, and the mental model maps 1:1.
+- There's no captured dependencies
+- The BackgroundService is dead simple, and there isn't really anything that's worth testing inside it.
+- The actual service is easy to test. You don't need to worry about timers, handling errors that never bubble up or anything like that. 
 
 
-# Testing IHostedervices
+aside: Service locator antipattern
 
 
-# Cancellationtokens in IHostedService
-
-
-https://github.com/dotnet/core/issues/6098
-https://github.com/dotnet/runtime/issues/43637
-https://andrewlock.net/controlling-ihostedservice-execution-order-in-aspnetcore-3/
+https://odetocode.com/blogs/scott/archive/2016/02/18/avoiding-the-service-locator-pattern-in-asp-net-core.aspx
+https://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-5.0&tabs=visual-studio#consuming-a-scoped-service-in-a-background-task
