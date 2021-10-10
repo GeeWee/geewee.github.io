@@ -14,4 +14,5 @@ Password: GGwPxt8pcm
 IP address: 192.168.1.222
 IP address: 10.11.99.1
 
-(If you can't see both ip addresses consider switching the cable and/or usb port.)
+
+(If you can't see both ip addresses in the readme consider switching the cable and/or usb port. In particular, the long charging cable you have does not transfer data.)
