@@ -5,7 +5,9 @@
                 <div class="entry-content">
                     <h2 class="centered" ><a href="{{post.url}}">{{post.title}}</a></h2>
                     {% if post.short.size %}
+                    <p>
                         {{post.short}}
+                    </p>
                     {% else %}
                         {{post.excerpt}}
                     {% endif %}

@@ -194,3 +194,5 @@ This means you can rely on it for knowing when you need to clean-up your long ru
 {% endcapture %}
 
 {% include accordion.html title="Extra info: CancellationTokens in BackgroundServices" content=accordion_2_content %}
+
+_This is part 1 of my series about ASP.NET Core series about BackgroundServices and IHostedService. Part 2 is [Testing and scope management in ASP.NET Core BackgroundServices]({% post_url 2021-09-03-testing-and-scopes-for-background-services %})_
