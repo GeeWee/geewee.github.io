@@ -6,7 +6,7 @@ short: |
     Here's my first impressions, from someone who's never seriously worked with a low-level language before.
 ---
 
-I've been working with rust at [Climatiq](https://climatiq.io/) for a little more than a month now.
+I've now been working with rust at [Climatiq](https://climatiq.io/) for a little more than a month now.
 Here's my first impressions, from someone who's never seriously worked with a low-level language before.
 
 It's actually been surprisingly easy to learn. The (freely available) "Rust Programming Language" book, Rust by Example and rustlings are all great resources to get started. The learning process is extremely streamlined - which is good because Rust has _a lot_ of different syntax.
@@ -20,11 +20,11 @@ In most cases all of my worrying about ownerships and borrowing boils down to "d
 
 Rust feels very ergonomic to use. Cargo is a wonderful package manager/build system, using the built-in Result and Option type for error/null handling also works very well. Strings are a little unwieldy, but that's primarily because Rust has decided to actually surface to the developer how complex utf-8 strings _really are.
 
-The only large wart I've found on the ergonomics is that returning iterators from functions seem nigh-impossible. If you want to take in an iterator, do some operations on it, and return another iterator you have to jump through so many hoops you'd think you were a lion at the zoo.
+The only large ergonomic wart I’ve found is that returning iterators from functions seem nigh-impossible. If you want to receive an iterator, do some operations on it, and return another iterator you have to jump through so many hoops you’d think you were a lion at the zoo.
 
 It's not all roses though, and there's still some stuff I struggle with. I think converting between types (using the From/Into traits) is documented in a confusing way. It's something that should be pretty simple to understand, but for some reason it's been exceedingly hard to grasp.
 
-Complicated references confuse me. I understand that prefixing `&` in front of `&myVar` means it's a reference to the variable that I don't own. However in some cases you end up with situations where you have two `&` in-front of your variable `&&myVar` - and I don't understand what that means, or why it matters how many `&`'s there are.
+Complicated references also confuse me. I understand that prefixing `&` in front of `&myVar` means it's a reference to the variable that I don't own. However in some cases you end up with situations where you have two `&` in-front of your variable `&&myVar` - and I don't understand what that means, or why it matters how many `&`'s there are.
 This generally happens when iterating over a vector of references, and I can't figure out why.
 
 This is made worse by the fact that it's harder to google issues like that. Google seems to ignore syntax constructs like `&&`.
