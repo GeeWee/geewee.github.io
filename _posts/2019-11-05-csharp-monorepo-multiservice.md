@@ -21,7 +21,7 @@ We went looking for a solution that fulfills the following criteria:
 
 ## Enter the monorepository
 
-We ended up with a Monorepository to solve our problems. Insid the monorepository, we have a `Shared` projects, where code that's relevant for multiple services lives. Each service has a project reference to the `Shared` project. 
+We ended up with a Monorepository to solve our problems. Inside the monorepository, we have a `Shared` projects, where code that's relevant for multiple services lives. Each service has a project reference to the `Shared` project. 
 
 In `Shared` projects, we have utility methods, extension methods, and all models that are used in more than one service. This is also where all of our third party NuGet dependencies are referenced. Other services that have a reference to the `Shared` project, will then pick up the NuGet dependencies through that. This ensures we're always running the same version of our dependencies on each project, so we don't end up in situations where we upgrade the dependency one place, but not in others. 
 <div class="img-div-tall extra-bottom">
