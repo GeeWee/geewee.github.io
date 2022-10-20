@@ -1,13 +1,11 @@
 ---
 title: "Defending your time"
 permalink: '/defending-your-time'
-short: |
-    I've been working with rust at for a little more than a month now.
-    Here's my first impressions, from someone who's never seriously worked with a low-level language before.
 ---
 
 Recently at my company [Climatiq](https://climatiq.io/) we had discussions about time management. Many people seem to feel like they have too many meetings, and too many notifications.
 I don't really feel like I have any of these issues. I've dug down a bit and looked into some time-management, or time defence strategies I use, and tried to formulate them.
+
 I don't work a full 37-40 hour work-week, so I have to be even more careful about how I use my time, as every hour counts.
 
 A lot of these strategies, particularly the meeting-related ones, assumes you're doing creative or deep work which requires focus time, and might not apply if you're the one creating the meetings.
