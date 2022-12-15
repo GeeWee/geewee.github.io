@@ -16,3 +16,5 @@ IP address: 10.11.99.1
 
 
 (If you can't see both ip addresses in the readme consider switching the cable and/or usb port. In particular, the long charging cable you have does not transfer data.)
+
+If you want to use a transparent sleeping.png you will need ddvk https://github.com/ddvk/remarkable-hacks/issues/157
