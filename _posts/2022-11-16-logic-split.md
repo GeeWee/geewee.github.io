@@ -1,6 +1,6 @@
 ---
 title: "What logic should you not implement in your API?"
-permalink: '/api-design-flags-are-bad'
+permalink: '/api-design-what-logic-not-to-implement'
 short: "Recently I've been spending a lot of time discussing what good API design is.
         One of the discussions we often have is 'should we implement this logic inside our API or not?'.
         This post tries to give an overview of what to consider when discussing this."
