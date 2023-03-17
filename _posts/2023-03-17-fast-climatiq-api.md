@@ -67,3 +67,4 @@ This is good because we avoid the performance penalty of allocations, but also b
 
 While it's often said that programmer hours are less expensive than CPU hours, speed still matters to us. 
 By making our API fast and responsive, we make it easier for developers and businesses to embed Climatiq into their applications, enabling them to calculate and minimize their carbon footprint and make climate-friendly choices in real-time.
+If you want to make your application carbon-aware or call bullshit on my speed claims, [head on over and try our free trial](https://www.climatiq.io/) - no credit card required.
