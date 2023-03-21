@@ -12,6 +12,11 @@ In this post, we'll delve into the strategies that help Climatiq achieve ultra-l
 17ms latency for an estimate performed via the Climatiq API to a remote server. Is this what the kids call blazing fast?
 </div>
 
+**Disclaimer:** Several people have (rightfully) pointed out, that when measuring latency you don't normally take the network latency into account as it can vary widely depending on your location.
+If we only measure latency by the server processing time, our median latency for the endpoint in question is 8.94ms over the last two weeks.
+The reason for using the total latency (i.e. network + processing) was to highlight that we serve our API in a [geographically distributed](https://www.fastly.com/network-map/) manner, so that the network latency will hopefully be low  no matter where you are in the world.
+
+
 ## The Importance of Performance
 But first, let's disgress a bit and talk quickly about why we care about our API performance - and why you should too.
 At this point we might all have heard the old story about how much each millisecond of latency costs Amazon. So more performance equals more money? Sounds like a good argument.
