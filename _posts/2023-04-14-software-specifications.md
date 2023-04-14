@@ -1,55 +1,53 @@
 ---
 title: "Crafting the Ideal Specifications for Software Developers"
 permalink: '/software-specifications'
+short:
+    "At Climatiq, we practice a dual-track agile approach, dedicating time to discover and conceptualize parts of our product before implementing them in code. A colleague asked me about the best way to write a specification for the engineering team to effectively implement a conceptual design."
 ---
 
-In Climatiq we do something like [dual-track agile](https://www.productboard.com/glossary/dual-track-agile/), where we often spend some dedicated time discovering and figuring out what a part of our product should do on a conceptual level, and then some time after that, implementing that product part in code.
-
-I was asked earlier by a colleague at [Climatiq](https://www.climatiq.io/), what the best way was to write a specification, so the engineering team could effectively take the conceptual design work and start implementing. This is my attempt to answer that question. The title of the article is a bit of a trick, because the ideal specification is no specification. While this doesn't apply if you're a senior developer breaking down tasks to help a junior developer out - creating a specification for any large piece of software isn't worth the time - it's probably not even possible. This is because:
+At Climatiq, we practice a [dual-track agile](https://www.productboard.com/glossary/dual-track-agile/) approach, dedicating time to discover and conceptualize parts of our product before implementing them in code. A colleague asked me about the best way to write a specification for the engineering team to effectively implement a conceptual design. The title of the post is a bit of trickery, because the ideal specification in this case is probably "no specification"[^0]. Creating a specification for a large piece of software isn't worth the time, and it's probably not even possible. Here's why:
 
 ## Code **is** a Specification
 
-Code is essentially a specification of behaviour. If this, do that. This means that to write a specification that's thorough enough for a software developer to take it and implement it exactly as-is - you essentially need to write the entire program.
-There's been a historical view that viewed programming more of a manufacturing activity - take in specs and spit out code. However software development is [primarily a design activity](https://wiki.c2.com/?TheSourceCodeIsTheDesignhttps://wiki.c2.com/?TheSourceCodeIsTheDesign).
+Code **is** a specification for what the machine should do. To write a specification thorough enough for a developer to implement it exactly, you're essentially writing the entire program. Historically, programming was viewed as a manufacturing activity - take in some specifications and spit out code. However coding is actually [primarily a design activity](https://wiki.c2.com/?TheSourceCodeIsTheDesign).
 
-This means you can't craft a specification and just toss it over the fence - you'd essentially have to write the program. What you can do however, is to help the developers along and give them the best possible conditions for performing the design activity. You do that by ensuring they understand the problem. That leads me to my next point.
+This means you can't craft a specification and just toss it over the fence. What you can do is give the developers the best possible conditions for performing this design activity.
+You do that by ensuring they understand the problem. That leads me to my next point.
 
-## The Problem Is More Important Than The Solution
+## Focus on the Problem, Not the Solution
 
-The most crucial aspect of handing over a project to developers is providing them with all the necessary context.
-This includes how the project fits into existing products, who the users are, and what they're trying to accomplish. You can use user stories to communicate this information, but it's not mandatory as long as the user's needs and limitations are clear.
+The most crucial aspect of handing over a project to developers is providing them with the necessary context, such as how the project fits into existing products, who the users are, and what they're trying to accomplish. Communicate this information using user stories or another method that clearly conveys the user's needs and limitations.
 
-Instead of telling the developers exactly what something ought to do, you should first explain to them why. Because when you haven't managed to think through all of the edge-cases (and you haven't until you start coding), the developers won't need to ask you about every single one. Enough context enables the developers to act independently, removing many rounds of feedback loops. It also means when you do need to answer questions, the questions will be more well-informed.
+Instead of prescribing exactly what something should do, you should first explain why it is necessary. By doing so, developers can act independently, removing many rounds of feedback loops and making the questions they ask more well-informed.
 
 ## Prototype
-Although the solution isn't the most important part of the handover, if you've done some thoughts about the solution - you should absolutely share them.
-A great way to do that is share a prototype that demonstrates your proposed solution thoughts. This can range in fidelity from sketches and bullet points to interactive user interface prototypes, or Excel-based prototypes demonstrating the functionality.
+Though the solution isn't the most important part of the handover, you should share any thoughts you have on it. One great way to do this is by sharing a prototype that demonstrates your proposed solution. Prototypes can range in fidelity from sketches and bullet points to interactive user interface prototypes or Excel-based prototypes demonstrating the functionality.
 
-A great thing about prototyping, especially using tools like Excel is that it also helps you shape your thinking about it. If you're trying to replicate the logic you want, but you can't quite express it - perhaps it's because you haven't quite covered all the edge cases in your mind.
+Prototyping also helps you refine your thinking about the solution. If you struggle to express your logic, it could be because you haven't considered all the edge cases.
 
-Don't go overboard with the prototype. If you're working with higher fidelity stuff, you might not need to finish more than 50-60% of it. Use it as a tool for discussion and further collaboration, not necessarily the holy grail developers should replicate.
+Remember not to go overboard with the prototype. If you're working with higher fidelity materials, you might not need to complete more than 50-60% of it. Use the prototype as a tool for discussion and further collaboration, not necessarily as the final blueprint for developers to replicate.
 
-## Spotting Rabbit Holes and Risks
+## Identify Rabbit Holes and Risks
 
-Before you hand over a project, you should have a think about any risks and "rabbit holes." Rabbit holes refer to situations where there are technical unknowns or unsolved design problems that can significantly extend the project's completion time.
-By being up-front about the things we don't know yet, we can spark the discussion about how to handle those things early on.
+Before you hand over a project, think about any risks and "rabbit holes." Rabbit holes refer to situations where there are technical unknowns or unsolved design problems that can significantly extend the project's completion time. By being upfront about these uncertainties, you can initiate a discussion about how to handle them early on.
 
-Expect that the developers might have their own assessment of risks and rabbit holes, based on the underlying program architecture, or challenges we haven't faced before.
+Be prepared for developers to have their own assessments of risks and rabbit holes, based on the underlying program architecture or challenges they haven't faced before.
 
-## Explicitly Identify What You're Not Doing
+## Clarify What's Not Being Done
 
-Clearly outline what you are not tackling in the project proposal to set boundaries and prevent developers from spending time on unrelated tasks. This clarity will help developers understand where their focus should lie, and where rough edges are accepted.
+Outline what you are not tackling in the project proposal to set boundaries and prevent developers from spending time on unrelated tasks. This clarity will help developers understand where their focus should be and where rough edges are acceptable.
 
 ## Create an Artifact
+A good handover should result in one or more artifacts that capture relevant information at a high level. A prototype you've developed or collaborated on is one such artifact.
 
-A good handover should result in one or more artifacts that captures relevant information at a high level. A prototype you've developed or you're collaborating on is one such artifact.
+Whether you have a prototype, you should also create a document explaining the high-level problem and solution proposal. You can create this document yourself or in collaboration with an engineer while discussing the problem. Producing a document during the conversation helps clear up any potential misunderstandings, as you'll need to agree on what's written on the page.
 
-Regardless of whether you have a prototype or not, you should also seek to create a document explaining the high level problem and solution proposal.
-You can create this document yourself or in collaboration with an engineer, while talking through the problem.
-Producing a document while talking, also helps to clear up any potential misunderstandings, as you'll need to agree what's written on the page. 
-
-The purpose of these artifacts are to serve as a reference for both you and the developers, allowing you to make adjustments and corrections when necessary. A shared, collaborative document is ideal as it enables developers to ask questions, and you can edit the document to provide answers.
+The purpose of these artifacts is to serve as a reference for both you and the developers, allowing you to make adjustments and corrections when necessary. A shared, collaborative document is ideal, as it enables developers to ask questions and you can edit the document to provide answers.
 
 ---
 
-When working with software developers, the key to success isn't in writing detailed specification. It's to empower the engineering team to understand enough of the problem and the proposed solution, that they can work independently, and only need to clarify major questions with you. The more developers can work independently, the less time you need to spend talking back and forth, and the higher the effective work absorption rate of the project is. Communication is important, but communication on the problem is much important than communication on the exact solution.
+
+
+When working with software developers, the key to success isn't writing detailed specifications. Instead, it's about empowering the engineering team to understand the problem and the proposed solution well enough that they can work independently and only need to clarify major questions with you. The more developers can work independently, the less time you need to spend in back-and-forth communication, and the higher the [effective work absorption rate of the project will be]({% post_url 2023-03-22-rules-of-thumb-for-personal-project-management %}). Communication is important, but focusing on the problem is much more critical than dwelling on the exact solution.
+
+[^0]: This doesn't apply for cases when e.g. a senior developer is breaking down tasks to help a junior developer, only for handing over larger projects.
