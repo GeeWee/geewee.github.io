@@ -1,6 +1,6 @@
 ---
 title: "How To Make Your Cloud Computing Greener"
-permalink: '/carbon-aware-computing is not for you'
+permalink: '/greener-cloud-computing'
 ---
 
 The Green Software Foundation (GSF) is a non-profit organization under the Linux Foundation that aims to reduce the climate impact of running software. With multiple projects under its belt, GSF is driving the conversation about sustainable software practices. One of the things I've heard most about is Carbon Aware Computing, which entails developing software that understands its carbon emissions and adjusts its behavior according to the electricity grid it's currently running on.
