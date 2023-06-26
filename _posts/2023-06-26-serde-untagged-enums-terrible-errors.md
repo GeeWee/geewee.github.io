@@ -1,5 +1,5 @@
 ---
-title: "Serde Errors when deserializing untagged enums are bad - but we can make them better."
+title: "Serde Errors When Deserializing Untagged Enums Are Bad - But Easy to Make Better"
 permalink: '/serde-untagged-enum-errors-are-bad'
 ---
 
