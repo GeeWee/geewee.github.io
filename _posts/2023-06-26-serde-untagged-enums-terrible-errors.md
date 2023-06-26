@@ -3,11 +3,8 @@ title: "Serde Errors when deserializing untagged enums are bad - but we can make
 permalink: '/serde-untagged-enum-errors-are-bad'
 ---
 
-# Serde Errors when deserializing untagged enums are bad - but we can make them better.
+[Serde](https://serde.rs/) is a powerful Rust library for serializing and deserializing data structures efficiently and generically. One of the cooler features is itssupport for untagged enums, which allow us to specify a list of structs in an enum, and Serde will parse the first one that matches. Here's an example demonstrating this:
 
-- Serde has this really cool feature called untagged enums.
-- Untagged enums means you can specify a list of structs in an enum, and Serde will parse the first one that matches.
-- In the example below, specifying JSON with either fruit_count or burger_count will automatically parse the right enum variant
 ```rust
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -28,7 +25,8 @@ pub enum MyFood {
 }
 ```
 
-And then parsing is as simple as:
+Parsing JSON[^0] with either `fruit_count` or `burger_count` automatically parses the corresponding enum variant:
+
 ```rust
 let json = json!(
     {
@@ -38,10 +36,10 @@ let json = json!(
 .to_string();
 
 let my_food: MyFood = serde_json::from_str(&json).unwrap();
-// Now is MyFood::Fruit variant        
+// my_food is now the MyFood::Fruit variant
 ```
-- The happy case is extremely attractive, and we use it a lot at Climatiq to take in several different parameters to our different endpoints.
-- The unhappy path is not particularly friendly. Any of the following pieces of code will fail with an unhelpful error that simply states `data did not match any variant of untagged enum MyFood`
+
+While this feature is quite attractive and  the happy path works great, it has an unfriendly downside. The error messages when failing to parse are often unclear, stating only that "data did not match any variant of your untagged enum". Examples of problematic code are as follows:
 
 ```rust
 let json = json!(
@@ -52,7 +50,8 @@ let json = json!(
 .to_string();
 
 let my_food: MyFood = serde_json::from_str(&json).unwrap();
-// Does not work because no enum variant matches "tacos" - returns Error("data did not match any variant of untagged enum MyFood")
+// Does not work because no enum variant matches "tacos"
+// Error returned is: Error("data did not match any variant of untagged enum MyFood")c
 ```
 
 ```rust
@@ -65,7 +64,8 @@ let json = json!(
 .to_string();
 
 let my_food: MyFood = serde_json::from_str(&json).unwrap();
-// Does not work because Fruits has deny_unknown_fields and we have a field too much - returns Error("data did not match any variant of untagged enum MyFood")
+// Does not work because Fruits has `deny_unknown_fields` and we have a field too much
+// Error returned is: Error("data did not match any variant of untagged enum MyFood")c
 ```
 
 ```rust
@@ -77,12 +77,12 @@ let json = json!(
 .to_string();
 
 let my_food: MyFood = serde_json::from_str(&json).unwrap();
-// Does not work because "fruit_count" is supposed to be an int, but found string - returns Error("data did not match any variant of untagged enum MyFood")
+// Does not work because "fruit_count" is supposed to be an int, but found string
+// Error returned is: Error("data did not match any variant of untagged enum MyFood")c
 ```
 
-- Essentially the error messages aren't very useful as a developer because you don't know what's wrong - and they definitely can't be surfaced to any non-developer user.
-- Currently we work around this using a pattern that looks something like this:
-- 
+These errors are not very informative for developers, and certainly can't be forwarded to end-users. To mitigate this, we've adopted a workaround pattern that involves a custom `MaybeValid` untagged enum[^1]:
+ 
 ```rust
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -91,7 +91,8 @@ pub enum MaybeValid<U> {
     Invalid(serde_json::Value),
 }
 
-// First parse it to something that's either valid or not valid. (Simplified, obviously you wouldn't want to unwrap here)
+// First parse it to something that's either valid or not valid.
+// This is simplified for the sake of brevity - in production code you wouldn't unwrap here
 let maybe_valid = MaybeValid<MyFood> = serde_json::from_str(my_string).unwrap();
 
 match maybe_valid {
@@ -103,10 +104,12 @@ match maybe_valid {
     }
 }
 ```
-- We have thousands of lines of code doing something similar to this pattern, to provide a semblance of useful error messages.
-- I think the correct error messages in a case like this, would be to aggregate errors for all enum variants it tried to parse.
-- An example from above of what the error message could look like:
-```
+
+This pattern, while not ideal, gives us the ability to construct somewhat useful error messages. We have thousands of lines doing this parsing and error construction.
+
+There's a better way though. We could aggregate errors for all enum variants tried during parsing, resulting in more informative errors:
+
+```rust
 let json = json!(
     {
         "fruit_count": "5",
@@ -118,8 +121,13 @@ let my_food: MyFood = serde_json::from_str(&json).unwrap();
 // Does not work because "fruit_count" is supposed to be an int, but found string.
 // It could return something like: 
 // Error("data did not match any variant of untagged enum MyFood.
-// Did not match Fruit because `fruit_count` was string but expected integer. Did not match burger because required property `burger_count` was missing.")
+// Did not match Fruit because `fruit_count` was string but expected integer.
+// Did not match burger because required property `burger_count` was missing.")
 ```
 
-- This isn't particularly a new problem. dtolnay [created an issue back in 2017 about it](https://github.com/serde-rs/serde/issues/773), but decided it wasn't worth pursuing at that time, but that he would accept PR's. I [created an issue back at the start of 2022](https://github.com/serde-rs/serde/issues/2157). There's also [a PR from 2019](https://github.com/serde-rs/serde/pull/1544) with one person who's maintaining his own up-to-date fork of serde with these changes made - the last conflicts were fixed two weeks ago. The PR has over 50 like reactions.
-- This post is my attempt to shout out this awesome PR. Can we somehow get this merged in? It'd make life using untagged enums much nicer.
+This isn't a new problem, and has several issues ranging from [2019](https://github.com/serde-rs/serde/issues/773) to [2022](https://github.com/serde-rs/serde/issues/2157). There's even [a Pull Request from 2019](https://github.com/serde-rs/serde/pull/1544) with one person who's been maintaining his own up-to-date fork of serde that aggregates untagged enum errors. The last conflicts with the main serde branch were fixed two weeks ago. The PR has over 50 like reactions.
+
+This PR is an excellent contribution, and I want to take this opportunity to bring it to attention. Merging this could greatly enhance the experience of using untagged enums in Serde.
+
+[^0]: Or any other supported serde format such as yaml, postcard, bincode or others
+[^1]: It's untagged enums all the way down.
