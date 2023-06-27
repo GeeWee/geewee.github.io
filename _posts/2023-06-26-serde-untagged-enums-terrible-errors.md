@@ -96,10 +96,10 @@ pub enum MaybeValid<U> {
 let maybe_valid = MaybeValid<MyFood> = serde_json::from_str(my_string).unwrap();
 
 match maybe_valid {
-    UnvalidatedUnit::Valid(valid) => {
+    MaybeValid::Valid(valid) => {
         // Yay! We can move on.
     }
-    UnvalidatedUnit::Invalid(json_value) => {
+    MaybeValid::Invalid(json_value) => {
         // Parse the string to JSON ourselves, and then attempt to build a sensible error message
     }
 }
