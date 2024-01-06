@@ -1,7 +1,11 @@
 ---
 title: "Serde Errors When Deserializing Untagged Enums Are Bad - But Easy to Make Better"
 permalink: '/serde-untagged-enum-errors-are-bad'
+short: |
+  Serde is a powerful Rust library for serializing and deserializing data structures efficiently and generically. One of the cooler features is itssupport for untagged enums, which allow us to specify a list of structs in an enum, and Serde will parse the first one that matches. Unfortunately the error messages if it fails aren't great.
 ---
+
+**Update 01/06/2023: Unfortunately the approach at the bottom of this article has been rejected, and how to get good error messages with untagged enums is currently in stasis**
 
 [Serde](https://serde.rs/) is a powerful Rust library for serializing and deserializing data structures efficiently and generically. One of the cooler features is itssupport for untagged enums, which allow us to specify a list of structs in an enum, and Serde will parse the first one that matches. Here's an example demonstrating this:
 
