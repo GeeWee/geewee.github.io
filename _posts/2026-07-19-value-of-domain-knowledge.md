@@ -1,6 +1,8 @@
 ---
 title: "The Value of Domain Knowledge in Software"
 permalink: 'value-of-domain-knowledge'
+short: |
+  Something that I think is often overlooked by many software developers is the value of domain knowledge, i.e. understanding the industry you're in and the mindset of the end-users of your software I actually think that explicitly spending time to acquire domain knowledge might be one of the best uses of your time as a software developer.
 ---
 
 Something that I think is often overlooked by many software developers is the value of [domain knowledge](https://en.wikipedia.org/wiki/Domain_knowledge), i.e. understanding the industry you're in and the mindset of the end-users of your software[^0].
