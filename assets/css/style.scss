@@ -3,12 +3,17 @@
 
 @import "{{site.theme}}";
 
+ul {
+  margin-top: 0.2rem !important;
+}
+
 p {
   font-size: 16px !important;
 }
 
 li {
   font-size: 16px !important;
+  margin-top: 0.2rem;
 }
 
 h3 {
