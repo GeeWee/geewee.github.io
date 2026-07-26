@@ -73,16 +73,13 @@ I'm not sure the value is as great in application code, where you control the wh
 
 
 ### There Are Things You Shouldn't Do In Constructors
-Generally people don't expect constructors to do much of anything but construct an object. While you can do I/O, database access etc in constructors, most people don't expect it. Convention-wise you're free to do more work in a static factory method without anyone raising any eyebrows.
+Generally people don't expect constructors to do much of anything but construct an object. While you can do I/O, database access etc in constructors, most people don't expect it. Convention-wise you're free to do more work in a static factory method without anyone raising any eyebrows. This makes constructors much less flexible as a construct, which can be both a blessing and a curse.
 
 Some people also don't think you should throw exceptions in constructors. Perhaps it depends on the language, but in C# [it's totally fine](https://docs.microsoft.com/en-us/cpp/mfc/exceptions-exceptions-in-constructors?view=vs-2019), with some caveats if you're [creating umanaged resources in your constructor](https://stackoverflow.com/questions/926362/throwing-exceptions-from-a-constructor-in-net).  
 
 
 ## Cons of Static Factory Methods
 Let's look at the flip side of the coin
-
-### There Are Things You Shouldn't Do In Constructors
-Constructors are usually simpler by convention. When I call a constructor, I generally don't expect it to do I/O or anything fancier than return a plain vanilla object with the properties I gave it. This makes constructors much less flexible as a construct, which can be both a blessing and a curse.
 
 ### There's more code
 No matter what, you're still going to need a constructor to actually construct the objects. The static factory method is more code, and [code is a liabillity.](https://chrismdp.com/2012/09/code-is-a-liability/) It's usually not very complex code, and usually the static factory methods aren't particularly long either - so this is probably not a huge con.
